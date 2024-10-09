@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<style>
+			@font-face {
+				font-family: "Studio Pro";
+				font-weight: normal;
+				src: url("%sveltekit.assets%/fonts/Studio-Pro-Regular.ttf") format("truetype");
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: "Tobias";
+				font-weight: normal;
+				src: url("%sveltekit.assets%/fonts/Tobias-Light.otf") format("opentype");
+				font-display: swap;
+			}
+		</style>
+
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>

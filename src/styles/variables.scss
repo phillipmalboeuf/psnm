@@ -1,0 +1,77 @@
+@use 'node_modules/utopia-core-scss/src/utopia' as utopia;
+
+$body_font: "Studio Pro", sans-serif;
+$heading_font: "Tobias", serif;
+$mono_font: monospace;
+
+$beige-pale: #DEDEC8;
+$beige: #F7F7F0;
+$jaune: #FFEA75;
+$brun: #444130;
+
+$bleu-pale: #DFF1FF;
+$bleu: #A8D8FF;
+$bleu-fonce: #1B3244;
+
+$mauve-fonce: #4A355C;
+$mauve: #CDB4E2;
+$mauve-pale: #F5EAFF;
+
+$vert-fonce: #1C4526;
+$vert: #99E1A8;
+$vert-pale: #E8FEED;
+
+$sarcelle: #1D4742;
+$aqua: #95E0D1;
+$aqua-pale: #DBFBF4;
+
+$bourgogne: #8A0132;
+$rose: #FFB5CF;
+$rose-pale: #FFE7EE;
+
+$dark: #000;
+$light: #FFF;
+$muted: fade-out(#fff, 0.5);
+
+$grey: $beige-pale;
+$accent: $vert-fonce;
+$accent-light: $beige-pale;
+$accent-dark: $bleu-fonce;
+
+$base: 16px;
+  
+/* @link https://utopia.fyi/type/calculator?c=375,16,1.333,1440,16,1.414,6,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+:root {
+  @include utopia.generateTypeScale((
+    "minWidth": 375,
+    "maxWidth": 1440,
+    "minFontSize": 16,
+    "maxFontSize": 16,
+    "minTypeScale": 1.333,
+    "maxTypeScale": 1.414,
+    "positiveSteps": 6,
+    "negativeSteps": 2,
+    "prefix": "step-",
+    "relativeTo": "viewport-width"
+  ));
+}
+
+// $s-3: var(--step--3);
+$s-2: var(--step--2);
+$s-1: var(--step--1);
+$s0: var(--step-0);
+$s1: var(--step-1);
+$s2: var(--step-2);
+$s3: var(--step-3);
+$s4: var(--step-4);
+$s5: var(--step-5);
+$s6: var(--step-6);
+// $s7: var(--step-7);
+
+$radius: $s1;
+$max: 1440px;
+
+$mobile: 888px;
+
+$number_of_columns: 12;
