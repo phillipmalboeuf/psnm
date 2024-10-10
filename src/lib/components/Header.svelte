@@ -59,7 +59,7 @@
 
 <style lang="scss">
   header {
-    // color: $light;
+    // color: $blanc;
     // background-color: $accent;
     // min-height: 50lvh;
 
@@ -87,7 +87,7 @@
       width: auto;
       // margin-top: $s0;
       // text-transform: uppercase;
-      // background-color: $light;
+      // background-color: $blanc;
       // border-radius: $s1;
       // overflow: hidden;
 
@@ -123,7 +123,7 @@
       // }
 
       // :global(.active) {
-      //   background-color: $light !important;
+      //   background-color: $blanc !important;
       // }
 
       // &:global(:has(.active)) {

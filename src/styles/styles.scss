@@ -29,7 +29,7 @@ body {
 	font-weight: 400;
 	font-optical-sizing: auto;
 	color: $accent;
-	background-color: $light;
+	background-color: $blanc;
 
 	@media (max-width: $mobile) {
     font-size: $s-1;
@@ -46,9 +46,9 @@ body {
 }
 
 ::selection {
-  background: $light;
+  background: $blanc;
 	opacity: 1;
-  color: $dark;
+  color: $noir;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -213,8 +213,8 @@ button,
 	}
 
 	&.button--dark {
-		color: $light;
-		background: $dark;
+		color: $blanc;
+		background: $noir;
 	}
 
 	// &.button--grey {
@@ -225,7 +225,6 @@ button,
 	&:hover,
 	&:focus {
 		text-decoration: none;
-		// color: $dark;
 		background: $muted;
 	}
 
@@ -277,8 +276,8 @@ label {
 			&:focus,
 			&:has(> input[type=checkbox]:checked),
 			&:has(> input[type=radio]:checked)  {
-				color: $light;
-				background: $dark;
+				color: $blanc;
+				background: $noir;
 			}
 
 			input {
@@ -482,6 +481,38 @@ strong,
 	}
 
 
+// COLORS
+
+.aqua { background-color: $aqua; }
+.aqua-pale { background-color: $aqua-pale; }
+.beige { background-color: $beige; }
+.beige-pale { background-color: $beige-pale; }
+.blanc { background-color: $blanc; }
+.bleu { background-color: $bleu; }
+.bleu-fonce { 
+  background-color: $bleu-fonce; 
+  color: $blanc;
+}
+.bleu-pale { background-color: $bleu-pale; }
+.bourgogne { background-color: $bourgogne; }
+.brun { background-color: $brun; }
+.jaune { background-color: $jaune; }
+.mauve { background-color: $mauve; }
+.mauve-fonce { 
+  background-color: $mauve-fonce; 
+  color: $blanc;
+}
+.mauve-pale { background-color: $mauve-pale; }
+.noir { background-color: $noir; }
+.rose { background-color: $rose; }
+.rose-pale { background-color: $rose-pale; }
+.sarcelle { background-color: $sarcelle; }
+.vert { background-color: $vert; }
+.vert-fonce { 
+  background-color: $vert-fonce; 
+  color: $blanc;
+}
+.vert-pale { background-color: $vert-pale; }
 
 // #GRID
 

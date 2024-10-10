@@ -1,16 +1,12 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-  import { isTypeGamme, isTypeProduit, isTypeText } from '$lib/clients/content_types'
-  
+  import { isTypeHero, isTypeList, isTypeText } from '$lib/clients/content_types'
+
+  import Hero from '$lib/components/Hero.svelte'
+  import List from '$lib/components/List.svelte'
   import Text from '$lib/components/Text.svelte'
-  import Gamme from '$lib/components/Gamme.svelte'
-  import Produit from '$lib/components/Produit.svelte'
 
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
-
-  onMount(() => {
-  })
 </script>
 
 
@@ -19,10 +15,10 @@
 <section>
   {#if isTypeText(item)}
   <Text {item} />
-  <!-- {:else if isTypeGamme(item)}
-  <Gamme {item} />
-  {:else if isTypeProduit(item)}
-  <Produit {item} /> -->
+  {:else if isTypeList(item)}
+  <List {item} />
+  {:else if isTypeHero(item)}
+  <Hero {item} />
   {/if}
 </section>
 {/each}

@@ -50,25 +50,11 @@
 <style lang="scss">
   footer {
     position: relative;
-    color: $light;
+    color: $blanc;
     background-color: $accent;
     // min-height: 100lvh;
     overflow: hidden;
     padding: $s1;
-
-    .logo,
-    .aliments {
-      position: relative;
-      z-index: 1;
-      display: block;
-      width: 100%;
-    }
-
-    .aliments {
-      width: $s5;
-      // margin-top: auto;
-      margin-left: auto;
-    }
 
     .logo {
       margin-top: $s2;

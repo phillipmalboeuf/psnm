@@ -1,12 +1,11 @@
 <script lang="ts">
   import type { TypeTextSkeleton } from '$lib/clients/content_types'
-  import type { Entry } from 'contentful'
+  import type { Entry, Asset } from 'contentful'
   import { onMount, type Snippet } from 'svelte'
   
   import Rich from './Rich.svelte'
   import Media from './Media.svelte'
   import Link from './Link.svelte'
-  // import Star from './Star.svelte'
 
   let { item, full, small, first }: {
     item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -24,7 +23,7 @@
   // })
 </script>
 
-<section class="flex flex--center flex--middle flex--gapped" class:dark={item.fields.dark} id={item.fields.id}>
+<section class="flex flex--middle flex--gapped {item.fields.couleur || ''}" id={item.fields.id}>
   <div class:col--5of12={!!item.fields.media} class:col--6of12={!item.fields.media} class="col flex flex--column flex--gapped">
     {#if item.fields.titre}
     <h2>{item.fields.titre}</h2>
@@ -33,35 +32,27 @@
     {#if item.fields.corps}
     <Rich body={item.fields.corps} />
     {/if}
-
-    {#if item.fields.liens?.length}
-    <nav class="flex flex--gapped flex--center">
-      {#each item.fields.liens as link}
-      <Link {link} className="button" />
-      {/each}
-    </nav>
-    {/if}
   </div>
 
-  {#if item.fields.media}
-  <figure class="col col--6of12">
-    <Media media={item.fields.media} rounded />
-  </figure>
+  {#if item.fields.media && item.fields.media.length > 0}
+  <div class="col col--6of12">
+    {#each item.fields.media as media}
+      <figure>
+        <Media {media} rounded />
+      </figure>
+    {/each}
+  </div>
   {/if}
 </section>
 
 <style lang="scss">
   section {
-    text-align: center;
-    min-height: 50lvh;
-
-    &.dark {
-      color: $accent-dark;
-    }
+    // text-align: center;
+    // min-height: 50lvh;
     
-    div {
-      align-items: center;
-      margin: 0 auto;
-    }
+    // div {
+    //   align-items: center;
+    //   margin: 0 auto;
+    // }
   }
 </style>

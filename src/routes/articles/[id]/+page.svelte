@@ -8,9 +8,6 @@
 
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
-
-  onMount(() => {
-  })
 </script>
 
 
@@ -40,17 +37,8 @@
 <style lang="scss">
   section {
     padding: $s3 $s1;
-    color: $light;
+    color: $blanc;
     background-color: $accent;
-
-    &.Dark {
-      background-color: $accent-dark;
-    }
-
-    &.Light {
-      color: $accent;
-      background-color: $accent-light;
-    }
 
     h1,
     div {

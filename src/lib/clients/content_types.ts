@@ -28,10 +28,26 @@ export function isTypeCategorie<Modifiers extends ChainModifiers, Locales extend
     return entry.sys.contentType.sys.id === 'categorie'
 }
 
+export interface TypeHeroFields {
+    titre?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    corps?: EntryFieldTypes.RichText;
+    media?: EntryFieldTypes.AssetLink;
+    liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
+}
+
+export type TypeHeroSkeleton = EntrySkeletonType<TypeHeroFields, "hero">;
+export type TypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeHeroSkeleton, Modifiers, Locales>;
+
+export function isTypeHero<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeHero<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'hero'
+}
+
 export interface TypeLienDeNavigationFields {
     titre?: EntryFieldTypes.Symbol;
     destination?: EntryFieldTypes.Symbol;
     externe?: EntryFieldTypes.Boolean;
+    sousLiens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
 }
 
 export type TypeLienDeNavigationSkeleton = EntrySkeletonType<TypeLienDeNavigationFields, "lienDeNavigation">;
@@ -39,6 +55,19 @@ export type TypeLienDeNavigation<Modifiers extends ChainModifiers, Locales exten
 
 export function isTypeLienDeNavigation<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeLienDeNavigation<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'lienDeNavigation'
+}
+
+export interface TypeListFields {
+    titre?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeTextSkeleton>>;
+}
+
+export type TypeListSkeleton = EntrySkeletonType<TypeListFields, "list">;
+export type TypeList<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeListSkeleton, Modifiers, Locales>;
+
+export function isTypeList<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeList<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'list'
 }
 
 export interface TypeNavigationFields {
@@ -57,7 +86,7 @@ export interface TypePageFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
     media?: EntryFieldTypes.AssetLink;
-    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<EntrySkeletonType>>;
+    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeHeroSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;
@@ -65,4 +94,20 @@ export type TypePage<Modifiers extends ChainModifiers, Locales extends LocaleCod
 
 export function isTypePage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypePage<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'page'
+}
+
+export interface TypeTextFields {
+    titre?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    corps?: EntryFieldTypes.RichText;
+    liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
+    couleur?: EntryFieldTypes.Symbol<"aqua" | "aqua-pale" | "beige" | "beige-pale" | "blanc" | "bleu" | "bleu-fonce" | "bleu-pale" | "bourgogne" | "brun" | "jaune" | "mauve" | "mauve-fonce" | "mauve-pale" | "noir" | "rose" | "rose-pale" | "sarcelle" | "vert" | "vert-fonce" | "vert-pale">;
+}
+
+export type TypeTextSkeleton = EntrySkeletonType<TypeTextFields, "text">;
+export type TypeText<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeTextSkeleton, Modifiers, Locales>;
+
+export function isTypeText<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeText<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'text'
 }
