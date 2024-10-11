@@ -2,10 +2,12 @@
   import type { TypeNavigationSkeleton } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
   import { page } from '$app/stores'
+  import { fly } from 'svelte/transition'
 
   import Link from './Link.svelte'
   import Logo from './Logo.svelte'
   import Media from './Media.svelte';
+  import Ecole from './Ecole.svelte';
   // import NoScroll from './NoScroll.svelte'
 
   let { navigation }: {
@@ -13,138 +15,113 @@
     // work: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   } = $props()
 
-  let visible = $state(true)
-  let scrollY = $state<number>(0)
-  let innerWidth = $state<number>(0)
+  let visible = $state(false)
+
+  function toggleMenu() {
+    visible = !visible
+  }
 </script>
 
-<svelte:window bind:scrollY bind:innerWidth />
-
-<!-- {#if visible}
-<NoScroll />
-{/if} -->
-
 <header class="flex flex--spaced flex--middle padded">
-  <a href="/" class="logo" class:scrolled={scrollY > innerWidth * 0.2} onclick={() => visible = false}>
+  <a href="/" class="logo" onclick={() => visible = false}>
     <Logo />
   </a>
-  <!-- <button class:visible class="button--none h1 col col--4of12" onclick={() => visible = true}>Menu</button> -->
-  <nav class:visible class:scrolled={scrollY > innerWidth * 0.2} class="flex flex--center">
-    {#if navigation.fields.liens?.length}
-    {#each navigation.fields.liens as link}
-    <Link {link} className={`padded${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}`} />
-    {/each}
-    {/if}
+  <button class="menu-button button--accent" onclick={toggleMenu}>
+    {visible ? 'Close' : 'Menu'}
+  </button>
+  {#if visible}
+    <nav class="flex flex--gapped" transition:fly={{ y: '-100%', duration: 666 }}>
+      {#if navigation.fields.liens?.length}
+        {#each navigation.fields.liens as link, index}
+          <div>
+            <Link {link} className={`h5${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}`} />
+            {#if link.fields.sousLiens?.length}
+              <ul class="list--nostyle">
+                {#each link.fields.sousLiens as sousLink}
+                  <li>
+                    <Link link={sousLink} />
+                    {#if sousLink.fields.sousLiens?.length}
+                      <ul class="list--nostyle">
+                        {#each sousLink.fields.sousLiens as sousSousLink}
+                          <li>
+                            <Link link={sousSousLink} />
+                          </li>
+                        {/each}
+                      </ul>
+                    {/if}
+                  </li>
+                {/each}
+              </ul>
+            {/if}
+          </div>
+          {#if index < navigation.fields.liens.length - 1}
+            <hr />
+          {/if}
+        {/each}
+      {/if}
+      <div class="col col--12of12"></div>
+      <Ecole />
 
-    <span class="padded">
-      FR | EN
-    </span>
-
-    <!-- <button class="button--none" onclick={() => visible = false} aria-label="Fermer">
-      <svg width="30" height="30" viewBox="0 0 30 30"><line x1="1.06066" y1="1.0995" x2="28.0607" y2="28.0995" stroke="currentColor" stroke-width="3"/><line x1="28.0607" y1="1.06066" x2="1.06066" y2="28.0607" stroke="currentColor" stroke-width="3"/></svg>
-    </button> -->
-  </nav>
-<!-- 
-  {#if $page.data.page?.fields.media}
-  <figure>
-    <Media media={$page.data.page?.fields.media} rounded />
-
-    <figcaption class="flex flex--spaced">
-      <h6>{$page.data.page?.fields.media.fields.title}</h6>
-      <h6>{$page.data.page?.fields.media.fields.description}</h6>
-    </figcaption>
-  </figure>
-  {/if} -->
+      <a class="button button--accent">
+        Visite virtuelle
+      </a>
+      <a class="button button--accent">
+        Calendrier
+      </a>
+    </nav>
+  {/if}
 </header>
 
 <style lang="scss">
   header {
-    // color: $blanc;
-    // background-color: $accent;
-    // min-height: 50lvh;
-
     padding: $s1;
+    position: sticky;
+    z-index: 8;
+  }
 
-    // .logo {
-    //   display: block;
-    // }
+  .menu-button,
+  .logo {
+    position: relative;
+    z-index: 10;
+  }
 
-    // > button {
-    //   justify-content: flex-start;
-    //   transition: opacity 666ms;
+  nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: $blanc;
 
-    //   &.visible {
-    //     opacity: 0;
-    //   }
-    // }
+    align-items: stretch;
 
-    nav {
-      // position: absolute;
-      // z-index: 20;
-      // top: 20vw;
-      // left: 50%;
-      // transform: translateX(-50%);
-      width: auto;
-      // margin-top: $s0;
-      // text-transform: uppercase;
-      // background-color: $blanc;
-      // border-radius: $s1;
-      // overflow: hidden;
+    width: 100%;
+    padding: $s1;
+    padding-top: $s5;
 
-      // height: 100lvh;
-      // width: 33vw;
-      
-      // transition: transform 666ms;
-      // transform: translateX(100%);
-      // will-change: transform;
+    hr {
+      width: 1px;
+      height: auto;
+      border-left: 1px dotted $accent;
+      margin: 0;
+      background: transparent;
+    }
 
-      // > button {
-      //   position: absolute;
-      //   top: $s0;
-      //   right: $s0;
-      // }
+    div {
 
-      // :global(a),
-      // span {
-      //   color: $accent;
-        
-      //   padding: $s-1 $s0;
-      //   letter-spacing: 0.05em;
+      &:has(ul) {
+        flex: 1;
+      }
 
-        // &:first-child {
-        //   border-top-left-radius: $s1;
-        //   border-bottom-left-radius: $s1;
-        // }
+      > ul {
+        margin-top: $s3;
+      }
+    }
 
-        // &:last-child {
-        //   border-top-right-radius: $s1;
-        //   border-bottom-right-radius: $s1;
-        // }
-      // }
+    > :global(svg) {
+      margin-right: auto;
+    }
 
-      // :global(.active) {
-      //   background-color: $blanc !important;
-      // }
-
-      // &:global(:has(.active)) {
-      //   backdrop-filter: blur(6px);
-      //   -webkit-backdrop-filter: blur(6px);
-      //   background-color: $muted;
-
-      //   :global(a),
-      //   span {
-      //     border-radius: $s1;
-      //   }
-      // }
-
-      // &.visible {
-      //   transform: translateX(0);
-      // }
-
-      // &.scrolled {
-      //   position: fixed;
-      //   top: 0;
-      // }
+    > a {
+      align-self: flex-end;
     }
   }
 </style>

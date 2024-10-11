@@ -51,13 +51,13 @@ $base: 16px;
     "minTypeScale": 1.333,
     "maxTypeScale": 1.414,
     "positiveSteps": 6,
-    "negativeSteps": 2,
+    "negativeSteps": 3,
     "prefix": "step-",
     "relativeTo": "viewport-width"
   ));
 }
 
-// $s-3: var(--step--3);
+$s-3: var(--step--3);
 $s-2: var(--step--2);
 $s-1: var(--step--1);
 $s0: var(--step-0);

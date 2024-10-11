@@ -23,9 +23,9 @@
     {/each}
     {/if}
 
-    <span class="button">
+    <!-- <span class="button">
       FR | EN
-    </span>
+    </span> -->
   </nav>
 
   <form action="" class="col col--5of12 flex flex--gapped">
