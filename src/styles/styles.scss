@@ -46,9 +46,9 @@ body {
 }
 
 ::selection {
-  background: $blanc;
+  background: $accent;
 	opacity: 1;
-  color: $noir;
+  color: $beige-pale;
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -216,6 +216,7 @@ button,
 	&.button--accent {
 		color: $blanc;
 		background: $accent;
+		border-color: $accent;
 	}
 
 	// &.button--grey {

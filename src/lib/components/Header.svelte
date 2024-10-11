@@ -6,8 +6,7 @@
 
   import Link from './Link.svelte'
   import Logo from './Logo.svelte'
-  import Media from './Media.svelte';
-  import Ecole from './Ecole.svelte';
+  import Ecole from './Ecole.svelte'
   // import NoScroll from './NoScroll.svelte'
 
   let { navigation }: {
@@ -39,15 +38,23 @@
               <ul class="list--nostyle">
                 {#each link.fields.sousLiens as sousLink}
                   <li>
-                    <Link link={sousLink} />
                     {#if sousLink.fields.sousLiens?.length}
-                      <ul class="list--nostyle">
-                        {#each sousLink.fields.sousLiens as sousSousLink}
-                          <li>
-                            <Link link={sousSousLink} />
-                          </li>
-                        {/each}
-                      </ul>
+                      <details>
+                        <summary class="flex flex--gapped flex--middle">
+                          <Link link={sousLink} />
+                          <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="#1C4526"/></svg>
+
+                        </summary>
+                        <ul class="list--nostyle">
+                          {#each sousLink.fields.sousLiens as sousSousLink}
+                            <li>
+                              <Link link={sousSousLink} />
+                            </li>
+                          {/each}
+                        </ul>
+                      </details>
+                    {:else}
+                      <Link link={sousLink} />
                     {/if}
                   </li>
                 {/each}
@@ -76,6 +83,7 @@
   header {
     padding: $s1;
     position: sticky;
+    top: 0;
     z-index: 8;
   }
 
@@ -109,10 +117,43 @@
 
       &:has(ul) {
         flex: 1;
+
+        :global(a) {
+          display: block;
+          padding: ($s-3) ($s-2);
+        }
       }
 
       > ul {
         margin-top: $s3;
+      }
+
+      &:has(details[open]) {
+        :global(a:not(.h5)) {
+          opacity: 0.5;
+        }
+
+        details[open] {
+          :global(a) {
+            opacity: 1;
+          }
+        }
+      }
+
+      details {
+        summary {
+          cursor: pointer;
+          padding: ($s-3) ($s-2);
+
+          :global(a) {
+            display: inline-block;
+            padding: 0;
+          }
+
+          &:after {
+            
+          }
+        }
       }
     }
 

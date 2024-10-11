@@ -12,12 +12,7 @@
   } = $props()
 </script>
 
-<a class={className} class:anchor={link.fields.destination?.includes('#')} href={link.fields.destination} {...link.fields.externe && { target: '_blank', rel: 'external' }}
-  onclick={e => {
-    // if (link.fields.destination.includes('/explore')) {
-    //   openDialog(e)
-    // }
-  }}>{link.fields.titre}{#if more}{@render more()}{/if}</a>
+<a class={className} class:anchor={link.fields.destination?.includes('#')} href={link.fields.destination} {...link.fields.externe && { target: '_blank', rel: 'external' }}>{link.fields.titre}{#if more}{@render more()}{/if}</a>
 
 
 <style lang="scss">
