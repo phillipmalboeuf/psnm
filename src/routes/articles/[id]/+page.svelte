@@ -7,14 +7,29 @@
   import Media from '$lib/components/Media.svelte'
 
   import type { PageData } from './$types'
+  import { date } from '$lib/formatters';
   let { data }: { data: PageData } = $props()
 </script>
 
 
-<section class="flex flex--center flex--middle flex--gapped" id={data.item.fields.id}>
+<section class="flex flex--gapped" id={data.item.fields.id}>
+  <hr>
+  
   {#if data.item.fields.titre}
-  <h1 class="col col--12of12">{data.item.fields.titre}</h1>
+  <h1 class="col col--6of12 h2">{data.item.fields.titre}</h1>
   {/if}
+
+  <aside class="col col--6of12 flex flex--gapped flex--end">
+    {#if data.item.fields.categorie}
+      <a href="/articles?categorie={data.item.fields.categorie.fields.id}">
+        {data.item.fields.categorie.fields.titre}
+      </a>
+    {/if}
+    
+    {#if data.item.fields.date}
+      <date>{date(data.item.fields.date)}</date>
+    {/if}
+  </aside>
 
   <!-- <div class="col col--4of12 flex flex--column flex--gapped">
     
@@ -25,7 +40,7 @@
   </div> -->
 
   {#if data.item.fields.thumbnail}
-  <figure class="col col--6of12">
+  <figure class="col col--12of12">
     <Media media={data.item.fields.thumbnail} />
   </figure>
   {/if}
@@ -36,13 +51,20 @@
 
 <style lang="scss">
   section {
-    padding: $s3 $s1;
-    color: $blanc;
-    background-color: $accent;
+    hr {
+      width: 100%;
+      margin: 0;
+    }
 
-    h1,
-    div {
-      text-align: center;
+    aside {
+
+      > a {
+        margin: 0 auto;
+      }
+    }
+
+    figure {
+      margin: $s2 0;
     }
   }
 </style>

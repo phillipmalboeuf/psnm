@@ -19,6 +19,7 @@ export function isTypeArticle<Modifiers extends ChainModifiers, Locales extends 
 export interface TypeCategorieFields {
     titre: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
+    couleur?: EntryFieldTypes.Symbol<"aqua" | "aqua-pale" | "beige" | "beige-pale" | "blanc" | "bleu" | "bleu-fonce" | "bleu-pale" | "bourgogne" | "brun" | "jaune" | "mauve" | "mauve-fonce" | "mauve-pale" | "noir" | "rose" | "rose-pale" | "sarcelle" | "vert" | "vert-fonce" | "vert-pale">;
 }
 
 export type TypeCategorieSkeleton = EntrySkeletonType<TypeCategorieFields, "categorie">;

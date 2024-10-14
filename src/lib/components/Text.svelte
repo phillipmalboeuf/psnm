@@ -23,14 +23,18 @@
   // })
 </script>
 
-<section class="flex flex--middle flex--gapped {item.fields.couleur || ''}" id={item.fields.id}>
-  <div class:col--5of12={!!item.fields.media} class:col--6of12={!item.fields.media} class="col flex flex--column flex--gapped">
+<section class="flex flex--middle flex--gapped {item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
+  <div class:col--6of12={!!item.fields.media} class:col--12of12={!item.fields.media} class="col flex flex--gapped">
     {#if item.fields.titre}
-    <h2>{item.fields.titre}</h2>
+    <div class="col col--6of12">
+      <h3>{item.fields.titre}</h3>
+    </div>
     {/if}
 
     {#if item.fields.corps}
-    <Rich body={item.fields.corps} />
+    <div class="col col--6of12">
+      <Rich body={item.fields.corps} />
+    </div>
     {/if}
   </div>
 
@@ -54,5 +58,9 @@
     //   align-items: center;
     //   margin: 0 auto;
     // }
+
+    &.padded {
+      border-radius: $s0;
+    }
   }
 </style>

@@ -112,6 +112,9 @@ h4,
 h5,
 .h5 {
 	font-size: $s1;
+	font-family: $body_font;
+	font-weight: normal;
+	line-height: 1.2;
 }
 
 h6,
@@ -211,18 +214,20 @@ button,
 	&.button--dark {
 		color: $blanc;
 		background: $noir;
+		border-color: transparent;
 	}
 
 	&.button--accent {
 		color: $blanc;
 		background: $accent;
-		border-color: $accent;
+		border-color: transparent;
 	}
 
-	// &.button--grey {
-	// 	color: $black;
-	// 	background: $grey;
-	// }
+	&.button--grey {
+		color: $sarcelle;
+		background: $grey;
+		border-color: transparent;
+	}
 
 	&:hover,
 	&:focus {
