@@ -61,7 +61,8 @@ export function isTypeLienDeNavigation<Modifiers extends ChainModifiers, Locales
 export interface TypeListFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
-    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeTextSkeleton>>;
+    type?: EntryFieldTypes.Symbol<"Accordeon" | "Colonnes" | "Italics" | "Pilules" | "Slider">;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypeListSkeleton = EntrySkeletonType<TypeListFields, "list">;

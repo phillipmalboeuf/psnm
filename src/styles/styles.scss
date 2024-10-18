@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6,
 	font-family: $heading_font;
 	// text-transform: uppercase;
 	font-weight: bold;
-	// letter-spacing: -0.005em;
+	letter-spacing: -0.002em;
 	line-height: 0.9;
 	white-space: pre-line;
 
@@ -369,9 +369,11 @@ ol {
 hr {
 	color: currentColor;
 	border: none;
-	height: 1px;
-	background-color: currentColor;
+	// height: 1px;
+	// background-color: currentColor;
 	margin: 0 0 $s0;
+	border-top: 1px dotted currentColor;
+	background: transparent;
 }
 
 table {
@@ -464,7 +466,7 @@ strong,
 }
 
 .padded {
-  padding: $s-1;
+  padding: $s0;
 
 	// @media (max-width: $mobile) {
 	// 	padding: $s0;

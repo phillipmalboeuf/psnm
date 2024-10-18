@@ -23,10 +23,10 @@
   // })
 </script>
 
-<section class="flex flex--middle flex--gapped {item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
+<section class="flex flex--gapped {item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
   <div class:col--6of12={!!item.fields.media} class:col--12of12={!item.fields.media} class="col flex flex--gapped">
     {#if item.fields.titre}
-    <div class="col col--6of12">
+    <div class="col col--6of12 titre">
       <h3>{item.fields.titre}</h3>
     </div>
     {/if}
@@ -39,7 +39,7 @@
   </div>
 
   {#if item.fields.media && item.fields.media.length > 0}
-  <div class="col col--6of12">
+  <div class="col col--6of12 media">
     {#each item.fields.media as media}
       <figure>
         <Media {media} rounded />
