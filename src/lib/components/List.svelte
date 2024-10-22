@@ -1,24 +1,75 @@
 <script lang="ts">
   import { type TypeListSkeleton, type TypeTextSkeleton, isTypeArticle, isTypeText } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
+
+  import emblaCarouselSvelte from 'embla-carousel-svelte'
+  import Autoplay from 'embla-carousel-autoplay'
+  import type { EmblaOptionsType, EmblaPluginType, EmblaCarouselType } from 'embla-carousel'
   
   import Text from './Text.svelte'
   import Article from './Article.svelte'
-  import Ecole from './Ecole.svelte';
+  import Ecole from './Ecole.svelte'
+  import Link from './Link.svelte'
 
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   } = $props()
+
+  let embla: EmblaCarouselType
+
+  const options: EmblaOptionsType = {
+    loop: true,
+    dragFree: false,
+    align: 'start'
+  }
+  const plugins: EmblaPluginType[] = [
+    // Autoplay({
+    //   delay: 0,
+    //   stopOnInteraction: false,
+    // })
+  ]
 </script>
 
 <section class="list" id={item.fields.id}>
   {#if item.fields.titre}
     <hr />
-    <h4>{item.fields.titre}</h4>
+    <div class="flex flex--gapped">
+      <h4 class="col col--6of12">{item.fields.titre}</h4>
+      {#if item.fields.liens && item.fields.liens.length > 0}
+        <nav class="col col--6of12 flex flex--gapped flex--end">
+          {#each item.fields.liens as link}
+            <Link className="button button--grey" link={link} />
+          {/each}
+          {#if item.fields.type === 'Slider'}
+            <button class="embla__prev button--none" onclick={() => embla?.scrollPrev()} aria-label="Précédent"><svg width="32" height="33" viewBox="0 0 32 33"><circle cx="16" cy="16.7502" r="16" fill="#1C4526"/><path d="M17.9453 11.0988L12.4813 16.836L17.9453 22.5733" stroke="white" stroke-width="1.41198"/></svg></button>
+            <button class="embla__next button--none" onclick={() => embla?.scrollNext()} aria-label="Suivant"><svg width="32" height="33" viewBox="0 0 32 33"><circle cx="16" cy="16.7502" r="16" transform="rotate(-180 16 16.7502)" fill="#1C4526"/><path d="M14.0547 22.4016L19.5187 16.6643L14.0547 10.9271" stroke="white" stroke-width="1.41198"/></svg></button>
+          {/if}
+        </nav>
+      {/if}
+    </div>
   {/if}
 
   {#if item.fields.items && item.fields.items.length > 0}
-    <ul class="list--nostyle">
+    {#if item.fields.type === 'Slider'}
+    <div class="embla" use:emblaCarouselSvelte={{ options: { ...options }, plugins, }} onemblaInit={e => embla = e.detail}>
+      <ul class="embla__container">
+        {#each item.fields.items as listItem, index}
+        <li class="embla__slide" style:--slide-width={isTypeText(listItem)
+          ? '80%'
+          : isTypeArticle(listItem)
+          ? listItem.fields.vedette ? '60%' : '30%'
+          : '100%'}>
+          {#if isTypeText(listItem)}
+            <Text item={listItem} first={index === 0} />
+          {:else if isTypeArticle(listItem)}
+            <Article article={listItem} />
+          {/if}
+        </li>
+        {/each}
+      </ul>
+    </div>
+    {:else}
+    <ul class="list--nostyle flex flex--gapped">
       {#each item.fields.items as listItem, index}
         {#if item.fields.type === 'Pilules' || item.fields.type === 'Italics'}
           <li>
@@ -39,16 +90,17 @@
             </details>
           </li>
         {:else}
+          {#if isTypeText(listItem)}
           <li>
-            {#if isTypeText(listItem)}
-              <Text item={listItem} first={index === 0} />
-            {:else if isTypeArticle(listItem)}
-              <Article article={listItem} />
-            {/if}
+            <Text item={listItem} first={index === 0} />
           </li>
+          {:else if isTypeArticle(listItem)}
+            <Article article={listItem} />
+          {/if}
         {/if}
       {/each}
     </ul>
+    {/if}
   {/if}
 </section>
 
@@ -61,11 +113,10 @@
     }
 
     ul {
-      display: flex;
-      flex-direction: column;
-      gap: $s1;
-
       &:has(details) {
+        display: flex;
+        flex-direction: column;
+        // gap: $s1;
         gap: $s-1;
         position: relative;
       }
@@ -178,6 +229,24 @@
           flex-direction: column;
           width: 100%;
         }
+      }
+    }
+
+    .embla {
+      overflow: hidden;
+      margin: 0 calc(-1 * $s1);
+
+      .embla__container {
+        display: flex;
+        
+      }
+
+      .embla__slide {
+        flex: 0 0 var(--slide-width);
+        min-width: 0;
+        max-width: none;
+        width: var(--slide-width);
+        padding-left: $s0;
       }
     }
   }
