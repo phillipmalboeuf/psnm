@@ -32,7 +32,11 @@
 		{@render children()}
 	</main>
 
-	<Footer navigation={data.navigations['menu']} />
+	<Footer 
+		navigation={data.navigations['footer']}
+		politiques={data.navigations['politiques']}
+		sociaux={data.navigations['sociaux']}
+	/>
 <!-- 
 	<Footer navigation={data.navigations['navigation']}
 		footer={data.navigations['footer']}

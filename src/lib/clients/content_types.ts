@@ -49,6 +49,7 @@ export interface TypeLienDeNavigationFields {
     destination?: EntryFieldTypes.Symbol;
     externe?: EntryFieldTypes.Boolean;
     sousLiens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
+    extraBouton?: EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>;
 }
 
 export type TypeLienDeNavigationSkeleton = EntrySkeletonType<TypeLienDeNavigationFields, "lienDeNavigation">;

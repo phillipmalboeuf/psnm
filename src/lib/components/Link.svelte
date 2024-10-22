@@ -12,15 +12,19 @@
   } = $props()
 </script>
 
-<a class={className} class:anchor={link.fields.destination?.includes('#')} href={link.fields.destination} {...link.fields.externe && { target: '_blank', rel: 'external' }}>{link.fields.titre}{#if more}{@render more()}{/if}</a>
+<a class={className} class:caserne={link.fields.destination?.includes('caserne.com')} class:anchor={link.fields.destination?.startsWith('#') && 'anchor'} href={link.fields.destination} {...link.fields.externe && { target: '_blank', rel: 'external' }}>{@html link.fields.titre.replace('\\n', '<br>')}{#if more}{@render more()}{/if}</a>
 
 
 <style lang="scss">
-  // a {
-  //   &.anchor {
-  //     :global(svg) {
-  //       transform: rotate(90deg);
-  //     }
-  //   }
-  // }
+  a {
+    // &.anchor {
+    //   :global(svg) {
+    //     transform: rotate(90deg);
+    //   }
+    // }
+
+    &.caserne {
+      opacity: 0.33;
+    }
+  }
 </style>

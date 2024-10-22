@@ -31,7 +31,7 @@ $rose-pale: #FFE7EE;
 
 $noir: #000;
 $blanc: #FFF;
-$muted: fade-out(#fff, 0.5);
+$muted: rgba($blanc, 0.5);
 
 $grey: $beige-pale;
 $accent: $vert-fonce;
