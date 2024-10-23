@@ -30,11 +30,11 @@
   ]
 </script>
 
-<section class="list" id={item.fields.id}>
+<section class="list {item.fields.type}" id={item.fields.id}>
   {#if item.fields.titre}
     <hr />
     <div class="flex flex--gapped">
-      <h4 class="col col--6of12">{item.fields.titre}</h4>
+      <h4 class:h1={item.fields.type === 'Colonnes'} class="col col--6of12">{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
       {#if item.fields.liens && item.fields.liens.length > 0}
         <nav class="col col--6of12 flex flex--gapped flex--end">
           {#each item.fields.liens as link}
@@ -91,7 +91,7 @@
           </li>
         {:else}
           {#if isTypeText(listItem)}
-          <li>
+          <li class="col" class:col--6of12={item.fields.type === 'Colonnes'}>
             <Text item={listItem} first={index === 0} />
           </li>
           {:else if isTypeArticle(listItem)}
@@ -125,6 +125,45 @@
         border-left: 1px solid;
         padding-left: $s0;
         min-height: 50lvh;
+      }
+    }
+
+    &.Colonnes {
+      > hr {
+        display: none;
+      }
+
+      h4 {
+        text-align: center;
+        margin: $s3 auto;
+      }
+
+      ul {
+        li {
+
+          &:nth-child(even) {
+            margin-top: 20vw;
+          }
+
+          :global(section) {
+            padding: $s-1;
+
+            :global(.corps) {
+              width: 100%;
+            }
+
+            :global(.media) {
+              order: -1;
+              width: 100%;
+
+              :global(img) {
+                border-radius: 0;
+                border-top-left-radius: $s-1;
+                border-top-right-radius: $s-1;
+              }
+            }
+          }
+        }
       }
     }
 
@@ -179,10 +218,11 @@
           height: 100%;
         }
 
-        :global(section div) {
+        :global(section .corps) {
           display: flex;
           flex-direction: column;
           height: 100%;
+          width: 50%;
 
           :global(hr) {
             margin-top: auto;

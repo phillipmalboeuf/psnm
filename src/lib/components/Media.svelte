@@ -28,10 +28,10 @@
 
 {#if media?.fields.file}
 {#if media.fields.file.contentType.startsWith('video/')}
-<!-- svelte-ignore a11y-media-has-caption -->
+<!-- svelte-ignore a11y_media_has_caption -->
 <video class:rounded src="{cdn(media.fields.file.url)}" controls autoplay={eager} muted={eager} loop={eager}></video>
 {:else if media.fields.file.contentType.startsWith('audio/')}
-<!-- svelte-ignore a11y-media-has-caption -->
+<!-- svelte-ignore a11y_media_has_caption -->
 <audio class:rounded src="{cdn(media.fields.file.url)}" controls></audio>
 {:else}
 <!-- {JSON.stringify(media, null, 2)} -->

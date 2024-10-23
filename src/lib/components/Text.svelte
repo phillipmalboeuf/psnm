@@ -24,17 +24,25 @@
 </script>
 
 <section class="flex flex--gapped {item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
-  <div class:col--6of12={!!item.fields.media} class:col--12of12={!item.fields.media} class="col flex flex--gapped">
+  <div class:col--6of12={!!item.fields.media} class:col--12of12={!item.fields.media} class="corps col flex flex--column flex--gapped">
     {#if item.fields.titre}
-    <div class="col col--6of12 titre">
-      <h3>{item.fields.titre}</h3>
+    <div class="titre">
+      <h3>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
     </div>
     {/if}
 
     {#if item.fields.corps}
-    <div class="col col--6of12">
+    <div class="flex flex--column flex--gapped">
       <Rich body={item.fields.corps} />
     </div>
+    {/if}
+
+    {#if item.fields.liens?.length}
+    <ul class="list--nostyle">
+      {#each item.fields.liens as link}
+        <li><Link className="button {item.fields.couleur ? 'button--muted' : 'button--accent'}" {link} /></li>
+      {/each}
+    </ul>
     {/if}
   </div>
 
