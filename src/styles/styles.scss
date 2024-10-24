@@ -375,7 +375,9 @@ svg {
 	}
 
 	line {
-		stroke: currentColor;
+		&:not([stroke]) {
+			stroke: currentColor;
+		}
 	} 
 }
 
@@ -531,7 +533,10 @@ strong,
 }
 .bleu-pale { background-color: $bleu-pale; }
 .bourgogne { background-color: $bourgogne; }
-.brun { background-color: $brun; }
+.brun { 
+	background-color: $brun;
+	color: $blanc;
+}
 .jaune { background-color: $jaune; }
 .mauve { background-color: $mauve; }
 .mauve-fonce { 
@@ -539,7 +544,10 @@ strong,
   color: $blanc;
 }
 .mauve-pale { background-color: $mauve-pale; }
-.noir { background-color: $noir; }
+.noir { 
+	background-color: $noir;
+	color: $blanc;
+}
 .rose { background-color: $rose; }
 .rose-pale { background-color: $rose-pale; }
 .sarcelle { background-color: $sarcelle; }

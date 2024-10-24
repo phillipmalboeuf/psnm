@@ -64,7 +64,7 @@ export interface TypeListFields {
     id?: EntryFieldTypes.Symbol;
     type?: EntryFieldTypes.Symbol<"Accordeon" | "Colonnes" | "Italics" | "Pilules" | "Slider">;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
-    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeListSkeleton | TypeQuestionSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypeListSkeleton = EntrySkeletonType<TypeListFields, "list">;
@@ -98,6 +98,22 @@ export type TypePage<Modifiers extends ChainModifiers, Locales extends LocaleCod
 
 export function isTypePage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypePage<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'page'
+}
+
+export interface TypeQuestionFields {
+    titre?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    corps?: EntryFieldTypes.RichText;
+    liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
+    couleur?: EntryFieldTypes.Symbol<"aqua" | "aqua-pale" | "beige" | "beige-pale" | "blanc" | "bleu" | "bleu-fonce" | "bleu-pale" | "bourgogne" | "brun" | "jaune" | "mauve" | "mauve-fonce" | "mauve-pale" | "noir" | "rose" | "rose-pale" | "sarcelle" | "vert" | "vert-fonce" | "vert-pale">;
+}
+
+export type TypeQuestionSkeleton = EntrySkeletonType<TypeQuestionFields, "question">;
+export type TypeQuestion<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeQuestionSkeleton, Modifiers, Locales>;
+
+export function isTypeQuestion<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeQuestion<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'question'
 }
 
 export interface TypeTextFields {

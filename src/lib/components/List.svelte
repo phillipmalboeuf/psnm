@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type TypeListSkeleton, type TypeTextSkeleton, isTypeArticle, isTypeText } from '$lib/clients/content_types'
+  import { type TypeListSkeleton, type TypeTextSkeleton, isTypeArticle, isTypeQuestion, isTypeText } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
 
   import emblaCarouselSvelte from 'embla-carousel-svelte'
@@ -10,6 +10,7 @@
   import Article from './Article.svelte'
   import Ecole from './Ecole.svelte'
   import Link from './Link.svelte'
+  import Question from './Question.svelte'
 
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -81,6 +82,8 @@
                   <Text item={listItem} first={index === 0} />
                 {:else if isTypeArticle(listItem)}
                   <Article article={listItem} />
+                {:else if isTypeQuestion(listItem)}
+                  <Question item={listItem} id={item.sys.id} />
                 {/if}
               </article>
 
@@ -96,6 +99,10 @@
           </li>
           {:else if isTypeArticle(listItem)}
             <Article article={listItem} />
+          {:else if isTypeQuestion(listItem)}
+          <li class="col col--3of12 question">
+            <Question item={listItem} id={item.sys.id} />
+          </li>
           {/if}
         {/if}
       {/each}
@@ -113,7 +120,8 @@
     }
 
     ul {
-      &:has(details) {
+      &:has(details.Italics),
+      &:has(details.Pilules) {
         display: flex;
         flex-direction: column;
         // gap: $s1;
@@ -288,6 +296,15 @@
         width: var(--slide-width);
         padding-left: $s0;
       }
+    }
+
+    :has(.question) {
+      justify-content: center;
+    }
+
+    .question {
+      margin: $s-2;
+      
     }
   }
 </style>
