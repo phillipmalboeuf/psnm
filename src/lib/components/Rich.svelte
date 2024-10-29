@@ -71,7 +71,7 @@
   </ol>
 
 {:else if node.nodeType === 'table'}
-  <table>
+  <table class="table--fixed">
     <tbody>
     {#each node.content as item}<tr>{#each item.content as node}{@render n(node)}{/each}</tr>{/each}
     </tbody>

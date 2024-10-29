@@ -29,6 +29,37 @@ export function isTypeCategorie<Modifiers extends ChainModifiers, Locales extend
     return entry.sys.contentType.sys.id === 'categorie'
 }
 
+export interface TypeChampFields {
+    titre?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
+    type?: EntryFieldTypes.Symbol<"Email" | "Options" | "Phone" | "Text" | "Textarea">;
+    half?: EntryFieldTypes.Boolean;
+    options?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+}
+
+export type TypeChampSkeleton = EntrySkeletonType<TypeChampFields, "champ">;
+export type TypeChamp<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeChampSkeleton, Modifiers, Locales>;
+
+export function isTypeChamp<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeChamp<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'champ'
+}
+
+export interface TypeFormulaireFields {
+    titre?: EntryFieldTypes.Symbol;
+    corps?: EntryFieldTypes.RichText;
+    action?: EntryFieldTypes.Symbol;
+    bouton?: EntryFieldTypes.Symbol;
+    champs?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeChampSkeleton>>;
+    couleur?: EntryFieldTypes.Symbol<"aqua" | "aqua-pale" | "beige" | "beige-pale" | "blanc" | "bleu" | "bleu-fonce" | "bleu-pale" | "bourgogne" | "brun" | "jaune" | "mauve" | "mauve-fonce" | "mauve-pale" | "noir" | "rose" | "rose-pale" | "sarcelle" | "vert" | "vert-fonce" | "vert-pale">;
+}
+
+export type TypeFormulaireSkeleton = EntrySkeletonType<TypeFormulaireFields, "formulaire">;
+export type TypeFormulaire<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeFormulaireSkeleton, Modifiers, Locales>;
+
+export function isTypeFormulaire<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeFormulaire<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'formulaire'
+}
+
 export interface TypeHeroFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
@@ -77,6 +108,7 @@ export function isTypeList<Modifiers extends ChainModifiers, Locales extends Loc
 export interface TypeNavigationFields {
     id?: EntryFieldTypes.Symbol;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
+    liensBonus?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
 }
 
 export type TypeNavigationSkeleton = EntrySkeletonType<TypeNavigationFields, "navigation">;
@@ -90,7 +122,7 @@ export interface TypePageFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
     media?: EntryFieldTypes.AssetLink;
-    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeHeroSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
+    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeHeroSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;

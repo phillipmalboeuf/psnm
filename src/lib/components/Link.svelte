@@ -5,14 +5,16 @@
 
   // import { openDialog } from '$lib/helpers'
 
-  let { link, className = undefined, more = undefined }: {
+  let { link, className = undefined, more = undefined, hide = undefined, children = undefined }: {
     link: Entry<TypeLienDeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
     more?: Snippet
+    children?: Snippet
     className?: string
+    hide?: () => void
   } = $props()
 </script>
 
-<a class={className} class:caserne={link.fields.destination?.includes('caserne.com')} class:anchor={link.fields.destination?.startsWith('#') && 'anchor'} href={link.fields.destination} {...link.fields.externe && { target: '_blank', rel: 'external' }}>{@html link.fields.titre.replace('\\n', '<br>')}{#if more}{@render more()}{/if}</a>
+<a class={className} onclick={hide} class:caserne={link.fields.destination?.includes('caserne.com')} class:anchor={link.fields.destination?.startsWith('#') && 'anchor'} href={link.fields.destination} {...link.fields.externe && { target: '_blank', rel: 'external' }}>{#if children}{@render children()}{:else}{@html link.fields.titre.replace('\\n', '<br>')}{#if more}{@render more()}{/if}{/if}</a>
 
 
 <style lang="scss">

@@ -212,6 +212,10 @@ button,
 		padding: ($s0) ($s1);
 	}
 
+	&.button--full {
+		width: 100%;
+	}
+
 	&.button--dark {
 		color: $blanc;
 		background: $noir;
@@ -233,6 +237,12 @@ button,
 	&.button--muted {
 		color: currentColor;
 		background: rgba($blanc, 0.1);
+		border-color: transparent;
+	}
+
+	&.button--blanc {
+		color: currentColor;
+		background: $blanc;
 		border-color: transparent;
 	}
 
@@ -306,9 +316,11 @@ input,
 select,
 textarea {
 	width: 100%;
-	// background-color: $grey;
-	color: currentColor;
+	color: $noir;
+	background-color: $blanc;
 	border: 1px solid $muted;
+	border-radius: calc($radius / 2);
+	padding: ($s-2) ($s-1);
 
 	&:focus {
 		outline: 1px solid $accent;
@@ -323,6 +335,8 @@ textarea {
 	// }
 
 	&.input--underline {
+		color: currentColor;
+		background: transparent;
 		border-color: transparent;
 		border-bottom: 1px solid $muted;
 		border-radius: 0;
@@ -414,10 +428,15 @@ table {
 	th {
 		font-weight: normal;
 		border-top: 1px solid;
-		padding: ($s-2) 0;
+		padding: ($s-2) ($s2) ($s-2) 0;
 		white-space: pre-line;
 		width: calc(100% / var(--length));
 		vertical-align: top;
+
+		strong:last-child:first-child {
+			font-weight: normal;
+			font-size: $s2;
+		}
 	}
 
 	th {
@@ -448,6 +467,15 @@ table {
 		th {
 			border-top: none;
 			border-bottom: 1px solid;
+		}
+	}
+
+	&.table--fixed {
+		table-layout: fixed;
+
+		td,
+		th {
+			padding-right: 10%;
 		}
 	}
 }
@@ -520,6 +548,7 @@ strong,
 
 
 // COLORS
+// aqua aqua-pale beige beige-pale blanc bleu bleu-fonce bleu-pale bourgogne brun jaune mauve mauve-fonce mauve-pale noir rose rose-pale sarcelle vert vert-fonce vert-pale
 
 .aqua { background-color: $aqua; }
 .aqua-pale { background-color: $aqua-pale; }

@@ -1,5 +1,6 @@
 import type { TypePageSkeleton } from '$lib/clients/content_types'
 import { content } from '$lib/clients/contentful'
+import { error } from '@sveltejs/kit'
 
 export const load = async ({ params }) => {
   const [items] = await Promise.all([
@@ -10,6 +11,10 @@ export const load = async ({ params }) => {
       locale: 'fr-CA' 
     }),
   ])
+
+  if (items.items.length === 0) {
+    throw error(404, 'Page non trouvée')
+  }
 
   return {
     page: items.items[0],

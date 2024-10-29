@@ -6,7 +6,7 @@ import type { Entry, Tag } from 'contentful'
 export const load = async ({ request, cookies }) => {
 
   const [navigations, tags] = await Promise.all([
-    content.getEntries<TypeNavigationSkeleton>({ content_type: 'navigation', select: ['sys.id', 'fields.id', 'fields.liens'], include: 3, locale: 'fr-CA' }),
+    content.getEntries<TypeNavigationSkeleton>({ content_type: 'navigation', select: ['sys.id', 'fields.id', 'fields.liens', 'fields.liensBonus'], include: 3, locale: 'fr-CA' }),
     content.getTags()
   ])
 
