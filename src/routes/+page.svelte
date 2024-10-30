@@ -19,7 +19,7 @@
   {:else if isTypeList(item)}
   <List {item} />
   {:else if isTypeHero(item)}
-  <Hero {item} />
+  <Hero {item} first={i === 0} />
   {:else if isTypeFormulaire(item)}
   <Form {item} />
   {/if}

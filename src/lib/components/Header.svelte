@@ -39,8 +39,8 @@
         {#if link.fields.destination.startsWith('/recherche')}
         <Link className={'button button--grey'} {link}>
           <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.05251 11.0689C8.84294 11.0689 11.105 8.81489 11.105 6.03445C11.105 3.254 8.84294 1 6.05251 1C3.26209 1 1 3.254 1 6.03445C1 8.81489 3.26209 11.0689 6.05251 11.0689Z" stroke="#1C4526" stroke-width="1.79171" stroke-miterlimit="10"/>
-            <path d="M10.1016 9.53516L14.7377 13.7957" stroke="#1C4526" stroke-width="1.79171" stroke-miterlimit="10" stroke-linecap="round"/>
+            <path d="M6.05251 11.0689C8.84294 11.0689 11.105 8.81489 11.105 6.03445C11.105 3.254 8.84294 1 6.05251 1C3.26209 1 1 3.254 1 6.03445C1 8.81489 3.26209 11.0689 6.05251 11.0689Z" stroke="currentColor" stroke-width="1.79171" stroke-miterlimit="10"/>
+            <path d="M10.1016 9.53516L14.7377 13.7957" stroke="currentColor" stroke-width="1.79171" stroke-miterlimit="10" stroke-linecap="round"/>
           </svg>
         </Link>
         {:else}
@@ -109,7 +109,7 @@
     position: sticky;
     top: 0;
     z-index: 8;
-    transition: background-color 0.333s, box-shadow 0.333s;
+    transition: color 0.333s, background-color 0.333s, box-shadow 0.333s;
 
     span {
       width: auto;
@@ -118,6 +118,10 @@
     &.scrolled {
       background: $blanc;
       // box-shadow: 0 0 10px rgba($sarcelle, 0.1);
+    }
+
+    &:not(.scrolled):global(:has(+ main .hero.first.full)) {
+      color: $blanc;
     }
   }
 

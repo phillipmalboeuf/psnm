@@ -6,12 +6,13 @@
   import Media from './Media.svelte'
   import Link from './Link.svelte'
 
-  let { item }: {
+  let { item, first = false }: {
     item: Entry<TypeHeroSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+    first?: boolean
   } = $props()
 </script>
 
-<section class="hero flex flex--bottom" id={item.fields.id}>
+<section class="hero flex flex--bottom" id={item.fields.id} class:full={item.fields.full} class:first={first}>
   <div class="hero__content flex flex--column flex--gapped">
     {#if item.fields.titre}
       <h1>{item.fields.titre}</h1>
@@ -34,7 +35,7 @@
 
   {#if item.fields.media}
     <figure class="hero__media">
-      <Media media={item.fields.media} />
+      <Media media={item.fields.media} rounded={!item.fields.full} />
     </figure>
   {/if}
 </section>
@@ -45,6 +46,15 @@
     text-align: left;
     position: relative;
     overflow: hidden;
+
+    &.full {
+      margin: 0 calc($s1 * -1);
+      width: calc(100% + ($s1 * 2));
+
+      &.first {
+        margin-top: calc(($s1 * -2) - ($s1 * 3.5) + 1px);
+      }
+    }
     
     &__content {
       align-items: flex-start;

@@ -2,6 +2,7 @@
   import type { TypeQuestionSkeleton } from '$lib/clients/content_types'
   import type { Entry, Asset } from 'contentful'
   import { onMount, type Snippet } from 'svelte'
+  import { page } from '$app/stores'
   
   import Rich from './Rich.svelte'
   import Media from './Media.svelte'
@@ -13,7 +14,7 @@
   } = $props()
 </script>
 
-<section class="flex flex--gapped {item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
+<section class="flex flex--gapped {$page.data.page?.fields.couleur ? 'blanc' : item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
   <details name={id} class="question col flex flex--column flex--gapped">
     <summary>
       {#if item.fields.titre}

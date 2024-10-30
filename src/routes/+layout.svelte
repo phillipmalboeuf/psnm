@@ -22,7 +22,7 @@
 	{/if}
 </svelte:head>
 
-<div class="{$page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')}">
+<div class="{$page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')} {$page.data.page?.fields.couleur}">
 	<!-- <Dialog /> -->
 
 	<!-- <Intro /> -->

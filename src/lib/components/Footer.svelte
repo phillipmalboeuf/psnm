@@ -17,7 +17,7 @@
   } = $props()
 </script>
 
-<footer class="flex flex--gapped flex--bottom padded">
+<footer class="flex flex--gapped flex--bottom padded {$page.data.page?.fields.couleur ? $page.data.page?.fields.couleur.replaceAll('-pale', '-fonce') : 'vert-fonce'}">
 
   <nav class="main-nav flex flex--gapped">
     {#if navigation.fields.liens?.length}
@@ -91,8 +91,8 @@
 <style lang="scss">
   footer {
     position: relative;
-    color: $blanc;
-    background-color: $accent;
+    // color: $blanc;
+    // background-color: $accent;
     // min-height: 100lvh;
     overflow: hidden;
     padding: $s1;
@@ -139,10 +139,11 @@
       hr {
         width: 1px;
         height: auto;
-        border-left: 1px dotted $vert;
+        border-left: 1px dotted;
         margin: 0;
         background: transparent;
         margin-left: auto;
+        opacity: 0.5;
       }
     }
 

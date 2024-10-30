@@ -226,12 +226,22 @@ button,
 		color: $blanc;
 		background: $accent;
 		border-color: transparent;
+
+		.mauve-pale & { background: $mauve-fonce; }
+		.rose-pale & { background: $bourgogne; }
+		.bleu-pale & { background: $bleu-fonce; }
+		.vert-pale & { background: $vert-fonce; }
 	}
 
 	&.button--grey {
 		color: $sarcelle;
 		background: $grey;
 		border-color: transparent;
+
+		.mauve-pale & { color: $mauve-fonce; }
+		.rose-pale & { color: $bourgogne; }
+		.bleu-pale & { color: $bleu-fonce; }
+		.vert-pale & { color: $vert-fonce; }
 	}
 
 	&.button--muted {
@@ -560,32 +570,50 @@ strong,
   background-color: $bleu-fonce; 
   color: $blanc;
 }
-.bleu-pale { background-color: $bleu-pale; }
+.bleu-pale { 
+	background-color: $bleu-pale;
+	color: $bleu-fonce;
+}
 .bourgogne { background-color: $bourgogne; }
 .brun { 
 	background-color: $brun;
 	color: $blanc;
 }
 .jaune { background-color: $jaune; }
-.mauve { background-color: $mauve; }
+.mauve {
+	background-color: $mauve;
+	color: $blanc;
+}
 .mauve-fonce { 
   background-color: $mauve-fonce; 
   color: $blanc;
 }
-.mauve-pale { background-color: $mauve-pale; }
+.mauve-pale {
+	background-color: $mauve-pale;
+	color: $mauve-fonce;
+}
 .noir { 
 	background-color: $noir;
 	color: $blanc;
 }
-.rose { background-color: $rose; }
-.rose-pale { background-color: $rose-pale; }
+.rose {
+	background-color: $rose;
+	color: $blanc;
+}
+.rose-pale {
+	background-color: $rose-pale;
+	color: $bourgogne;
+}
 .sarcelle { background-color: $sarcelle; }
 .vert { background-color: $vert; }
 .vert-fonce { 
   background-color: $vert-fonce; 
   color: $blanc;
 }
-.vert-pale { background-color: $vert-pale; }
+.vert-pale {
+	background-color: $vert-pale;
+	color: $vert-fonce;
+}
 
 // #GRID
 

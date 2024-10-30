@@ -66,6 +66,7 @@ export interface TypeHeroFields {
     corps?: EntryFieldTypes.RichText;
     media?: EntryFieldTypes.AssetLink;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
+    full?: EntryFieldTypes.Boolean;
 }
 
 export type TypeHeroSkeleton = EntrySkeletonType<TypeHeroFields, "hero">;
@@ -122,6 +123,7 @@ export interface TypePageFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
     media?: EntryFieldTypes.AssetLink;
+    couleur?: EntryFieldTypes.Symbol<"aqua-pale" | "beige-pale" | "blanc" | "bleu-pale" | "mauve-pale" | "rose-pale" | "sarcelle" | "vert-pale">;
     contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeHeroSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
 
