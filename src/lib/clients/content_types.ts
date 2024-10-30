@@ -60,6 +60,22 @@ export function isTypeFormulaire<Modifiers extends ChainModifiers, Locales exten
     return entry.sys.contentType.sys.id === 'formulaire'
 }
 
+export interface TypeGallerieFields {
+    titre?: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    corps?: EntryFieldTypes.RichText;
+    type?: EntryFieldTypes.Symbol<"Descriptions" | "Slider">;
+    media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
+}
+
+export type TypeGallerieSkeleton = EntrySkeletonType<TypeGallerieFields, "gallerie">;
+export type TypeGallerie<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeGallerieSkeleton, Modifiers, Locales>;
+
+export function isTypeGallerie<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeGallerie<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'gallerie'
+}
+
 export interface TypeHeroFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
@@ -124,7 +140,7 @@ export interface TypePageFields {
     id?: EntryFieldTypes.Symbol;
     media?: EntryFieldTypes.AssetLink;
     couleur?: EntryFieldTypes.Symbol<"aqua-pale" | "beige-pale" | "blanc" | "bleu-pale" | "mauve-pale" | "rose-pale" | "sarcelle" | "vert-pale">;
-    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeHeroSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
+    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeGallerieSkeleton | TypeHeroSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypePageSkeleton = EntrySkeletonType<TypePageFields, "page">;

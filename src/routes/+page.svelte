@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { isTypeHero, isTypeList, isTypeText, isTypeFormulaire } from '$lib/clients/content_types'
+  import { isTypeHero, isTypeList, isTypeText, isTypeFormulaire, isTypeGallerie } from '$lib/clients/content_types'
 
   import Hero from '$lib/components/Hero.svelte'
   import List from '$lib/components/List.svelte'
   import Text from '$lib/components/Text.svelte'
   import Form from '$lib/components/Form.svelte'
+  import Gallerie from '$lib/components/Gallerie.svelte'
 
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
@@ -18,6 +19,8 @@
   <Text {item} />
   {:else if isTypeList(item)}
   <List {item} />
+  {:else if isTypeGallerie(item)}
+  <Gallerie {item} />
   {:else if isTypeHero(item)}
   <Hero {item} first={i === 0} />
   {:else if isTypeFormulaire(item)}
