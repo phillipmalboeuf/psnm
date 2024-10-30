@@ -437,7 +437,7 @@ table {
 	td,
 	th {
 		font-weight: normal;
-		border-top: 1px solid;
+		border-top: 1px solid rgba($accent, 0.25);
 		padding: ($s-2) ($s2) ($s-2) 0;
 		white-space: pre-line;
 		width: calc(100% / var(--length));
@@ -476,7 +476,7 @@ table {
 		td,
 		th {
 			border-top: none;
-			border-bottom: 1px solid;
+			border-bottom: 1px solid rgba($accent, 0.25);
 		}
 	}
 

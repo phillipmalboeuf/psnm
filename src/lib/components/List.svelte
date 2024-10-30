@@ -72,11 +72,19 @@
     {:else}
     <ul class="list--nostyle flex flex--gapped">
       {#each item.fields.items as listItem, index}
-        {#if item.fields.type === 'Pilules' || item.fields.type === 'Italics'}
+        {#if item.fields.type === 'Pilules' || item.fields.type === 'Italics' || item.fields.type === 'Accordeon'}
           <li>
-            <details class={item.fields.type} name={item.sys.id} open={index === 0}>
+            <details class={item.fields.type} name={item.sys.id} open={item.fields.type !== 'Accordeon' &&index === 0}>
               <summary class="{isTypeText(listItem) ? listItem.fields.couleur : ''} h3"
-              >{listItem.fields.titre}</summary>
+               class:h4={item.fields.type === 'Accordeon'}>
+                {listItem.fields.titre}
+                {#if item.fields.type === 'Accordeon'}
+                  <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="13.25" y1="0.525635" x2="13.25" y2="25.5256" stroke="currentColor" stroke-width="1.5"/>
+                  <line x1="25" y1="13.7756" x2="-6.55671e-08" y2="13.7756" stroke="currentColor" stroke-width="1.5"/>
+                  </svg>
+                {/if}
+              </summary>
               <article>
                 {#if isTypeText(listItem)}
                   <Text item={listItem} first={index === 0} />
@@ -118,8 +126,10 @@
     h4 {
       margin-bottom: $s2;
     }
+    
 
     ul {
+
       &:has(details.Italics),
       &:has(details.Pilules) {
         display: flex;
@@ -133,6 +143,15 @@
         border-left: 1px solid;
         padding-left: $s0;
         min-height: 50lvh;
+      }
+
+      &:has(details.Accordeon) {
+        flex-direction: column;
+        gap: 0;
+
+        :global(li) {
+          width: 100%;
+        }
       }
     }
 
@@ -180,17 +199,20 @@
         cursor: pointer;
       }
 
-      article {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: calc(100% - 425px - $s1);
-        height: 100%;
-      }
+      &.Pilules,
+      &.Italics {
+        article {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: calc(100% - 425px - $s1);
+          height: 100%;
+        }
 
-      &[open] {
-        summary {
-          pointer-events: none;
+        &[open] {
+          summary {
+            pointer-events: none;
+          }
         }
       }
 
@@ -276,6 +298,31 @@
           display: flex;
           flex-direction: column;
           width: 100%;
+        }
+      }
+
+      &.Accordeon {
+        width: 100%;
+        border-top: 1px solid rgba($accent, 0.25);
+        // border-bottom: 1px solid;
+
+        :global(.titre) {
+          display: none;
+        }
+
+        summary {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          padding: $s-2 0;
+          margin-bottom: 0;
+        }
+
+        article {
+          @media (min-width: $mobile) {
+            padding-left: 50%;
+          }
         }
       }
     }
