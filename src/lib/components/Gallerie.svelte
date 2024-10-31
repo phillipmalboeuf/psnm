@@ -52,7 +52,7 @@
         {#each [...item.fields.media, ...item.fields.media] as media}
         <li class="embla__slide" class:description={media.fields.description}>
           <figure style:--ar={`${media.fields.file.details.image.width} / ${media.fields.file.details.image.height}`}>
-            <Media {media} />
+            <Media {media} dialog />
             {#if media.fields.description}
               <figcaption>{@html media.fields.description.replaceAll('\\n', '<br />')}</figcaption>
             {/if}
@@ -69,7 +69,7 @@
       {#each item.fields.media as media, index}
         <li class="media-item col col--3of12" class:description={media.fields.description}>
           <figure>
-            <Media {media} />
+            <Media {media} dialog />
             <figcaption class="padded beige-pale flex flex--column flex--gapped">
               {#if media.fields.title}<p>{@html media.fields.title.replaceAll('\\n', '<br />')}</p>{/if}
               {#if media.fields.description}<p>{@html media.fields.description.replaceAll('\\n', '<br />')}</p>{/if}

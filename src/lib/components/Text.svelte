@@ -50,7 +50,7 @@
   <div class="col col--6of12 media">
     {#each item.fields.media as media}
       <figure>
-        <Media {media} rounded />
+        <Media {media} rounded dialog />
       </figure>
     {/each}
   </div>
