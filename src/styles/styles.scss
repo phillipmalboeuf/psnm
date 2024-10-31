@@ -597,7 +597,10 @@ dialog {
 	background-color: $bleu-pale;
 	color: $bleu-fonce;
 }
-.bourgogne { background-color: $bourgogne; }
+.bourgogne {
+	background-color: $bourgogne;
+	color: $blanc;
+}
 .brun { 
 	background-color: $brun;
 	color: $blanc;
@@ -685,7 +688,7 @@ dialog {
   }
 
   &.flex--thick_gapped {
-    --gap: #{$s4};
+    --gap: #{$s1};
 
 		// hr {
 		// 	margin: 0;

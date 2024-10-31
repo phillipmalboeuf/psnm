@@ -169,6 +169,7 @@ export function isTypeQuestion<Modifiers extends ChainModifiers, Locales extends
 export interface TypeTextFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
+    sousTitre?: EntryFieldTypes.Symbol;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     corps?: EntryFieldTypes.RichText;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;

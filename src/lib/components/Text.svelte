@@ -26,7 +26,10 @@
 <section class="flex flex--gapped {item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
   <div class:col--6of12={!!item.fields.media} class:col--12of12={!item.fields.media} class="corps col flex flex--column flex--gapped">
     {#if item.fields.titre}
-    <div class="titre">
+    <div class="titre flex flex--column flex--gapped">
+      {#if item.fields.sousTitre}
+        <small>{@html item.fields.sousTitre.replaceAll('\\n', '<br />')}</small>
+      {/if}
       <h3>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
     </div>
     {/if}
