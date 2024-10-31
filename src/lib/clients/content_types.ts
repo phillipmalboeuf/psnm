@@ -110,7 +110,7 @@ export function isTypeLienDeNavigation<Modifiers extends ChainModifiers, Locales
 export interface TypeListFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
-    type?: EntryFieldTypes.Symbol<"Accordeon" | "Colonnes" | "Italics" | "Pilules" | "Slider">;
+    type?: EntryFieldTypes.Symbol<"Accordeon" | "Colonnes" | "Italics" | "Pilules" | "Slider" | "Timeline">;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
     items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeListSkeleton | TypeQuestionSkeleton | TypeTextSkeleton>>;
 }

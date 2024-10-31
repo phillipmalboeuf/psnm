@@ -102,7 +102,7 @@
           </li>
         {:else}
           {#if isTypeText(listItem)}
-          <li class="col" class:col--6of12={item.fields.type === 'Colonnes'}>
+          <li class="col" class:col--6of12={item.fields.type === 'Colonnes' || item.fields.type === 'Timeline'}>
             <Text item={listItem} first={index === 0} />
           </li>
           {:else if isTypeArticle(listItem)}
@@ -351,7 +351,37 @@
 
     .question {
       margin: $s-2;
-      
+    }
+
+    &.Timeline {
+      li {
+        :global(section) {
+          align-items: stretch;
+        }
+
+        :global(.titre) {
+          margin-bottom: auto;
+        }
+
+        :global(.media) {
+          order: -1;
+
+          :global(img),
+          :global(video) {
+            border-radius: 0;
+          }
+        }
+
+        &:nth-child(3n) :global(.media) {
+          order: 1;
+        }
+
+        :global(.corps),
+        &:not(:first-child) :global(.media) {
+          border-left: 1px solid;
+          padding-left: $s0;
+        }
+      }
     }
   }
 </style>
