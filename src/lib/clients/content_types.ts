@@ -7,6 +7,7 @@ export interface TypeArticleFields {
     categorie?: EntryFieldTypes.EntryLink<TypeCategorieSkeleton>;
     thumbnail?: EntryFieldTypes.AssetLink;
     vedette?: EntryFieldTypes.Boolean;
+    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeGallerieSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypeArticleSkeleton = EntrySkeletonType<TypeArticleFields, "article">;

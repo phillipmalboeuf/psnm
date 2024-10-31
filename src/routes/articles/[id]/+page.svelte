@@ -1,13 +1,16 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { } from '$lib/clients/content_types'
+  import { isTypeFormulaire, isTypeGallerie, isTypeList, isTypeText } from '$lib/clients/content_types'
   
+  import { date } from '$lib/formatters'
+  import List from '$lib/components/List.svelte'
+  import Gallerie from '$lib/components/Gallerie.svelte'
+  import Form from '$lib/components/Form.svelte'
   import Text from '$lib/components/Text.svelte'
   import Rich from '$lib/components/Rich.svelte'
   import Media from '$lib/components/Media.svelte'
 
   import type { PageData } from './$types'
-  import { date } from '$lib/formatters';
   let { data }: { data: PageData } = $props()
 </script>
 
@@ -45,6 +48,22 @@
   </figure>
   {/if}
 </section>
+
+{#if data.item.fields.contenu?.length}
+{#each data.item.fields.contenu as item, i}
+<section>
+  {#if isTypeText(item)}
+  <Text {item} />
+  {:else if isTypeList(item)}
+  <List {item} />
+  {:else if isTypeGallerie(item)}
+  <Gallerie {item} />
+  {:else if isTypeFormulaire(item)}
+  <Form {item} />
+  {/if}
+</section>
+{/each}
+{/if}
 
 
 
