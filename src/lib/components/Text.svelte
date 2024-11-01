@@ -23,7 +23,7 @@
   // })
 </script>
 
-<section class="flex flex--gapped {item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
+<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!item.fields.media} class:padded={!!item.fields.couleur} id={item.fields.id}>
   <div class:col--6of12={!!item.fields.media} class:col--12of12={!item.fields.media} class="corps col flex flex--column flex--gapped">
     {#if item.fields.titre}
     <div class="titre flex flex--column flex--gapped">
@@ -70,8 +70,20 @@
     //   margin: 0 auto;
     // }
 
+    &.no-media {
+      display: inline-flex;
+      width: auto;
+      margin: 0 auto;
+      justify-content: center;
+      text-align: left;
+    }
+
     &.padded {
       border-radius: $s0;
     }
+  }
+
+  :global(section:has(> .no-media)) {
+    text-align: center;
   }
 </style>
