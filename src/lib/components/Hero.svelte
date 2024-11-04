@@ -72,7 +72,7 @@
       width: 100%;
       height: 100%;
 
-      :global(img), :global(video) {
+      :global(img), :global(video), :global(picture) {
         width: 100%;
         height: 100%;
         object-fit: cover;
