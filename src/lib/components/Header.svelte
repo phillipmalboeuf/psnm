@@ -29,7 +29,7 @@
 
 <svelte:window bind:scrollY={scrollY} />
 
-<header class="flex flex--spaced flex--middle padded" class:scrolled={scrollY > 0}>
+<header class="flex flex--spaced flex--middle padded" class:scrolled={scrollY > 0} class:visible>
   <a href="/" class="logo" onclick={hide}>
     <Logo />
   </a>
@@ -120,11 +120,12 @@
       // box-shadow: 0 0 10px rgba($sarcelle, 0.1);
     }
 
-    &:not(.scrolled):global(:has(+ main .hero.first.full)) {
+    &:not(.scrolled):not(.visible):global(:has(+ main .hero.first.full)) {
       color: $blanc;
     }
   }
 
+  span,
   .menu-button,
   .logo {
     position: relative;
