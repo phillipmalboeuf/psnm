@@ -70,7 +70,7 @@
       </ul>
     </div>
     {:else}
-    <ul class="list--nostyle flex flex--gapped" class:flex--thick_gapped={item.fields.type === 'Colonnes'}>
+    <ul class="list--nostyle flex flex--gapped" class:flex--thick_gapped={item.fields.type === 'Colonnes'} class:spaced={item.fields.items.length !== 4}>
       {#each item.fields.items as listItem, index}
         {#if item.fields.type === 'Pilules' || item.fields.type === 'Italics' || item.fields.type === 'Accordeon'}
           <li>
@@ -102,7 +102,7 @@
           </li>
         {:else}
           {#if isTypeText(listItem)}
-          <li class="col" class:col--6of12={(item.fields.type === 'Colonnes' && item.fields.items.length < 3) || item.fields.type === 'Timeline'} class:col--4of12={item.fields.type === 'Colonnes' && item.fields.items.length === 3} class:col--3of12={item.fields.type === 'Colonnes' && item.fields.items.length > 3}>
+          <li class="col" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3 || listItem.fields.media)) || item.fields.type === 'Timeline'} class:col--4of12={item.fields.type === 'Colonnes' && item.fields.items.length === 3} class:col--3of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3}>
             <Text item={listItem} first={index === 0} />
           </li>
           {:else if isTypeArticle(listItem)}
@@ -166,11 +166,13 @@
       }
 
       ul {
-        li {
 
+        &.spaced {
           &:not(.col--3of12):nth-child(even) {
             margin-top: 20vw;
           }
+        }
+        li {
 
           :global(section) {
             padding: $s-1;
@@ -241,6 +243,10 @@
         }
 
         :global(.titre) {
+          display: none;
+        }
+
+        :global(.media) {
           display: none;
         }
 

@@ -4,7 +4,11 @@ declare global {
 	namespace App {
 		// interface Error {}
 		// interface Locals {}
-		// interface PageData {}
+		interface PageData {
+			navigations: {[id: string]: Entry<TypeNavigationSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>}
+			tags: {[id: string]: Tag}
+			pageIds: string[]
+		}
 		// interface PageState {}
 		// interface Platform {}
 	}

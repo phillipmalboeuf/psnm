@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { TypeNavigationSkeleton } from '$lib/clients/content_types'
+  import type { TypeNavigationSkeleton, TypeLienDeNavigationSkeleton } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
   import { page } from '$app/stores'
   import { fly } from 'svelte/transition'
@@ -25,6 +25,10 @@
   }
 
   let scrollY = $state(0)
+
+  function className(link: Entry<TypeLienDeNavigationSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>) {
+    return `${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}${$page.data.pageIds.includes(link.fields.destination.replace('/', '')) ? '' : ' disabled'}`
+  }
 </script>
 
 <svelte:window bind:scrollY={scrollY} />
@@ -57,7 +61,7 @@
       {#if navigation.fields.liens?.length}
         {#each navigation.fields.liens as link, index}
           <div>
-            <Link {link} {hide} className={`h5${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}`} />
+            <Link {link} {hide} className={`h5 ${className(link)}`} />
             {#if link.fields.sousLiens?.length}
               <ul class="list--nostyle">
                 {#each link.fields.sousLiens as sousLink}
@@ -65,20 +69,20 @@
                     {#if sousLink.fields.sousLiens?.length}
                       <details>
                         <summary class="flex flex--gapped flex--middle">
-                          <Link {hide} link={sousLink} />
+                          <Link {hide} link={sousLink} className={className(sousLink)} />
                           <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="#1C4526"/></svg>
 
                         </summary>
                         <ul class="list--nostyle">
                           {#each sousLink.fields.sousLiens as sousSousLink}
                             <li>
-                              <Link {hide} link={sousSousLink} />
+                              <Link {hide} link={sousSousLink} className={className(sousSousLink)} />
                             </li>
                           {/each}
                         </ul>
                       </details>
                     {:else}
-                      <Link {hide} link={sousLink} />
+                      <Link {hide} link={sousLink} className={className(sousLink)} />
                     {/if}
                   </li>
                 {/each}
@@ -171,11 +175,11 @@
         :global(a:not(.h5)) {
           opacity: 0.5;
         }
+      }
 
-        details[open] {
-          :global(a) {
-            opacity: 1;
-          }
+      details[open] {
+        :global(a) {
+          opacity: 1 !important;
         }
       }
 
@@ -202,6 +206,11 @@
 
     > a {
       align-self: flex-end;
+    }
+
+    :global(.disabled) {
+      color: $noir;
+      pointer-events: none;
     }
   }
 </style>

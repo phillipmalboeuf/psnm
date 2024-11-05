@@ -495,6 +495,7 @@ table {
 details {
 	
 	summary {
+		max-width: 100% !important;
 		// cursor: pointer;
 
 		&::-webkit-details-marker {
