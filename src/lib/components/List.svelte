@@ -35,7 +35,7 @@
   {#if item.fields.titre}
     <hr />
     <div class="flex flex--gapped">
-      <h4 class:h1={item.fields.type === 'Colonnes'} class="col col--6of12">{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
+      <h4 class:h--alt={item.fields.type !== 'Colonnes'} class:h1={item.fields.type === 'Colonnes'} class="col col--6of12">{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
       {#if item.fields.liens && item.fields.liens.length > 0}
         <nav class="col col--6of12 flex flex--gapped flex--end">
           {#each item.fields.liens as link}
@@ -53,7 +53,7 @@
   {#if item.fields.items && item.fields.items.length > 0}
     {#if item.fields.type === 'Slider'}
     <div class="embla" use:emblaCarouselSvelte={{ options: { ...options }, plugins, }} onemblaInit={e => embla = e.detail}>
-      <ul class="embla__container">
+      <ul class="list--nostyle embla__container">
         {#each item.fields.items as listItem, index}
         <li class="embla__slide" style:--slide-width={isTypeText(listItem)
           ? '80%'
@@ -124,7 +124,7 @@
     padding: $s1 0;
 
     h4 {
-      margin-bottom: $s2;
+      margin-bottom: $s3;
     }
     
 
@@ -162,7 +162,7 @@
 
       h4 {
         text-align: center;
-        margin: $s3 auto;
+        margin: 0 auto $s4;
       }
 
       ul {

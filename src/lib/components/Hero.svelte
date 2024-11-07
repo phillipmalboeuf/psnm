@@ -52,7 +52,8 @@
       width: calc(100% + ($s1 * 2));
 
       &.first {
-        margin-top: calc(($s1 * -2) - ($s1 * 3.5) + 1px);
+        margin-top: calc(($s5 * -1) - ($s1 * 1) - 78px);
+        margin-bottom: calc(($s3 * -1));
       }
     }
     

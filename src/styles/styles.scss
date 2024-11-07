@@ -60,7 +60,10 @@ h1, h2, h3, h4, h5, h6,
 	letter-spacing: -0.002em;
 	line-height: 0.9;
 	white-space: pre-line;
-	max-width: 30ch;
+
+	&:not(.col) {
+		max-width: 30ch;
+	}
 
 	small {
 		// font-family: $body_font;
@@ -71,7 +74,7 @@ h1, h2, h3, h4, h5, h6,
 	&.h--alt {
 		font-family: $body_font;
 		font-weight: normal;
-		letter-spacing: 0;
+		letter-spacing: -0.001em;
 	}
 }
 

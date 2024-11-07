@@ -12,7 +12,7 @@
 
 <li class="col col--3of12 {article.fields.categorie.fields.couleur}" class:col--6of12={article.fields.vedette}>
   <a href="/articles/{article.fields.id}" class="flex">
-    <article class="flex flex--gapped flex--spaced padded col" class:col--6of12={article.fields.vedette}>
+    <article class="flex flex--spaced padded col" class:col--6of12={article.fields.vedette}>
       <h5>{article.fields.titre}</h5>
 
       <em>{article.fields.categorie.fields.titre}</em>

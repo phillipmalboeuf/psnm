@@ -33,6 +33,6 @@
 
 <style lang="scss">
   section {
-    margin: $s1 0;
+    margin: $s5 0;
   }
 </style>
