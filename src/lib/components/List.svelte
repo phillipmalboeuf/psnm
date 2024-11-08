@@ -145,6 +145,10 @@
         min-height: 50lvh;
       }
 
+      &:has(details.Pilules) {
+        padding-left: $s3;
+      }
+
       &:has(details.Accordeon) {
         flex-direction: column;
         gap: 0;
@@ -226,10 +230,55 @@
           text-align: center;
         }
 
+        article {
+          width: calc(100% - 425px - $s1 - $s3);
+        }
+
         &:not([open]) {
           summary {
             color: $noir;
             background-color: $beige-pale;
+          }
+        }
+
+        &[open] {
+          summary {
+            position: relative;
+
+            &:before {
+              content: '';
+              display: block;
+              width: $s-2;
+              height: $s-2;
+              background-color: currentColor;
+              border-radius: 50%;
+              position: absolute;
+              top: 50%;
+              left: calc($s1 * -1);
+              transform: translate(-50%, -50%);
+            }
+
+            &.aqua:before { background-color: $aqua; }
+            &.aqua-pale:before { background-color: $aqua-pale; }
+            &.beige:before { background-color: $beige; }
+            &.beige-pale:before { background-color: $beige-pale; }
+            &.blanc:before { background-color: $blanc; }
+            &.bleu:before { background-color: $bleu; }
+            &.bleu-fonce:before { background-color: $bleu-fonce; }
+            &.bleu-pale:before { background-color: $bleu-pale; }
+            &.bourgogne:before { background-color: $bourgogne; }
+            &.brun:before { background-color: $brun; }
+            &.jaune:before { background-color: $jaune; }
+            &.mauve:before { background-color: $mauve; }
+            &.mauve-fonce:before { background-color: $mauve-fonce; }
+            &.mauve-pale:before { background-color: $mauve-pale; }
+            &.noir:before { background-color: $noir; }
+            &.rose:before { background-color: $rose; }
+            &.rose-pale:before { background-color: $rose-pale; }
+            &.sarcelle:before { background-color: $sarcelle; }
+            &.vert:before { background-color: $vert; }
+            &.vert-fonce:before { background-color: $vert-fonce; }
+            &.vert-pale:before { background-color: $vert-pale; }
           }
         }
 
@@ -259,6 +308,10 @@
           flex-direction: column;
           height: 100%;
           width: 50%;
+
+          :global(> div) {
+            flex: 1;
+          }
 
           :global(hr) {
             margin-top: auto;
