@@ -6,6 +6,7 @@
   import Link from './Link.svelte'
   import Logo from './Logo.svelte'
   import Ecole from './Ecole.svelte';
+  import Icon from './Icon.svelte';
   // import Flower from './Flower.svelte'
   // import Aliments from './Aliments.svelte'
 
@@ -59,6 +60,23 @@
       </form>
 
       <h5>Suivez-nous sur les réseaux sociaux</h5>
+      <nav class="flex flex--gapped sociaux">
+        {#if sociaux.fields.liens?.length}
+          {#each sociaux.fields.liens as link}
+            <a href={link.fields.destination} target="_blank" rel="noopener noreferrer">
+              {#if link.fields.destination.includes('instagram')}
+                <Icon icon="instagram" label="Instagram" />
+              {:else if link.fields.destination.includes('facebook')}
+                <Icon icon="facebook" label="Facebook" />
+              {:else if link.fields.destination.includes('youtube')}
+                <Icon icon="youtube" label="YouTube" />
+              {:else if link.fields.destination.includes('linkedin')}
+                <Icon icon="linkedin" label="LinkedIn" />
+              {/if}
+            </a>
+          {/each}
+        {/if}
+      </nav>
     </div>
   </nav>
 
@@ -103,6 +121,10 @@
 
     :global(.h5), h5 {
       margin-bottom: $s3;
+    }
+
+    h5:has(+ .sociaux) {
+      margin-bottom: 0;
     }
 
     .main-nav {
