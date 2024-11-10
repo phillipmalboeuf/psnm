@@ -11,12 +11,13 @@
   import Ecole from './Ecole.svelte'
   import Link from './Link.svelte'
   import Question from './Question.svelte'
+  import Dots from './Dots.svelte'
 
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   } = $props()
 
-  let embla: EmblaCarouselType
+  let embla: EmblaCarouselType = $state()
 
   const options: EmblaOptionsType = {
     loop: true,
@@ -68,6 +69,10 @@
         </li>
         {/each}
       </ul>
+
+      {#if embla}
+        <Dots dots={item.fields.items.length} slider={embla} />
+      {/if}
     </div>
     {:else}
     <ul class="list--nostyle flex flex--gapped" class:flex--thick_gapped={item.fields.type === 'Colonnes'} class:spaced={item.fields.items.length !== 4}>
@@ -477,6 +482,10 @@
         max-width: none;
         width: var(--slide-width);
         padding-left: $s0;
+
+        @media (max-width: $mobile) {
+          --slide-width: 90% !important;
+        }
       }
     }
 
