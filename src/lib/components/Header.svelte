@@ -42,23 +42,24 @@
     {#if navigation.fields.liensBonus?.length}
       {#each navigation.fields.liensBonus as link, index}
         {#if link.fields.destination.startsWith('/recherche')}
-        <Link className={'button button--none'} {link}>
+        <Link className={'button button--none'} {link} {hide}>
           <Icon icon="search" label="Rechercher" />
         </Link>
         {:else}
-        <Link className={link.fields.externe ? 'button button--none' : 'button button--grey'} {link} />
+        <Link className={link.fields.externe ? 'button button--none' : 'button button--grey'} {link} {hide} />
         {/if}
       {/each}
     {/if}
-    <button class="menu-button button--accent" onclick={toggleMenu}>
-      {visible ? 'Close' : 'Menu'}
+    <button class="button menu-button" onclick={toggleMenu}>
+      <Icon icon={visible ? 'close' : 'menu'} label={visible ? 'Fermer' : 'Menu'} />
+      {visible ? 'Fermer' : 'Menu'}
     </button>
   </span>
   {#if visible}
     <nav class="flex flex--gapped" transition:fly={{ y: '-100%', duration: 666 }}>
       {#if navigation.fields.liens?.length}
         {#each navigation.fields.liens as link, index}
-          <div>
+          <div class="col col--mobile--12of12">
             <Link {link} {hide} className={`h5 ${className(link)}`} />
             {#if link.fields.sousLiens?.length}
               <ul class="list--nostyle">
@@ -112,10 +113,6 @@
     z-index: 8;
     transition: color 0.333s, background-color 0.333s, box-shadow 0.333s;
 
-    span {
-      width: auto;
-    }
-
     &.scrolled {
       background: $blanc;
       // box-shadow: 0 0 10px rgba($sarcelle, 0.1);
@@ -141,6 +138,61 @@
     z-index: 10;
   }
 
+  span {
+    width: auto;
+
+    @media (max-width: $mobile) {
+      position: absolute;
+      right: 0;
+      width: calc(100% - $s1);
+
+      :global(.button:not(.menu-button)) {
+        transform: translateY(calc($s5 * -1));
+        transition: transform 0.333s;
+
+        &:first-child {
+          margin-right: auto;
+        }
+
+        .visible & {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .menu-button {
+    @media (min-width: $mobile) {
+      background-color: $accent;
+      color: $blanc;
+
+      :global(svg) {
+        display: none;
+      }
+    }
+
+    @media (max-width: $mobile) {
+      border: none;
+      padding: 0;
+      font-size: 0;
+    }
+  }
+
+  .logo {
+    @media (max-width: $mobile) {
+      z-index: 11;
+      
+      .visible & {
+        z-index: 0;
+      }
+
+      :global(svg) {
+        width: 66.6%;
+        height: auto;
+      }
+    }
+  }
+
   nav {
     position: absolute;
     top: 0;
@@ -150,8 +202,22 @@
     align-items: stretch;
 
     width: 100%;
+    max-height: 100lvh;
+    overflow-y: auto;
     padding: $s1;
     padding-top: $s5;
+
+    @media (max-width: $mobile) {
+      padding: $s6 $s-1;
+    }
+
+    :global(.h5) {
+      font-family: $heading_font;
+
+      @media (max-width: $mobile) {
+        font-size: $s3;
+      }
+    }
 
     hr {
       width: 1px;
@@ -159,12 +225,19 @@
       border-left: 1px dotted $accent;
       margin: 0;
       background: transparent;
+
+      @media (max-width: $mobile) {
+        width: 100%;
+        height: 1px;
+      }
     }
 
     div {
 
       &:has(ul) {
-        flex: 1;
+        @media (min-width: $mobile) {
+          flex: 1;
+        }
 
         :global(a) {
           display: block;
@@ -174,6 +247,10 @@
 
       > ul {
         margin-top: $s3;
+
+        @media (max-width: $mobile) {
+          margin-top: 0;
+        }
       }
 
       &:has(details[open]) {
@@ -207,6 +284,10 @@
 
     > :global(svg) {
       margin-right: auto;
+
+      @media (max-width: $mobile) {
+        order: 99;
+      }
     }
 
     > a {

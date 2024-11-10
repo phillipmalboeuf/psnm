@@ -23,7 +23,7 @@
   <nav class="main-nav flex flex--gapped">
     {#if navigation.fields.liens?.length}
     {#each navigation.fields.liens as link, index}
-    <div class="flex flex--column flex--gapped">
+    <div class="col col--mobile--12of12 flex flex--column flex--gapped">
       <Link {link} className={`h5${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}`} />
       {#if link.fields.sousLiens?.length}
         <ul class="list--nostyle">
@@ -49,7 +49,7 @@
       FR | EN
     </span> -->
 
-    <div class="col col--3of12 flex flex--gapped">
+    <div class="col col--3of12 col--mobile--12of12 flex flex--gapped">
       <form class="flex flex--gapped">
         <h5>Abonnez-vous à l’infolettre<br>pour ne rien manquer</h5>
         <!-- <input class="col col--6of12" name="nom" placeholder="Votre nom"> -->
@@ -83,17 +83,17 @@
 
   <nav class="sub-nav flex flex--gapped flex--bottom">
     {#if politiques.fields.liens?.length}
-    <div class="col col--3of12">
+    <div class="col col--3of12 col--mobile--12of12">
       <Link link={politiques.fields.liens[0]} />
     </div>
-    <div class="col col--6of12">
+    <div class="col col--6of12 col--mobile--12of12">
       {#each politiques.fields.liens.slice(1) as link, index}
         <Link {link} />
       {/each}
     </div>
     {/if}
 
-    <a href="/" class="logo col col--3of12">
+    <a href="/" class="logo col col--3of12 col--mobile--12of12">
       <Ecole /><br>
       <Logo />
     </a>
@@ -133,13 +133,18 @@
       padding: $s1 0;
 
       align-items: stretch;
-      flex-wrap: nowrap;
+
+      @media (min-width: $mobile) {
+        flex-wrap: nowrap;
+      }
 
       div {
-        flex: 1;
+        @media (min-width: $mobile) {
+          flex: 1;
 
-        &:last-child {
-          flex: 1.5;
+          &:last-child {
+            flex: 1.5;
+          }
         }
       }
 
@@ -166,6 +171,11 @@
         background: transparent;
         margin-left: auto;
         opacity: 0.5;
+
+        @media (max-width: $mobile) {
+          width: 100%;
+          height: 1px;
+        }
       }
     }
 

@@ -34,10 +34,10 @@
 <section class="list {item.fields.type}" id={item.fields.id}>
   {#if item.fields.titre}
     <hr />
-    <div class="flex flex--gapped">
-      <h4 class:h--alt={item.fields.type !== 'Colonnes'} class:h1={item.fields.type === 'Colonnes'} class="col col--6of12">{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
+    <nav class="flex flex--gapped">
+      <h4 class:h--alt={item.fields.type !== 'Colonnes'} class:h1={item.fields.type === 'Colonnes'} class="col col--6of12" class:col--12of12={!(item.fields.liens && item.fields.liens.length > 0)}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
       {#if item.fields.liens && item.fields.liens.length > 0}
-        <nav class="col col--6of12 flex flex--gapped flex--end">
+        <div class="col col--6of12 flex flex--gapped flex--end">
           {#each item.fields.liens as link}
             <Link className="button button--grey" link={link} />
           {/each}
@@ -45,9 +45,9 @@
             <button class="embla__prev button--none" onclick={() => embla?.scrollPrev()} aria-label="Précédent"><svg width="32" height="33" viewBox="0 0 32 33"><circle cx="16" cy="16.7502" r="16" fill="#1C4526"/><path d="M17.9453 11.0988L12.4813 16.836L17.9453 22.5733" stroke="white" stroke-width="1.41198"/></svg></button>
             <button class="embla__next button--none" onclick={() => embla?.scrollNext()} aria-label="Suivant"><svg width="32" height="33" viewBox="0 0 32 33"><circle cx="16" cy="16.7502" r="16" transform="rotate(-180 16 16.7502)" fill="#1C4526"/><path d="M14.0547 22.4016L19.5187 16.6643L14.0547 10.9271" stroke="white" stroke-width="1.41198"/></svg></button>
           {/if}
-        </nav>
+        </div>
       {/if}
-    </div>
+    </nav>
   {/if}
 
   {#if item.fields.items && item.fields.items.length > 0}
@@ -102,13 +102,13 @@
           </li>
         {:else}
           {#if isTypeText(listItem)}
-          <li class="col" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3 || listItem.fields.media)) || item.fields.type === 'Timeline'} class:col--4of12={item.fields.type === 'Colonnes' && item.fields.items.length === 3} class:col--3of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3}>
+          <li class="col col--mobile--12of12" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3 || listItem.fields.media)) || item.fields.type === 'Timeline'} class:col--4of12={item.fields.type === 'Colonnes' && item.fields.items.length === 3} class:col--3of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3} class:col--mobile--6of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3}>
             <Text item={listItem} first={index === 0} />
           </li>
           {:else if isTypeArticle(listItem)}
             <Article article={listItem} />
           {:else if isTypeQuestion(listItem)}
-          <li class="col col--3of12 question">
+          <li class="col col--3of12 col--mobile--12of12 question">
             <Question item={listItem} id={item.sys.id} />
           </li>
           {/if}
@@ -123,10 +123,15 @@
   .list {
     padding: $s1 0;
 
-    h4 {
+    nav {
       margin-bottom: $s3;
+
+      @media (max-width: $mobile) {
+        div button {
+          display: none;
+        }
+      }
     }
-    
 
     ul {
 
@@ -137,6 +142,14 @@
         // gap: $s1;
         gap: $s-1;
         position: relative;
+
+        @media (max-width: $mobile) {
+          width: 100%;
+
+          :global(li) {
+            width: 100%;
+          }
+        }
       }
 
        &:has(details.Italics) {
@@ -146,7 +159,9 @@
       }
 
       &:has(details.Pilules) {
-        padding-left: $s3;
+        @media (min-width: $mobile) {
+          padding-left: $s3;
+        }
       }
 
       &:has(details.Accordeon) {
@@ -207,12 +222,24 @@
 
       &.Pilules,
       &.Italics {
+        @media (max-width: $mobile) {
+          position: relative;
+          overflow: hidden;
+        }
+
         article {
           position: absolute;
           top: 0;
           right: 0;
           width: calc(100% - 425px - $s1);
           height: 100%;
+
+          @media (max-width: $mobile) {
+            position: relative;
+            width: 100%;
+            height: auto;
+            // min-height: 90lvh;
+          }
         }
 
         &[open] {
@@ -228,10 +255,16 @@
           border-radius: $s4;
           width: 425px;
           text-align: center;
+
+          @media (max-width: $mobile) {
+            width: 100%;
+          }
         }
 
         article {
-          width: calc(100% - 425px - $s1 - $s3);
+          @media (min-width: $mobile) {
+            width: calc(100% - 425px - $s1 - $s3);
+          }
         }
 
         &:not([open]) {
@@ -245,17 +278,23 @@
           summary {
             position: relative;
 
-            &:before {
-              content: '';
-              display: block;
-              width: $s-2;
-              height: $s-2;
-              background-color: currentColor;
-              border-radius: 50%;
-              position: absolute;
-              top: 50%;
-              left: calc($s1 * -1);
-              transform: translate(-50%, -50%);
+            @media (max-width: $mobile) {
+              display: none;
+            }
+
+            @media (min-width: $mobile) {
+              &:before {
+                content: '';
+                display: block;
+                width: $s-2;
+                height: $s-2;
+                background-color: currentColor;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: calc($s1 * -1);
+                transform: translate(-50%, -50%);
+              }
             }
 
             &.aqua:before { background-color: $aqua; }
@@ -289,6 +328,14 @@
           height: calc(100% + 2px);
           width: auto;
           color: $blanc;
+
+          @media (max-width: $mobile) {
+            top: auto;
+            bottom: -1px;
+            right: -10%;
+            height: auto;
+            width: 33%;
+          }
         }
 
         :global(.titre) {
@@ -309,12 +356,21 @@
           height: 100%;
           width: 50%;
 
+          @media (max-width: $mobile) {
+            width: 100%;
+            min-height: 66lvh;
+          }
+
           :global(> div) {
             flex: 1;
           }
 
           :global(hr) {
             margin-top: auto;
+          }
+
+          :global(p:last-child) {
+            margin-bottom: auto;
           }
         }
       }
@@ -376,6 +432,26 @@
           width: 100%;
           padding: $s-2 0;
           margin-bottom: 0;
+
+          :global(svg) {
+            transition: transform 0.333s;
+          }
+
+          :global(svg line) {
+            transition: opacity 0.333s;
+          }
+        }
+
+        &[open] {
+          summary {
+            :global(svg) {
+              transform: rotate(90deg);
+            }
+
+            :global(svg line:last-child) {
+              opacity: 0;
+            }
+          }
         }
 
         article {

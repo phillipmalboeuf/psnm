@@ -24,7 +24,7 @@
 </script>
 
 <section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!item.fields.media} class:padded={!!item.fields.couleur} id={item.fields.id}>
-  <div class:col--6of12={!!item.fields.media} class:col--12of12={!item.fields.media} class="corps col flex flex--column flex--gapped">
+  <div class:col--6of12={!!item.fields.media} class:col--12of12={!item.fields.media} class="corps col col--mobile--12of12 flex flex--column flex--gapped">
     {#if item.fields.titre}
     <div class="titre flex flex--column flex--gapped">
       {#if item.fields.sousTitre}
@@ -50,7 +50,7 @@
   </div>
 
   {#if item.fields.media && item.fields.media.length > 0}
-  <div class="col col--6of12 media">
+  <div class="col col--6of12 col--mobile--12of12 media">
     {#each item.fields.media as media}
       <figure>
         <Media {media} rounded dialog />

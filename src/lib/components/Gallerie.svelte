@@ -67,7 +67,7 @@
     {:else}
     <ul class="list--nostyle flex flex--gapped descriptions">
       {#each item.fields.media as media, index}
-        <li class="media-item col col--3of12" class:description={media.fields.description}>
+        <li class="media-item col col--3of12 col--mobile--6of12" class:description={media.fields.description}>
           <figure>
             <Media {media} dialog />
             <figcaption class="padded beige-pale flex flex--column flex--gapped">

@@ -54,6 +54,10 @@
       &.first {
         margin-top: calc(($s5 * -1) - ($s1 * 1) - 78px);
         margin-bottom: calc(($s3 * -1));
+
+        @media (max-width: $mobile) {
+          margin-top: calc(($s5 * -1) - ($s1 * 1) - 64px);
+        }
       }
     }
     
