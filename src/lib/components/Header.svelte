@@ -186,8 +186,10 @@
         z-index: 0;
       }
 
+      width: 66.6%;
+
       :global(svg) {
-        width: 66.6%;
+        width: 100%;
         height: auto;
       }
     }
