@@ -390,6 +390,7 @@
           article {
             border-left: 1px solid;
             padding-left: $s0;
+            margin: $s1 0;
           }
         }
 
@@ -445,6 +446,11 @@
           :global(svg line) {
             transition: opacity 0.333s;
           }
+
+          @media (max-width: $mobile) {
+            font-size: $s1;
+            font-family: $body_font;
+          }
         }
 
         &[open] {
@@ -470,6 +476,10 @@
     .embla {
       overflow: hidden;
       margin: 0 calc(-1 * $s1);
+
+      @media (max-width: $mobile) {
+        margin: 0 calc(-1 * $s0);
+      }
 
       .embla__container {
         display: flex;

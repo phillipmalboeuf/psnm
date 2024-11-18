@@ -121,6 +121,10 @@
 
     :global(.h5), h5 {
       margin-bottom: $s3;
+
+      @media (max-width: $mobile) {
+        margin-bottom: $s1;
+      }
     }
 
     h5:has(+ .sociaux) {
@@ -151,6 +155,16 @@
       ul,
       form {
         margin-bottom: $s3;
+
+        @media (max-width: $mobile) {
+          margin-bottom: $s-1;
+        }
+      }
+
+      form {
+        @media (max-width: $mobile) {
+          margin-bottom: $s3;
+        }
       }
 
       ul {
@@ -175,6 +189,7 @@
         @media (max-width: $mobile) {
           width: 100%;
           height: 1px;
+          margin-top: $s2;
         }
       }
     }

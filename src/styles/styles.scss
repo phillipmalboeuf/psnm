@@ -76,6 +76,10 @@ h1, h2, h3, h4, h5, h6,
 		font-weight: normal;
 		letter-spacing: -0.001em;
 	}
+
+	@media (max-width: $mobile) {
+		line-height: 0.95;
+	}
 }
 
 h1,
@@ -87,7 +91,7 @@ h1,
 	// }
 
 	@media (max-width: $mobile) {
-    // font-size: 18vw;
+    font-size: $s4;
   }
 }
 
@@ -96,7 +100,7 @@ h2,
 	font-size: $s4;
 
 	@media (max-width: $mobile) {
-    // font-size: $s3;
+    font-size: $s3;
   }
 }
 

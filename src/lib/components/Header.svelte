@@ -113,6 +113,10 @@
     z-index: 8;
     transition: color 0.333s, background-color 0.333s, box-shadow 0.333s;
 
+    @media (max-width: $mobile) {
+      padding: $s0;
+    }
+
     &.scrolled {
       background: $blanc;
       // box-shadow: 0 0 10px rgba($sarcelle, 0.1);

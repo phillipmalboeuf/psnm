@@ -100,6 +100,10 @@
       margin: 0 calc(-1 * $s1);
       position: relative;
 
+      @media (max-width: $mobile) {
+        margin: 0 calc(-1 * $s0);
+      }
+
       .embla__container {
         display: flex;
       }
