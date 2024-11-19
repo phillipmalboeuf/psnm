@@ -98,7 +98,7 @@
       <a class="button button--accent">
         Visite virtuelle
       </a>
-      <a class="button button--accent">
+      <a class="button button--accent" href={$page.data.calendrier?.fields.file.url} target="_blank" rel="external">
         Calendrier
       </a>
     </nav>

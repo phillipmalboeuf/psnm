@@ -5,10 +5,11 @@ import type { Entry, Tag } from 'contentful'
 
 export const load = async ({ request, cookies }) => {
 
-  const [navigations, tags, pages] = await Promise.all([
+  const [navigations, tags, pages, calendrier] = await Promise.all([
     content.getEntries<TypeNavigationSkeleton>({ content_type: 'navigation', select: ['sys.id', 'fields.id', 'fields.liens', 'fields.liensBonus'], include: 3, locale: 'fr-CA' }),
     content.getTags(),
-    content.getEntries<TypePageSkeleton>({ content_type: 'page', select: ['fields.id'], locale: 'fr-CA' })
+    content.getEntries<TypePageSkeleton>({ content_type: 'page', select: ['fields.id'], locale: 'fr-CA' }),
+    content.getAsset('4pjVVDDUJ6ygWJU3UU7XT6', { locale: 'fr-CA' })
   ])
 
   return {
@@ -26,6 +27,7 @@ export const load = async ({ request, cookies }) => {
         [tag.sys.id]: tag
       }
     }, {} as {[id: string]: Tag}),
-    pageIds: pages.items.map(page => page.fields.id)
+    pageIds: pages.items.map(page => page.fields.id),
+    calendrier
   }
 }
