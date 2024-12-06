@@ -75,7 +75,7 @@
       {/if}
     </div>
     {:else}
-    <ul class="list--nostyle flex flex--gapped" class:flex--thick_gapped={item.fields.type === 'Colonnes'} class:spaced={item.fields.items.length !== 4}>
+    <ul class="list--nostyle flex flex--center flex--gapped" class:flex--thick_gapped={item.fields.type === 'Colonnes'} class:spaced={item.fields.items.length !== 4}>
       {#each item.fields.items as listItem, index}
         {#if item.fields.type === 'Pilules' || item.fields.type === 'Italics' || item.fields.type === 'Accordeon'}
           <li>
@@ -252,6 +252,10 @@
             pointer-events: none;
           }
         }
+
+        :global(section > hr) {
+          display: none;
+        }
       }
 
       &.Pilules {
@@ -390,7 +394,10 @@
           article {
             border-left: 1px solid;
             padding-left: $s0;
-            margin: $s1 0;
+
+            @media (max-width: $mobile) {
+              margin: $s1 0;
+            }
           }
         }
 

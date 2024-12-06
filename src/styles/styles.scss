@@ -116,6 +116,11 @@ h3,
 h4,
 .h4 {
 	font-size: $s2;
+	font-weight: normal;
+
+	&:not(.col) {
+		max-width: none;
+	}
 }
 
 h5,
@@ -124,6 +129,10 @@ h5,
 	font-family: $body_font;
 	font-weight: normal;
 	line-height: 1.2;
+
+	&:not(.col) {
+		max-width: none;
+	}
 }
 
 h6,
@@ -132,6 +141,10 @@ h6,
 	font-family: $body_font;
 	text-transform: uppercase;
 	line-height: 1.33333333;
+
+	&:not(.col) {
+		max-width: none;
+	}
 }
 
 p {

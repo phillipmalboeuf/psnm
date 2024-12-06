@@ -14,7 +14,7 @@
   } = $props()
 </script>
 
-<section class="flex flex--gapped {$page.data.page?.fields.couleur ? 'blanc' : item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
+<section class="flex flex--gapped padded {$page.data.page?.fields.couleur ? 'blanc' : item.fields.couleur || ''}" id={item.fields.id}>
   <details name={id} class="question col flex flex--column flex--gapped">
     <summary>
       {#if item.fields.titre}
