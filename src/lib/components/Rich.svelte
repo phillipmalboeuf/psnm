@@ -61,7 +61,7 @@
   <hr />
 
 {:else if node.nodeType === 'unordered-list'}
-  <ul>
+  <ul class:long={node.content.length > 6}>
     {#each node.content as item}<li>{#each item.content as node}{@render n(node)}{/each}</li>{/each}
   </ul>
 
@@ -98,3 +98,17 @@
 {#each body.content as node}
 {@render n(node)}
 {/each}
+
+<style lang="scss">
+  figure {
+    margin: $s3 0;
+    max-width: 66ch;
+  }
+
+  ul {
+    &.long {
+      column-count: 2;
+      column-gap: $s1;
+    }
+  }
+</style>

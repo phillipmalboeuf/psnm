@@ -40,15 +40,15 @@
     {#if item.fields.corps}
     <div class="flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--7of12={item.fields.full &&!item.fields.media}>
       <Rich body={item.fields.corps} />
-    </div>
-    {/if}
 
-    {#if item.fields.liens?.length}
-    <ul class="list--nostyle">
-      {#each item.fields.liens as link}
-        <li><Link className="button {item.fields.couleur ? 'button--muted' : 'button--accent'}" {link} /></li>
-      {/each}
-    </ul>
+      {#if item.fields.liens?.length}
+      <ul class="list--nostyle">
+        {#each item.fields.liens as link}
+          <li><Link className="button {item.fields.couleur ? 'button--muted' : 'button--accent'}" {link} /></li>
+        {/each}
+      </ul>
+      {/if}
+    </div>
     {/if}
   </div>
 

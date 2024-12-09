@@ -89,7 +89,7 @@
 
 <style lang="scss">
   .gallerie {
-    padding: $s1 0;
+    padding: $s3 0;
 
     h4 {
       margin-bottom: $s2;

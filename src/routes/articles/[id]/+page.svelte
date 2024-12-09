@@ -44,7 +44,7 @@
 
   {#if data.item.fields.thumbnail}
   <figure class="col col--12of12">
-    <Media media={data.item.fields.thumbnail} />
+    <Media media={data.item.fields.thumbnail} ar={5/15} />
   </figure>
   {/if}
 </section>

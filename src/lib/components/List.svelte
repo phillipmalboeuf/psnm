@@ -524,6 +524,10 @@
           margin-bottom: auto;
         }
 
+        :global(hr) {
+          display: none;
+        }
+
         :global(.media) {
           order: -1;
 
