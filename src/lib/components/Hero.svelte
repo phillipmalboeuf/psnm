@@ -35,7 +35,7 @@
 
   {#if item.fields.media}
     <figure class="hero__media">
-      <Media media={item.fields.media} rounded={!item.fields.full} />
+      <Media media={item.fields.media} mobileMedia={item.fields.mobileMedia} rounded={!item.fields.full} />
     </figure>
   {/if}
 </section>
@@ -73,6 +73,12 @@
       padding: $s2;
       color: $blanc;
 
+      h1 {
+        @media (min-width: $mobile) {
+          margin-bottom: $s0;
+        }
+      }
+
       @media (max-width: $mobile) {
         padding: $s0 $s0 $s3;
       }
@@ -85,6 +91,7 @@
       left: 0;
       width: 100%;
       height: 100%;
+      background-color: $vert-fonce;
 
       :global(img), :global(video), :global(picture) {
         width: 100%;

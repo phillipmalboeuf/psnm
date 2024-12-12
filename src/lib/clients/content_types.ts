@@ -82,6 +82,7 @@ export interface TypeHeroFields {
     id?: EntryFieldTypes.Symbol;
     corps?: EntryFieldTypes.RichText;
     media?: EntryFieldTypes.AssetLink;
+    mobileMedia?: EntryFieldTypes.AssetLink;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
     full?: EntryFieldTypes.Boolean;
 }
