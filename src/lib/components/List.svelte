@@ -59,12 +59,12 @@
         <li class="embla__slide" style:--slide-width={isTypeText(listItem)
           ? '80%'
           : isTypeArticle(listItem)
-          ? listItem.fields.vedette ? '60%' : '30%'
+          ? '30%'
           : '100%'}>
           {#if isTypeText(listItem)}
             <Text item={listItem} first={index === 0} />
           {:else if isTypeArticle(listItem)}
-            <Article article={listItem} />
+            <Article article={listItem} wide={false} />
           {/if}
         </li>
         {/each}
@@ -101,7 +101,7 @@
               </article>
 
               {#if item.fields.type === 'Pilules'}
-                <Ecole type="two" />
+                <Ecole type={{ 0: "two", 1: "three", 2: "four" }[index] as "two" | "three" | "four" || "two"} />
               {/if}
             </details>
           </li>
@@ -332,19 +332,25 @@
 
         :global(svg) {
           position: absolute;
-          top: -1px;
+          bottom: -1px;
           right: -1px;
           height: calc(100% + 2px);
           width: auto;
           color: $blanc;
 
           @media (max-width: $mobile) {
-            top: auto;
-            bottom: -1px;
             right: -10%;
-            height: auto;
+            height: auto !important;
             width: 33%;
           }
+        }
+
+        :global(svg.three) {
+          height: calc(66%);
+        }
+
+        :global(svg.four) {
+          height: calc(50%);
         }
 
         :global(.titre) {

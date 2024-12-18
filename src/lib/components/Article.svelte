@@ -6,20 +6,20 @@
   
   import Media from './Media.svelte'
 
-  const { article } : { article: Entry<TypeArticleSkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string> } = $props()
+  const { article, wide=true } : { article: Entry<TypeArticleSkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>, wide?: boolean } = $props()
 </script>
 
 
-<li class="col col--3of12 col--mobile--12of12 {article.fields.categorie.fields.couleur}" class:col--6of12={article.fields.vedette}>
+<li class="col col--3of12 col--mobile--12of12 {article.fields.categorie.fields.couleur}" class:col--6of12={wide && article.fields.vedette}>
   <a href="/articles/{article.fields.id}" class="flex">
-    <article class="flex flex--spaced padded col col--mobile--12of12" class:col--6of12={article.fields.vedette}>
+    <article class="flex flex--spaced padded col col--mobile--12of12" class:col--6of12={wide && article.fields.vedette}>
       <h5>{article.fields.titre}</h5>
 
       <em>{article.fields.categorie.fields.titre}</em>
       <date>{date(article.fields.date)}</date>
     </article>
 
-    <figure class="col col--mobile--12of12" class:col--6of12={article.fields.vedette}>
+    <figure class="col col--mobile--12of12" class:col--6of12={wide && article.fields.vedette}>
       <Media media={article.fields.thumbnail} />
     </figure>
   </a>

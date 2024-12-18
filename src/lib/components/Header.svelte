@@ -52,7 +52,7 @@
     {/if}
     <button class="button menu-button" onclick={toggleMenu}>
       <Icon icon={visible ? 'close' : 'menu'} label={visible ? 'Fermer' : 'Menu'} />
-      {visible ? 'Fermer' : 'Menu'}
+      <span>{visible ? 'Fermer' : 'Menu'}</span>
     </button>
   </span>
   {#if visible}
@@ -167,8 +167,12 @@
 
   .menu-button {
     @media (min-width: $mobile) {
-      background-color: $accent;
-      color: $blanc;
+      background-color: currentColor;
+      border-color: transparent;
+
+      span {
+        color: $blanc;
+      }
 
       :global(svg) {
         display: none;

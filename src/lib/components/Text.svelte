@@ -109,7 +109,7 @@
       :global(h6) {
         font-family: $body_font;
         font-weight: normal;
-        letter-spacing: -0.001em;
+        letter-spacing: -0.01em;
       }
     }
   }

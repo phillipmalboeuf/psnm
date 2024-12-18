@@ -57,7 +57,7 @@ h1, h2, h3, h4, h5, h6,
 	font-family: $heading_font;
 	// text-transform: uppercase;
 	font-weight: 300;
-	letter-spacing: -0.002em;
+	letter-spacing: -0.02em;
 	line-height: 0.9;
 	white-space: pre-line;
 
@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6,
 	&.h--alt {
 		font-family: $body_font;
 		font-weight: normal;
-		letter-spacing: -0.001em;
+		letter-spacing: -0.01em;
 	}
 
 	@media (max-width: $mobile) {
@@ -609,10 +609,19 @@ dialog {
 
 .aqua { background-color: $aqua; }
 .aqua-pale { background-color: $aqua-pale; }
-.beige { background-color: $beige; }
-.beige-pale { background-color: $beige-pale; }
+.beige { 
+	background-color: $beige;
+	color: $noir;
+}
+.beige-pale { 
+	background-color: $beige-pale;
+	color: $noir;
+}
 .blanc { background-color: $blanc; }
-.bleu { background-color: $bleu; }
+.bleu {
+	background-color: $bleu;
+	color: $bleu-fonce;
+}
 .bleu-fonce { 
   background-color: $bleu-fonce; 
   color: $blanc;
@@ -629,7 +638,10 @@ dialog {
 	background-color: $brun;
 	color: $blanc;
 }
-.jaune { background-color: $jaune; }
+.jaune {
+	background-color: $jaune;
+	color: $noir;
+}
 .mauve {
 	background-color: $mauve;
 	color: $blanc;

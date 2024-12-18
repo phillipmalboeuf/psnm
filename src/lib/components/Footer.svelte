@@ -5,8 +5,8 @@
 
   import Link from './Link.svelte'
   import Logo from './Logo.svelte'
-  import Ecole from './Ecole.svelte';
-  import Icon from './Icon.svelte';
+  import Ecole from './Ecole.svelte'
+  import Icon from './Icon.svelte'
   // import Flower from './Flower.svelte'
   // import Aliments from './Aliments.svelte'
 
@@ -94,7 +94,7 @@
     {/if}
 
     <a href="/" class="logo col col--3of12 col--mobile--12of12">
-      <Ecole /><br>
+      <Ecole />
       <Logo />
     </a>
   </nav>
@@ -115,9 +115,7 @@
     overflow: hidden;
     padding: $s1;
 
-    .logo {
-      margin-top: $s2;
-    }
+    
 
     :global(.h5), h5 {
       margin-bottom: $s3;
@@ -205,9 +203,19 @@
       }
 
       .logo {
+        margin-top: $s2;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
+        gap: $s0;
+
+        :global(svg) {
+          &:first-child {
+            width: 124px;
+            height: auto;
+          }
+        }
+    
       }
     }
   }
