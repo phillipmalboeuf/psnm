@@ -15,7 +15,7 @@
 <section class="hero flex flex--bottom" id={item.fields.id} class:full={item.fields.full} class:first={first}>
   <div class="hero__content flex flex--column flex--gapped">
     {#if item.fields.titre}
-      <h1>{item.fields.titre}</h1>
+      <h1>{@html item.fields.titre}</h1>
     {/if}
 
     <!-- {#if item.fields.sousTitre}
