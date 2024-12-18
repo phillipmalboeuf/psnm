@@ -122,16 +122,26 @@
       // box-shadow: 0 0 10px rgba($sarcelle, 0.1);
     }
 
-    :global(.button svg) {
+    .logo,
+    :global(.button svg),
+    :global(.button) {
       transition: color 0.333s;
     }
 
     &:not(.scrolled):not(.visible):global(:has(+ main .hero.first.full)) {
-      color: $blanc;
+      .logo,
+      :global(.button--none) {
+        color: $blanc;
+      }
+      // color: $blanc;
 
       :global(.button svg) {
         color: $accent;
       }
+
+      // .menu-button {
+      //   color: $accent;
+      // }
     }
   }
 
@@ -208,6 +218,7 @@
     top: 0;
     right: 0;
     background: $blanc;
+    box-shadow: 0px 5px 10px 0px rgba($noir, 0.1);
 
     align-items: stretch;
 
