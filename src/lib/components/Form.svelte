@@ -54,6 +54,9 @@
 
 <style lang="scss">
   section {
+    max-width: 66ch;
+    margin: 0 auto;
+
     &.padded {
       border-radius: $s0;
     }
