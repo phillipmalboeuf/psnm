@@ -23,11 +23,11 @@
   // })
 </script>
 
-<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!item.fields.media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:alt={item.fields.alt} id={item.fields.id}>
+<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!item.fields.media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:vertical={item.fields.vertical} class:alt={item.fields.alt} id={item.fields.id}>
   {#if !item.fields.couleur}
   <hr />
   {/if}
-  <div class:col--6of12={!!item.fields.media} class:col--12of12={item.fields.full || !item.fields.media} class:flex--column={!item.fields.full} class:flex--spaced={item.fields.full} class="corps col col--mobile--12of12 flex flex--gapped">
+  <div class:col--6of12={!!item.fields.media} class:col--8of12={item.fields.vertical} class:col--12of12={item.fields.full || !item.fields.media} class:flex--column={!item.fields.full} class:flex--spaced={item.fields.full} class="corps col col--mobile--12of12 flex flex--gapped">
     {#if item.fields.titre}
     <div class="titre flex flex--column flex--gapped col col--mobile--12of12" class:col--5of12={item.fields.full}>
       {#if item.fields.sousTitre}
@@ -38,7 +38,7 @@
     {/if}
 
     {#if item.fields.corps}
-    <div class="flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--7of12={item.fields.full &&!item.fields.media}>
+    <div class="flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--7of12={item.fields.full && !item.fields.media}>
       <Rich body={item.fields.corps} />
 
       {#if item.fields.liens?.length}
@@ -53,7 +53,7 @@
   </div>
 
   {#if item.fields.media && item.fields.media.length > 0}
-  <div class="col col--6of12 col--mobile--12of12 media" class:col--12of12={item.fields.full}>
+  <div class="col media" class:col--6of12={!item.fields.vertical} class:col--mobile--12of12={!item.fields.vertical} class:col--4of12={item.fields.vertical} class:col--mobile--8of12={item.fields.vertical} class:col--12of12={item.fields.full}>
     {#each item.fields.media as media}
       <figure>
         <Media {media} dialog />
@@ -65,6 +65,7 @@
 
 <style lang="scss">
   section {
+    position: relative;
     // text-align: center;
     // min-height: 50lvh;
     
@@ -76,6 +77,38 @@
     hr {
       width: 100%;
       margin-bottom: 0;
+    }
+
+    &.vertical {
+      align-items: stretch;
+
+      .corps {
+        padding-left: $s1;
+
+        > div {
+          justify-content: space-between;
+          height: 100%;
+        }
+
+        @media (max-width: $mobile) {
+          padding-left: $s-1;
+        }
+      }
+
+      .media {
+        margin-left: auto;
+      }
+
+      hr {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1px;
+        border-top: none;
+        border-left: 1px solid $sarcelle;
+        // margin-left: -20px;
+        height: 100%;
+      }
     }
 
     &.no-media {
