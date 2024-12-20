@@ -80,8 +80,9 @@
         {#if item.fields.type === 'Pilules' || item.fields.type === 'Italics' || item.fields.type === 'Accordeon'}
           <li>
             <details class={item.fields.type} name={item.sys.id} open={item.fields.type !== 'Accordeon' &&index === 0}>
-              <summary class="{isTypeText(listItem) ? listItem.fields.couleur : ''} h3"
-               class:h4={item.fields.type === 'Accordeon'}>
+              <summary class="{isTypeText(listItem) ? listItem.fields.couleur : ''}"
+                class:h2={item.fields.type === 'Italics'}
+                class:h3={item.fields.type !== 'Italics'}>
                 {listItem.fields.titre}
                 {#if item.fields.type === 'Accordeon'}
                   <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -158,6 +159,7 @@
       }
 
        &:has(details.Italics) {
+        justify-content: flex-start;
         border-left: 1px solid;
         padding-left: $s0;
         min-height: 50lvh;
@@ -400,6 +402,10 @@
           article {
             border-left: 1px solid;
             padding-left: $s0;
+
+            @media (min-width: $mobile) {
+              width: calc(100% - 525px - $s1);
+            }
 
             @media (max-width: $mobile) {
               margin: $s1 0;
