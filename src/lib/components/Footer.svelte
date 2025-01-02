@@ -83,13 +83,15 @@
 
   <nav class="sub-nav flex flex--gapped flex--bottom">
     {#if politiques.fields.liens?.length}
-    <div class="col col--3of12 col--mobile--12of12">
-      <Link link={politiques.fields.liens[0]} />
-    </div>
-    <div class="col col--6of12 col--mobile--12of12">
-      {#each politiques.fields.liens.slice(1) as link, index}
-        <Link {link} />
-      {/each}
+    <div class="col col--9of12 col--mobile--12of12 flex flex--gapped">
+      <div class="col col--3of12 col--mobile--12of12">
+        <Link link={politiques.fields.liens[0]} />
+      </div>
+      <div class="col col--6of12 col--mobile--12of12">
+        {#each politiques.fields.liens.slice(1) as link, index}
+          <Link {link} />
+        {/each}
+      </div>
     </div>
     {/if}
 
@@ -195,6 +197,8 @@
     .sub-nav {
       div {
         // padding: $s1 0;
+        font-size: calc($s0 - 2px);
+        line-height: 1.33;
 
         &.col--6of12 {
           display: grid;

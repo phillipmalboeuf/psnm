@@ -98,6 +98,7 @@ h1,
 h2,
 .h2 {
 	font-size: $s4;
+	line-height: 1;
 
 	@media (max-width: $mobile) {
     font-size: $s3;
@@ -274,6 +275,11 @@ button,
 		color: currentColor;
 		background: rgba($blanc, 0.1);
 		border-color: transparent;
+
+		.mauve-pale &,
+		.rose-pale &, 
+		.bleu-pale &, 
+		.vert-pale & { background: rgba($noir, 0.1); }
 	}
 
 	&.button--blanc {
@@ -438,6 +444,10 @@ ol {
 	&.list--nostyle {
 		list-style: none;
 		padding-left: 0;
+
+		ul:not(.list--nostyle) {
+			list-style: initial;
+		}
 	}
 }
 
