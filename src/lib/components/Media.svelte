@@ -7,6 +7,7 @@
     alt,
     width = 1666,
     ar = undefined,
+    focalPoint,
     rounded = false,
     eager = false,
     dialog = false
@@ -16,6 +17,7 @@
     alt?: string
     width?: number
     ar?: number
+    focalPoint?: { x: number, y: number }
     rounded?: boolean
     eager?: boolean
     dialog?: boolean
@@ -31,6 +33,13 @@
 
   function cdn(url: string) {
     return url
+  }
+
+  function getNormalizedFocalPoint(fp: { x: number, y: number }, width: number, height: number) {
+    return {
+      x: fp.x / width,
+      y: fp.y / height
+    }
   }
 </script>
 
@@ -55,6 +64,11 @@
         controls
       ></audio>
     {:else}
+      {@const normalizedFP = focalPoint ? getNormalizedFocalPoint(
+        focalPoint,
+        media.fields.file.details.image.width,
+        media.fields.file.details.image.height
+      ) : undefined}
       <!-- {JSON.stringify(media, null, 2)} -->
       <picture onclick={openDialog}>
         <source srcSet="{cdn(mobileMedia ? mobileMedia.fields.file.url : media.fields.file.url)}?w={Math.round(width * 0.333)}{ar ? `&fit=fill&h=${Math.round(width * 0.333 * ar)}` : ''}" media="(max-width: 900px)" />
@@ -62,6 +76,8 @@
         <img class:rounded src="{cdn(media.fields.file.url)}?w={width}{ar ? `&fit=fill&h=${Math.round(width * ar)}` : ''}"
           style:--ar={ar ? `${width} / ${Math.round(width * ar)}` : `${media.fields.file.details.image.width} / ${media.fields.file.details.image.height}`}
           style:--mobile-ar={(!ar && mobileMedia) ? `${mobileMedia.fields.file.details.image.width} / ${mobileMedia.fields.file.details.image.height}` : undefined}
+          style:--fp-x={normalizedFP ? `${normalizedFP.x * 100}%` : '50%'}
+          style:--fp-y={normalizedFP ? `${normalizedFP.y * 100}%` : '50%'}
           alt="{alt || media.fields.title}" loading={eager ? "eager" : "lazy"} />
       </picture>
     {/if}
@@ -89,6 +105,7 @@
     display: block;
     width: 100%;
     object-fit: cover;
+    object-position: var(--fp-x) var(--fp-y);
     // border-radius: $radius;
 
     &.rounded {

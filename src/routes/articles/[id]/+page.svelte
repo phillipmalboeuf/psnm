@@ -42,9 +42,9 @@
     {/if}
   </div> -->
 
-  {#if data.item.fields.thumbnail}
+  {#if data.item.fields.image}
   <figure class="col col--12of12">
-    <Media media={data.item.fields.thumbnail} ar={5/15} />
+    <Media media={data.item.fields.image} focalPoint={data.item.fields.focalPoint?.focalPoint} />
   </figure>
   {/if}
 </section>
@@ -84,6 +84,11 @@
 
     figure {
       margin: $s2 0;
+
+      :global(img),
+      :global(video) {
+        max-height: 66lvh;
+      }
     }
   }
 </style>
