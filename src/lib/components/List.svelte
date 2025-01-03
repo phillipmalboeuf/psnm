@@ -79,8 +79,14 @@
       {#each item.fields.items as listItem, index}
         {#if item.fields.type === 'Pilules' || item.fields.type === 'Italics' || item.fields.type === 'Accordeon'}
           <li>
-            <details class={item.fields.type} name={item.sys.id} open={item.fields.type !== 'Accordeon' &&index === 0}>
+            <details class={item.fields.type} name={item.sys.id} open={item.fields.type !== 'Accordeon' && index === 0}>
               <summary class="{isTypeText(listItem) ? listItem.fields.couleur : ''}"
+                onmouseenter={item.fields.type !== 'Accordeon' ? e => {
+                  const details = e.currentTarget.closest('details')
+                  if (details) {
+                    details.open = true
+                  }
+                } : undefined}
                 class:h2={item.fields.type === 'Italics'}
                 class:h3={item.fields.type !== 'Italics'}>
                 {listItem.fields.titre}
@@ -155,6 +161,10 @@
           :global(li) {
             width: 100%;
           }
+        }
+
+        :global(blockquote:before) {
+          content: none;
         }
       }
 
