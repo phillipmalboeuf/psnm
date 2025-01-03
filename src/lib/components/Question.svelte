@@ -14,7 +14,7 @@
   } = $props()
 </script>
 
-<section class="flex flex--gapped padded {$page.data.page?.fields.couleur ? 'blanc' : item.fields.couleur || ''}" id={item.fields.id}>
+<section class="flex flex--gapped padded {$page.data.page?.fields.couleur ? `blanc ${$page.data.page?.fields.couleur}` : item.fields.couleur || ''}" id={item.fields.id}>
   <details name={id} class="question col flex flex--column flex--gapped">
     <summary>
       {#if item.fields.titre}
@@ -91,11 +91,15 @@
       border-radius: $s0;
     }
 
+    &.blanc { background-color: $blanc; }
+    &.blanc:has(details[open]) {
+      color: $blanc; background-color: $noir;
+    }
+
     &.aqua:has(details[open]) { background-color: $aqua-pale; color: $noir; }
     &.aqua-pale:has(details[open]) { background-color: $aqua; color: $noir; }
     &.beige:has(details[open]) { background-color: $beige-pale; color: $noir; }
     &.beige-pale:has(details[open]) { background-color: $beige; color: $noir; }
-    &.blanc:has(details[open]) { color: $blanc; background-color: $noir; }
     &.bleu:has(details[open]) { background-color: $bleu-pale; color: $noir; }
     &.bleu-fonce:has(details[open]) { background-color: $bleu-pale; color: $noir; }
     &.bleu-pale:has(details[open]) { color: $blanc; background-color: $bleu-fonce; }
