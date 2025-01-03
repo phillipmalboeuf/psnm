@@ -170,9 +170,20 @@ p {
 }
 
 blockquote {
+	position: relative;
 	font-style: normal;
 	max-width: 66ch;
 	padding: 0;
+	margin: $s3 0;
+
+	&:before {
+		content: '';
+		border-left: 1px solid;
+		position: absolute;
+		top: 0;
+		left: calc($s1 * -1);
+		height: 100%;
+	}
 }
 
 small {
