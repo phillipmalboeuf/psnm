@@ -6,7 +6,7 @@ export interface TypeArticleFields {
     date: EntryFieldTypes.Date;
     categorie?: EntryFieldTypes.EntryLink<TypeCategorieSkeleton>;
     image?: EntryFieldTypes.AssetLink;
-    focalPoint?: EntryFieldTypes.Object<{ focalPoint: { x: number, y: number } }>;
+    focalPoint?: EntryFieldTypes.Object;
     vedette?: EntryFieldTypes.Boolean;
     contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeGallerieSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
@@ -95,6 +95,19 @@ export function isTypeHero<Modifiers extends ChainModifiers, Locales extends Loc
     return entry.sys.contentType.sys.id === 'hero'
 }
 
+export interface TypeImageWithFocalPointFields {
+    id: EntryFieldTypes.Symbol;
+    image: EntryFieldTypes.AssetLink;
+    focalPoint?: EntryFieldTypes.Object;
+}
+
+export type TypeImageWithFocalPointSkeleton = EntrySkeletonType<TypeImageWithFocalPointFields, "imageWithFocalPoint">;
+export type TypeImageWithFocalPoint<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypeImageWithFocalPointSkeleton, Modifiers, Locales>;
+
+export function isTypeImageWithFocalPoint<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypeImageWithFocalPoint<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'imageWithFocalPoint'
+}
+
 export interface TypeLienDeNavigationFields {
     titre?: EntryFieldTypes.Symbol;
     destination?: EntryFieldTypes.Symbol;
@@ -115,7 +128,7 @@ export interface TypeListFields {
     id?: EntryFieldTypes.Symbol;
     type?: EntryFieldTypes.Symbol<"Accordeon" | "Colonnes" | "Italics" | "Pilules" | "Slider" | "Timeline">;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
-    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeListSkeleton | TypeQuestionSkeleton | TypeTextSkeleton>>;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeImageWithFocalPointSkeleton | TypeListSkeleton | TypeQuestionSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypeListSkeleton = EntrySkeletonType<TypeListFields, "list">;
@@ -174,11 +187,11 @@ export interface TypeTextFields {
     id?: EntryFieldTypes.Symbol;
     sousTitre?: EntryFieldTypes.Symbol;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
-    corps?: EntryFieldTypes.RichText;
     full?: EntryFieldTypes.Boolean;
+    petitMedia?: EntryFieldTypes.Boolean;
     alt?: EntryFieldTypes.Boolean;
     vertical?: EntryFieldTypes.Boolean;
-    petitMedia?: EntryFieldTypes.Boolean;
+    corps?: EntryFieldTypes.RichText;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
     couleur?: EntryFieldTypes.Symbol<"aqua" | "aqua-pale" | "beige" | "beige-pale" | "blanc" | "bleu" | "bleu-fonce" | "bleu-pale" | "bourgogne" | "brun" | "jaune" | "mauve" | "mauve-fonce" | "mauve-pale" | "noir" | "rose" | "rose-pale" | "sarcelle" | "vert" | "vert-fonce" | "vert-pale">;
 }

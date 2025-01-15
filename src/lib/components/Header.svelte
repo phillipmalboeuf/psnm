@@ -45,6 +45,10 @@
         <Link className={'button button--none'} {link} {hide}>
           <Icon icon="search" label="Rechercher" />
         </Link>
+        {:else if link.fields.destination.startsWith('https://portail.psnm.qc.ca')}
+        <Link className={'button button--none portail'} {link} {hide}>
+          <svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5.5" fill="currentColor" stroke="currentColor"/></svg> {link.fields.titre}
+        </Link>
         {:else}
         <Link className={link.fields.externe ? 'button button--none' : 'button button--grey'} {link} {hide} />
         {/if}
@@ -135,7 +139,7 @@
       }
       // color: $blanc;
 
-      :global(.button svg) {
+      :global(.button:not(.portail) svg) {
         color: $accent;
       }
 

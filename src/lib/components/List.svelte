@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type TypeListSkeleton, type TypeTextSkeleton, isTypeArticle, isTypeQuestion, isTypeText } from '$lib/clients/content_types'
+  import { type TypeListSkeleton, type TypeTextSkeleton, isTypeArticle, isTypeImageWithFocalPoint, isTypeQuestion, isTypeText } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
 
   import emblaCarouselSvelte from 'embla-carousel-svelte'
@@ -12,6 +12,7 @@
   import Link from './Link.svelte'
   import Question from './Question.svelte'
   import Dots from './Dots.svelte'
+  import Media from './Media.svelte'
 
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -65,6 +66,8 @@
             <Text item={listItem} first={index === 0} />
           {:else if isTypeArticle(listItem)}
             <Article article={listItem} wide={false} />
+          {:else if isTypeImageWithFocalPoint(listItem)}
+            <Media media={listItem.fields.image} />
           {/if}
         </li>
         {/each}
@@ -104,6 +107,8 @@
                   <Article article={listItem} />
                 {:else if isTypeQuestion(listItem)}
                   <Question item={listItem} id={item.sys.id} />
+                {:else if isTypeImageWithFocalPoint(listItem)}
+                  <Media media={listItem.fields.image} />
                 {/if}
               </article>
 
@@ -119,6 +124,10 @@
           </li>
           {:else if isTypeArticle(listItem)}
             <Article article={listItem} />
+          {:else if isTypeImageWithFocalPoint(listItem)}
+          <li class="col col--4of12 col--mobile--12of12 image" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3)) || item.fields.type === 'Timeline'}>
+            <Media media={listItem.fields.image} />
+          </li>
           {:else if isTypeQuestion(listItem)}
           <li class="col col--3of12 col--mobile--12of12 question">
             <Question item={listItem} id={item.sys.id} />
@@ -188,6 +197,13 @@
         :global(li) {
           width: 100%;
         }
+      }
+    }
+
+    &.Pilules {
+      > ul {
+        max-width: 1333px;
+        margin: 0 auto;
       }
     }
 
@@ -272,7 +288,7 @@
 
       &.Pilules {
         summary {
-          padding: $s2;
+          padding: $s3 $s2;
           border-radius: $s4;
           width: 425px;
           text-align: center;

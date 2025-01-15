@@ -165,6 +165,10 @@
         @media (max-width: $mobile) {
           margin-bottom: $s3;
         }
+
+        button {
+          border: 1px dotted;
+        }
       }
 
       ul {
