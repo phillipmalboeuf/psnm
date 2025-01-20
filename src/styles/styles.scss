@@ -245,6 +245,7 @@ button,
 	justify-content: center;
 	align-items: center;
 	gap: $s-2;
+	transition: background-color 333ms, color 333ms;
 
 	&.button--large {
 		padding: ($s0) ($s1);
@@ -292,6 +293,12 @@ button,
 		.bleu-pale &, 
 		.jaune &, 
 		.vert-pale & { background: rgba($noir, 0.1); }
+
+		&:hover,
+		&:focus {
+			color: $noir;
+			background: $blanc;
+		}
 	}
 
 	&.button--blanc {

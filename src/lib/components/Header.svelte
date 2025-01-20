@@ -8,6 +8,8 @@
   import Logo from './Logo.svelte'
   import Ecole from './Ecole.svelte'
   import Icon from './Icon.svelte'
+  import Rich from './Rich.svelte';
+  import Media from './Media.svelte';
   // import NoScroll from './NoScroll.svelte'
 
   let { navigation }: {
@@ -97,7 +99,23 @@
         {/each}
       {/if}
       <div class="col col--12of12"></div>
-      <Ecole />
+
+      <aside>
+        {#if navigation.fields.lienDannonce}
+          <a href={navigation.fields.lienDannonce} class="annonce padded vert-pale flex flex--gapped">
+            {#if navigation.fields.textDannonce}
+            <div class="flex flex--column">
+              <Rich body={navigation.fields.textDannonce} />
+            </div>
+            {/if}
+            {#if navigation.fields.mediaDannonce}
+              <Media media={navigation.fields.mediaDannonce} />
+            {/if}
+          </a>
+        {:else}
+          <Ecole />
+        {/if}
+      </aside>
 
       <a class="button button--accent">
         Visite virtuelle
@@ -307,11 +325,34 @@
       }
     }
 
-    > :global(svg) {
+    aside {
       margin-right: auto;
 
       @media (max-width: $mobile) {
         order: 99;
+      }
+
+      .annonce {
+        border-radius: $s-1;
+        margin-top: $s2;
+
+        @media (min-width: $mobile) {
+          flex-wrap: nowrap;
+        }
+
+        :global(picture) {
+          width: auto;
+
+          @media (max-width: $mobile) {
+            margin-left: auto;
+          }
+        }
+        
+        :global(img),
+        :global(video) {
+          width: 220px;
+          height: auto;
+        }
       }
     }
 

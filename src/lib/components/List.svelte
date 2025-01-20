@@ -437,7 +437,7 @@
             padding-left: $s0;
 
             @media (min-width: $mobile) {
-              width: calc(100% - 525px - $s1);
+              width: calc(50%);
             }
 
             @media (max-width: $mobile) {

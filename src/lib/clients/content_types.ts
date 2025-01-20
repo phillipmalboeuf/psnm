@@ -142,6 +142,9 @@ export interface TypeNavigationFields {
     id?: EntryFieldTypes.Symbol;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
     liensBonus?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
+    lienDannonce?: EntryFieldTypes.Symbol;
+    textDannonce?: EntryFieldTypes.RichText;
+    mediaDannonce?: EntryFieldTypes.AssetLink;
 }
 
 export type TypeNavigationSkeleton = EntrySkeletonType<TypeNavigationFields, "navigation">;
