@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type TypeListSkeleton, type TypeTextSkeleton, isTypeArticle, isTypeImageWithFocalPoint, isTypeQuestion, isTypeText } from '$lib/clients/content_types'
+  import { type TypeListSkeleton, type TypeTextSkeleton, isTypeArticle, isTypeImageWithFocalPoint, isTypePoste, isTypeQuestion, isTypeText } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
 
   import emblaCarouselSvelte from 'embla-carousel-svelte'
@@ -13,6 +13,7 @@
   import Question from './Question.svelte'
   import Dots from './Dots.svelte'
   import Media from './Media.svelte'
+  import Poste from './Poste.svelte'
 
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -59,13 +60,15 @@
         {#each item.fields.items as listItem, index}
         <li class="embla__slide" style:--slide-width={isTypeText(listItem)
           ? '80%'
-          : isTypeArticle(listItem)
+          : isTypeArticle(listItem) || isTypePoste(listItem)
           ? '30%'
           : '100%'}>
           {#if isTypeText(listItem)}
             <Text item={listItem} first={index === 0} />
           {:else if isTypeArticle(listItem)}
             <Article article={listItem} wide={false} />
+          {:else if isTypePoste(listItem)}
+            <Poste poste={listItem} {index} />
           {:else if isTypeImageWithFocalPoint(listItem)}
             <Media media={listItem.fields.image} />
           {/if}
@@ -105,6 +108,8 @@
                   <Text item={listItem} first={index === 0} />
                 {:else if isTypeArticle(listItem)}
                   <Article article={listItem} />
+                {:else if isTypePoste(listItem)}
+                  <Poste poste={listItem} {index} />
                 {:else if isTypeQuestion(listItem)}
                   <Question item={listItem} id={item.sys.id} />
                 {:else if isTypeImageWithFocalPoint(listItem)}
@@ -124,6 +129,8 @@
           </li>
           {:else if isTypeArticle(listItem)}
             <Article article={listItem} />
+          {:else if isTypePoste(listItem)}
+            <Poste poste={listItem} {index} />
           {:else if isTypeImageWithFocalPoint(listItem)}
           <li class="col col--4of12 col--mobile--12of12 image" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3)) || item.fields.type === 'Timeline'}>
             <Media media={listItem.fields.image} />

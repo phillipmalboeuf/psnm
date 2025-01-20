@@ -128,7 +128,7 @@ export interface TypeListFields {
     id?: EntryFieldTypes.Symbol;
     type?: EntryFieldTypes.Symbol<"Accordeon" | "Colonnes" | "Italics" | "Pilules" | "Slider" | "Timeline">;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
-    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeImageWithFocalPointSkeleton | TypeListSkeleton | TypeQuestionSkeleton | TypeTextSkeleton>>;
+    items?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeArticleSkeleton | TypeImageWithFocalPointSkeleton | TypeListSkeleton | TypePosteSkeleton | TypeQuestionSkeleton | TypeTextSkeleton>>;
 }
 
 export type TypeListSkeleton = EntrySkeletonType<TypeListFields, "list">;
@@ -164,6 +164,21 @@ export type TypePage<Modifiers extends ChainModifiers, Locales extends LocaleCod
 
 export function isTypePage<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypePage<Modifiers, Locales> {
     return entry.sys.contentType.sys.id === 'page'
+}
+
+export interface TypePosteFields {
+    titre: EntryFieldTypes.Symbol;
+    id: EntryFieldTypes.Symbol;
+    date: EntryFieldTypes.Date;
+    type?: EntryFieldTypes.Symbol<"Stage" | "Temps partiel" | "Temps plein">;
+    contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeGallerieSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
+}
+
+export type TypePosteSkeleton = EntrySkeletonType<TypePosteFields, "poste">;
+export type TypePoste<Modifiers extends ChainModifiers, Locales extends LocaleCode = LocaleCode> = Entry<TypePosteSkeleton, Modifiers, Locales>;
+
+export function isTypePoste<Modifiers extends ChainModifiers, Locales extends LocaleCode>(entry: Entry<EntrySkeletonType, Modifiers, Locales>): entry is TypePoste<Modifiers, Locales> {
+    return entry.sys.contentType.sys.id === 'poste'
 }
 
 export interface TypeQuestionFields {
