@@ -26,7 +26,7 @@
   // })
 </script>
 
-<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:vertical={item.fields.vertical} class:alt={item.fields.alt} id={item.fields.id}>
+<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && item.fields.id === 'une-question'} class:vertical={item.fields.vertical} class:alt={item.fields.alt} id={item.fields.id}>
   {#if !item.fields.couleur}
   <hr />
   {/if}
@@ -47,7 +47,7 @@
     {/if}
 
     {#if item.fields.corps}
-    <div class="flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--7of12={item.fields.full && !media}>
+    <div class="inside flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--7of12={item.fields.full && !media}>
       <Rich body={item.fields.corps} />
 
       {#if item.fields.liens?.length}
@@ -86,6 +86,10 @@
     hr {
       width: 100%;
       margin-bottom: 0;
+    }
+
+    &:has(ul:first-child) {
+      width: 100%;
     }
 
     &.vertical {
@@ -130,6 +134,19 @@
       &.full {
         width: 100%;
       }
+
+      &.half {
+        width: 50%;
+
+        @media (max-width: $mobile) {
+          width: 100%;
+        }
+
+        .inside {
+          padding-left: $s1;
+          border-left: 1px dotted;
+        }
+      }
     }
 
     &.padded {
@@ -163,6 +180,12 @@
         font-family: $body_font;
         font-weight: normal;
         letter-spacing: -0.01em;
+      }
+    }
+
+    ul {
+      &:first-child {
+        margin-top: $s2;
       }
     }
   }

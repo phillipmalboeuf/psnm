@@ -18,7 +18,21 @@
   {#if isTypeText(item)}
   <Text {item} />
   {:else if isTypeList(item)}
-  <List {item} />
+  <List item={(item.fields.id === 'plus-profils' && ['etre-et-devenir', 'musique-etudes', 'danse-etudes', 'formule-flex'].includes(data.page.fields.id)) ? {
+    ...item,
+    fields: {
+      ...item.fields,
+      items: item.fields.items?.filter(listItem => listItem.fields.id !== data.page.fields.id)?.map(listItem => ({
+        ...listItem,
+        fields: {
+          ...listItem.fields,
+          sousTitre: 'Profil d\'étude',
+          media: undefined,
+          corps: []
+        }
+      }))
+    }
+  } : item} />
   {:else if isTypeGallerie(item)}
   <Gallerie {item} />
   {:else if isTypeHero(item)}
