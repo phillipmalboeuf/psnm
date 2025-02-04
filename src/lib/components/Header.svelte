@@ -41,7 +41,7 @@
 
 <svelte:window bind:scrollY={scrollY} on:scroll={onScroll} />
 
-<header class="flex flex--spaced padded" class:backed={scrollY > 0} class:scrolled class:visible>
+<header class="flex flex--spaced padded" class:backed={scrollY > 0} class:scrolled={!visible && scrolled} class:visible>
   <a href="/" class="logo" onclick={hide}>
     <!-- <Ecole /> -->
     <Logo />
