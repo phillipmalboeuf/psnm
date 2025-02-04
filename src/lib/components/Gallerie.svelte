@@ -55,7 +55,7 @@
           <figure style:--ar={`${media.fields.file.details.image.width} / ${media.fields.file.details.image.height}`}>
             <Media {media} dialog />
             {#if media.fields.description}
-              <figcaption>{@html media.fields.description.replaceAll('\\n', '<br />')}</figcaption>
+              <figcaption class="small">{@html media.fields.description.replaceAll('\\n', '<br />')}</figcaption>
             {/if}
           </figure>
         </li>

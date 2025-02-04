@@ -38,7 +38,7 @@
   {#if item.fields.titre}
     <hr />
     <nav class="flex flex--gapped">
-      <h4 class:h--alt={item.fields.type !== 'Colonnes'} class:h1={item.fields.type === 'Colonnes'} class="col col--6of12" class:col--12of12={!(item.fields.liens && item.fields.liens.length > 0)}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
+      <h4 class:h--alt={item.fields.type !== 'Colonnes'} class:h1={item.fields.type === 'Colonnes'} class:h0={item.fields.type === 'Colonnes' && item.fields.titre.length < 50} class="col col--6of12" class:col--12of12={!(item.fields.liens && item.fields.liens.length > 0)}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
       {#if item.fields.liens && item.fields.liens.length > 0}
         <div class="col col--6of12 flex flex--gapped flex--end">
           {#each item.fields.liens as link}

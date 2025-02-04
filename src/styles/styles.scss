@@ -52,7 +52,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h0, .h1, .h2, .h3, .h4, .h5, .h6 {
 	display: block;
 	font-family: $heading_font;
 	// text-transform: uppercase;
@@ -93,6 +93,14 @@ h1,
 	@media (max-width: $mobile) {
     font-size: $s4;
   }
+}
+
+.h0 {
+	font-size: $s6;
+
+	@media (max-width: $mobile) {
+		font-size: $s4;
+	}
 }
 
 h2,
@@ -186,7 +194,8 @@ blockquote {
 	}
 }
 
-small {
+small,
+.small {
 	font-size: $s-1;
 
 	&.sub,
