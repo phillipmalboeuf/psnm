@@ -167,7 +167,7 @@
         }
 
         button {
-          border: 1px dotted;
+          // border: 1px dotted;
         }
       }
 
@@ -182,11 +182,13 @@
       }
 
       hr {
+        margin: 0;
         width: 1px;
         height: auto;
-        border-left: 1px dotted;
-        margin: 0;
-        background: transparent;
+        // border-left: 1px dotted;
+        // background: transparent;
+	      background-image: repeating-linear-gradient(0deg, currentColor, currentColor 2px, transparent 2px, transparent 5px);
+
         margin-left: auto;
         opacity: 0.5;
 

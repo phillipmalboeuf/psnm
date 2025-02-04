@@ -482,11 +482,12 @@ ol {
 hr {
 	color: currentColor;
 	border: none;
-	// height: 1px;
 	// background-color: currentColor;
 	margin: 0 0 $s0;
-	border-top: 1px dotted currentColor;
-	background: transparent;
+	// border-top: 1px dashed currentColor;
+	// background: transparent;
+	height: 1px;
+	background-image: repeating-linear-gradient(90deg, currentColor, currentColor 2px, transparent 2px, transparent 5px);
 
 	.flex--column & {
 		width: 100%;

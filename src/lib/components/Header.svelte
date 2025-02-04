@@ -8,8 +8,8 @@
   import Logo from './Logo.svelte'
   import Ecole from './Ecole.svelte'
   import Icon from './Icon.svelte'
-  import Rich from './Rich.svelte';
-  import Media from './Media.svelte';
+  import Rich from './Rich.svelte'
+  import Media from './Media.svelte'
   // import NoScroll from './NoScroll.svelte'
 
   let { navigation }: {
@@ -18,6 +18,13 @@
   } = $props()
 
   let visible = $state(false)
+  let scrollY = $state(0)
+  let lastScrollY = 0
+  let scrolled = $derived(scrollY > lastScrollY)
+
+  function onScroll() {
+    lastScrollY = scrollY
+  }
 
   function toggleMenu() {
     visible = !visible
@@ -27,17 +34,16 @@
     visible = false
   }
 
-  let scrollY = $state(0)
-
   function className(link: Entry<TypeLienDeNavigationSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>) {
     return `${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}${$page.data.pageIds.includes(link.fields.destination.replace('/', '')) ? '' : ' disabled'}`
   }
 </script>
 
-<svelte:window bind:scrollY={scrollY} />
+<svelte:window bind:scrollY={scrollY} on:scroll={onScroll} />
 
-<header class="flex flex--spaced flex--middle padded" class:scrolled={scrollY > 0} class:visible>
+<header class="flex flex--spaced padded" class:backed={scrollY > 0} class:scrolled class:visible>
   <a href="/" class="logo" onclick={hide}>
+    <!-- <Ecole /> -->
     <Logo />
   </a>
   <span class="flex flex--gapped flex--middle">
@@ -133,13 +139,17 @@
     position: sticky;
     top: 0;
     z-index: 8;
-    transition: color 0.333s, background-color 0.333s, box-shadow 0.333s;
+    transition: color 0.333s, background-color 0.333s, box-shadow 0.333s, transform 0.666s;
 
     @media (max-width: $mobile) {
       padding: $s0;
     }
 
     &.scrolled {
+      transform: translateY(-100%);
+    }
+
+    &.backed {
       background: $blanc;
       // box-shadow: 0 0 10px rgba($sarcelle, 0.1);
     }
@@ -150,7 +160,7 @@
       transition: color 0.333s;
     }
 
-    &:not(.scrolled):not(.visible):global(:has(+ main .hero.first.full)) {
+    &:not(.backed):not(.visible):global(:has(+ main .hero.first.full)) {
       .logo,
       :global(.button--none) {
         color: $blanc;
@@ -219,6 +229,16 @@
   }
 
   .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: $s-1;
+
+    // :global(svg:first-child) {
+    //   width: 33.3%;
+    //   height: auto;
+    // }
+
     @media (max-width: $mobile) {
       z-index: 11;
       
@@ -265,9 +285,9 @@
     hr {
       width: 1px;
       height: auto;
-      border-left: 1px dotted $accent;
+      // border-left: 1px dotted $accent;
+      background-image: repeating-linear-gradient(0deg, currentColor, currentColor 2px, transparent 2px, transparent 5px);
       margin: 0;
-      background: transparent;
 
       @media (max-width: $mobile) {
         width: 100%;
