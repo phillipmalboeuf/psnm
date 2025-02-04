@@ -515,6 +515,14 @@
               opacity: 0;
             }
           }
+
+          article {
+            margin-bottom: $s2;
+
+            :global(section > hr) {
+              display: none;
+            }
+          }
         }
 
         article {
