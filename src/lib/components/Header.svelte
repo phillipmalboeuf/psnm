@@ -23,7 +23,7 @@
   let scrolled = $derived(scrollY > lastScrollY)
 
   function onScroll() {
-    lastScrollY = scrollY
+    lastScrollY = scrollY < 0 ? 0 : scrollY
   }
 
   function toggleMenu() {
