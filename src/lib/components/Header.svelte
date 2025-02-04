@@ -35,7 +35,7 @@
   }
 
   function className(link: Entry<TypeLienDeNavigationSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>) {
-    return `${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}${$page.data.pageIds.includes(link.fields.destination.replace('/', '')) ? '' : ' disabled'}`
+    return `nav__link ${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}${$page.data.pageIds.includes(link.fields.destination.replace('/', '')) ? '' : ' disabled'}`
   }
 </script>
 
@@ -282,6 +282,64 @@
       }
     }
 
+    div {
+      :global(.nav__link) {
+        padding: $s-3 $s-1;
+        border-radius: $s0;
+        transition: background-color 0.333s;
+
+        &:hover,
+        &:focus {
+          background-color: $vert-pale;
+        }
+      }
+
+      &:nth-of-type(2) {
+        :global(.nav__link) {
+          &:hover,
+          &:focus {
+            background-color: $rose-pale;
+          }
+        }
+      }
+
+      &:nth-of-type(3) {
+        :global(.nav__link) {
+          &:hover,
+          &:focus {
+            background-color: $bleu-pale;
+          }
+        }
+      }
+
+      &:nth-of-type(4) {
+        :global(.nav__link) {
+          &:hover,
+          &:focus {
+            background-color: $mauve-pale;
+          }
+        }
+      }
+
+      &:nth-of-type(5) {
+        :global(.nav__link) {
+          &:hover,
+          &:focus {
+            background-color: $beige-pale;
+          }
+        }
+      }
+
+      &:nth-of-type(6) {
+        :global(.nav__link) {
+          &:hover,
+          &:focus {
+            background-color: $aqua-pale;
+          }
+        }
+      }
+    }
+
     hr {
       width: 1px;
       height: auto;
@@ -331,7 +389,7 @@
       details {
         summary {
           cursor: pointer;
-          padding: ($s-3) ($s-2);
+          // padding: ($s-3) ($s-2);
 
           :global(a) {
             display: inline-block;
