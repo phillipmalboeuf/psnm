@@ -129,7 +129,9 @@
 
         &.description {
           figure {
-            height: calc(50lvh - $s2);
+            @media (min-width: $mobile) {
+              height: calc(50lvh - $s2);
+            }
           }
         }
 

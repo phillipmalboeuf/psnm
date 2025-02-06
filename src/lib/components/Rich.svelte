@@ -100,6 +100,10 @@
 {/each}
 
 <style lang="scss">
+  hr {
+    margin: 0;
+  }
+
   figure {
     margin: $s3 0;
     max-width: 66ch;

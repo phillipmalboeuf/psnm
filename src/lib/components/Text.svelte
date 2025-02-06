@@ -36,10 +36,10 @@
       {#if item.fields.sousTitre}
         <small>{@html item.fields.sousTitre.replaceAll('\\n', '<br />')}</small>
       {/if}
-      <h3 class:h2={media && item.fields.full} class:h4={item.fields.alt}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
+      <h3 class="col" class:col--mobile--6of12={petitMedia} class:h2={media && item.fields.full} class:h4={item.fields.alt}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
 
       {#if petitMedia}
-      <figure>
+      <figure class="col col--mobile--6of12">
         <Media media={petitMedia} />
       </figure>
       {/if}
@@ -164,6 +164,14 @@
     }
 
     .titre {
+      @media (max-width: $mobile) {
+        margin-bottom: $s1;
+
+        &:has(> .col--mobile--6of12) {
+          flex-direction: row;
+        }
+      }
+
       figure {
         margin-top: auto;
         max-width: 240px;
@@ -184,6 +192,10 @@
     }
 
     ul {
+      @media (max-width: $mobile) {
+        margin-top: $s1;
+      }
+
       &:first-child {
         margin-top: $s2;
       }

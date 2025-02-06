@@ -417,6 +417,10 @@
 
           :global(hr) {
             margin-top: auto;
+
+            @media (max-width: $mobile) {
+              margin-bottom: 0;
+            }
           }
 
           :global(p:last-child) {
@@ -574,7 +578,9 @@
         }
 
         :global(.titre) {
-          margin-bottom: auto;
+          @media (min-width: $mobile) {
+            margin-bottom: auto;
+          }
         }
 
         :global(hr) {
@@ -591,13 +597,23 @@
         }
 
         &:nth-child(3n) :global(.media) {
-          order: 1;
+          @media (min-width: $mobile) {
+            order: 1;
+          }
         }
 
         :global(.corps),
         &:not(:first-child) :global(.media) {
           border-left: 1px solid;
           padding-left: $s0;
+        }
+
+        &:not(:first-child) :global(.media) {
+          @media (max-width: $mobile) {
+            border: none;
+            padding-left: 0;
+            margin-top: $s1;
+          }
         }
       }
     }

@@ -33,7 +33,7 @@
   .dots {
     display: flex;
     gap: $s-2;
-    margin-top: $s-1;
+    margin-top: $s2;
     justify-content: center;
 
     @media (min-width: $mobile) {

@@ -19,10 +19,10 @@
   <hr>
   
   {#if data.item.fields.titre}
-  <h1 class="col col--6of12 h2">{data.item.fields.titre}</h1>
+  <h1 class="col col--6of12 col--mobile--12of12 h2">{data.item.fields.titre}</h1>
   {/if}
 
-  <aside class="col col--6of12 flex flex--gapped flex--end">
+  <aside class="col col--6of12 col--mobile--12of12 flex flex--gapped flex--end">
     {#if data.item.fields.categorie}
       <a href="/articles?categorie={data.item.fields.categorie.fields.id}">
         {data.item.fields.categorie.fields.titre}
@@ -76,6 +76,10 @@
     }
 
     aside {
+      @media (max-width: $mobile) {
+        margin-top: $s2;
+        justify-content: space-between !important;
+      }
 
       > a {
         // margin: 0 auto;
@@ -84,6 +88,10 @@
 
     figure {
       margin: $s2 0;
+
+      @media (max-width: $mobile) {
+        margin-top: 0;
+      }
 
       :global(img),
       :global(video) {
