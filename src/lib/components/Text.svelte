@@ -151,6 +151,20 @@
 
     &.padded {
       border-radius: $s0;
+      max-width: calc($max - $s5);
+      align-items: stretch;
+
+      .media.col--6of12 {
+        order: -1;
+      }
+
+      .corps.col--6of12 {
+        justify-content: space-between;
+
+        ul {
+          margin-top: $s2;
+        }
+      }
     }
 
     &.full {
