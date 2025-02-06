@@ -219,10 +219,24 @@
         align-items: flex-end;
         gap: $s0;
 
+        @media (max-width: $mobile) {
+          gap: $s-2;
+        }
+
         :global(svg) {
           &:first-child {
             width: 124px;
             height: auto;
+          }
+
+          @media (max-width: $mobile) {
+            &:first-child {
+              width: 100px;
+            }
+
+            &:last-child {
+              width: 200px;
+            }
           }
         }
     
