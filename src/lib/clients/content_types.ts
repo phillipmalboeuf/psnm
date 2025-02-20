@@ -209,6 +209,7 @@ export interface TypeTextFields {
     petitMedia?: EntryFieldTypes.Boolean;
     alt?: EntryFieldTypes.Boolean;
     vertical?: EntryFieldTypes.Boolean;
+    inverse?: EntryFieldTypes.Boolean;
     corps?: EntryFieldTypes.RichText;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
     couleur?: EntryFieldTypes.Symbol<"aqua" | "aqua-pale" | "beige" | "beige-pale" | "blanc" | "bleu" | "bleu-fonce" | "bleu-pale" | "bourgogne" | "brun" | "jaune" | "mauve" | "mauve-fonce" | "mauve-pale" | "noir" | "rose" | "rose-pale" | "sarcelle" | "vert" | "vert-fonce" | "vert-pale">;

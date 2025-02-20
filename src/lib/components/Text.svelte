@@ -44,7 +44,7 @@
   // })
 </script>
 
-<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && item.fields.id === 'une-question'} class:vertical={item.fields.vertical} class:alt={item.fields.alt} id={item.fields.id}>
+<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && item.fields.id === 'une-question'} class:vertical={item.fields.vertical} class:alt={item.fields.alt} class:inverse={item.fields.inverse} id={item.fields.id}>
   {#if !item.fields.couleur}
   <hr />
   {/if}
@@ -250,11 +250,26 @@
         margin-top: $s2;
       }
     }
+
+    &.inverse {
+      flex-direction: column-reverse;
+
+      .corps {
+        flex-direction: column-reverse;
+      }
+
+      .titre {
+        flex-direction: column-reverse;
+        gap: $s-2;
+      }
+    }
   }
 
   :global(section:has(> .no-media)) {
     text-align: center;
   }
+
+  
 
   .embla {
     overflow: hidden;
