@@ -2,10 +2,14 @@
   import type { TypeTextSkeleton } from '$lib/clients/content_types'
   import type { Entry, Asset } from 'contentful'
   import { onMount, type Snippet } from 'svelte'
+
+  import emblaCarouselSvelte from 'embla-carousel-svelte'
+  import type { EmblaOptionsType, EmblaPluginType, EmblaCarouselType } from 'embla-carousel'
   
   import Rich from './Rich.svelte'
   import Media from './Media.svelte'
   import Link from './Link.svelte'
+  import Dots from './Dots.svelte';
 
   let { item, full, small, first }: {
     item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -16,6 +20,20 @@
 
   let petitMedia = $derived((item.fields.petitMedia && item.fields.media?.length) ? item.fields.media[0] : undefined)
   let media = $derived((!item.fields.petitMedia && item.fields.media?.length) ? item.fields.media[0] : undefined)
+
+  let embla: EmblaCarouselType = $state()
+
+  const options: EmblaOptionsType = {
+    loop: true,
+    dragFree: false,
+    align: 'start'
+  }
+  const plugins: EmblaPluginType[] = [
+    // Autoplay({
+    //   delay: 0,
+    //   stopOnInteraction: false,
+    // })
+  ]
 
   // let desktop = $state(false)
 
@@ -63,11 +81,25 @@
 
   {#if media}
   <div class="col media" class:col--6of12={!item.fields.vertical} class:col--mobile--12of12={!item.fields.vertical} class:col--4of12={item.fields.vertical} class:col--mobile--8of12={item.fields.vertical} class:col--12of12={item.fields.full}>
-    {#each item.fields.media as media}
-      <figure>
-        <Media {media} dialog />
-      </figure>
-    {/each}
+    {#if item.fields.media.length > 1}
+     <div class="embla" use:emblaCarouselSvelte={{ options: { ...options }, plugins, }} onemblaInit={e => embla = e.detail}>
+      <ul class="list--nostyle embla__container">
+        {#each item.fields.media as media}
+        <li class="embla__slide" style:--slide-width="100%">
+          <Media {media} dialog />
+        </li>
+        {/each}
+      </ul>
+
+      {#if embla}
+      <Dots dots={item.fields.media.length} slider={embla} />
+      {/if}
+    </div>
+    {:else}
+    <figure>
+      <Media {media} dialog />
+    </figure>
+    {/if}
   </div>
   {/if}
 </section>
@@ -86,6 +118,10 @@
     hr {
       width: 100%;
       margin-bottom: 0;
+    }
+
+    :global(.dots) {
+      display: flex !important;
     }
 
     &:has(ul:first-child) {
@@ -205,7 +241,7 @@
       }
     }
 
-    ul {
+    ul:not(.embla__container) {
       @media (max-width: $mobile) {
         margin-top: $s1;
       }
@@ -218,5 +254,31 @@
 
   :global(section:has(> .no-media)) {
     text-align: center;
+  }
+
+  .embla {
+    overflow: hidden;
+    // margin: 0 calc(-1 * $s1);
+
+    // @media (max-width: $mobile) {
+    //   margin: 0 calc(-1 * $s0);
+    // }
+
+    .embla__container {
+      display: flex;
+      
+    }
+
+    .embla__slide {
+      flex: 0 0 var(--slide-width);
+      min-width: 0;
+      max-width: none;
+      width: var(--slide-width);
+      // padding-left: $s0;
+
+      // @media (max-width: $mobile) {
+      //   --slide-width: 90% !important;
+      // }
+    }
   }
 </style>
