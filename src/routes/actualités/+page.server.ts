@@ -17,7 +17,7 @@ export async function load({ url }) {
       content.getEntries<TypePageSkeleton>({
         content_type: 'page',
         include: 2,
-        'fields.id': 'articles',
+        'fields.id': 'actualités',
         locale: 'fr-CA',
       }),
       content.getEntries<TypeCategorieSkeleton>({
