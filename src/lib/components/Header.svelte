@@ -388,6 +388,7 @@
 
       details {
         summary {
+          flex-wrap: nowrap;
           cursor: pointer;
           // padding: ($s-3) ($s-2);
 
