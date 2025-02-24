@@ -66,7 +66,23 @@
 
     {#if item.fields.corps}
     <div class="inside flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--7of12={item.fields.full && !media}>
+      {#if item.fields.plus && item.fields.corps.content.length > 1}
+      <Rich body={{
+        ...item.fields.corps,
+        content: item.fields.corps.content.slice(0, 1)
+      }} />
+      <details>
+        <summary class="button button--accent"></summary>
+        <div class="flex flex--column flex--gapped">
+          <Rich body={{
+            ...item.fields.corps,
+            content: item.fields.corps.content.slice(1)
+          }} />
+        </div>
+      </details>
+      {:else}
       <Rich body={item.fields.corps} />
+      {/if}
 
       {#if item.fields.liens?.length}
       <ul class="list--nostyle">
@@ -261,6 +277,33 @@
       .titre {
         flex-direction: column-reverse;
         gap: $s-2;
+      }
+    }
+
+    details {
+      summary {
+        cursor: pointer;
+        width: auto;
+
+        &:after {
+          content: 'En lire plus';
+        }
+      }
+
+      &[open] {
+        summary {
+          &.button {
+            background: transparent;
+            border-color: currentColor;
+            color: currentColor;
+          }
+          
+          margin-bottom: $s0;
+
+          &:after {
+            content: 'En lire moins';
+          }
+        }
       }
     }
   }
