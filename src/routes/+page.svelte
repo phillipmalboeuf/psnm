@@ -6,11 +6,15 @@
   import Text from '$lib/components/Text.svelte'
   import Form from '$lib/components/Form.svelte'
   import Gallerie from '$lib/components/Gallerie.svelte'
-
+  import Popup from '$lib/components/Popup.svelte'
+  
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
 </script>
 
+{#if data.page.fields.popup}
+<Popup item={data.page.fields.popup} />
+{/if}
 
 {#if data.page.fields.contenu?.length}
 {#each data.page.fields.contenu as item, i}

@@ -159,6 +159,7 @@ export interface TypePageFields {
     id?: EntryFieldTypes.Symbol;
     media?: EntryFieldTypes.AssetLink;
     couleur?: EntryFieldTypes.Symbol<"aqua-pale" | "beige-pale" | "blanc" | "bleu-pale" | "mauve-pale" | "rose-pale" | "sarcelle" | "vert-pale">;
+    popup?: EntryFieldTypes.EntryLink<TypeTextSkeleton>;
     contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeGallerieSkeleton | TypeHeroSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
 
