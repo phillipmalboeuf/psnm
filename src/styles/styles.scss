@@ -217,6 +217,10 @@ small,
 	&.sup {
 		font-size: calc($s-1 - 2px);
 	}
+
+	&.sup {
+		vertical-align: super;
+	}
 }
 
 a {

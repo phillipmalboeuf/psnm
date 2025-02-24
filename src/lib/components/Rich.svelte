@@ -16,7 +16,7 @@
   <u>{@render m({ ...mark, marks: mark.marks.slice(1) })}</u>
   {:else if mark.marks[0].type === 'subscript'}
   <small class="sub">{@render m({ ...mark, marks: mark.marks.slice(1) })}</small>
-  {:else if mark.marks[0].type === 'supscript'}
+  {:else if mark.marks[0].type === 'superscript'}
   <small class="sup">{@render m({ ...mark, marks: mark.marks.slice(1) })}</small>
   {:else if mark.marks[0].type === 'code'}
   {@html mark.value}
