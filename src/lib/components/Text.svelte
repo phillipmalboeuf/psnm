@@ -221,7 +221,7 @@
       }
     }
 
-    &.full {
+    &.full:not(.padded) {
       .media {
         margin-top: $s3;
       }
