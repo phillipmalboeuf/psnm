@@ -64,8 +64,9 @@
     </div>
     {/if}
 
-    {#if item.fields.corps}
+    {#if item.fields.corps || item.fields.liens?.length}
     <div class="inside flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--7of12={item.fields.full && !media}>
+      {#if item.fields.corps}
       {#if item.fields.plus && item.fields.corps.content.length > 1}
       <Rich body={{
         ...item.fields.corps,
@@ -82,6 +83,7 @@
       </details>
       {:else}
       <Rich body={item.fields.corps} />
+      {/if}
       {/if}
 
       {#if item.fields.liens?.length}
