@@ -36,7 +36,7 @@
       {/if}
 
       {#if item.fields.liens?.length}
-      <ul class="list--nostyle">
+      <ul class="list--nostyle flex flex--gapped">
         {#each item.fields.liens as link}
           <li><Link className="button {item.fields.couleur ? 'button--muted' : 'button--accent'}" {link} /></li>
         {/each}
