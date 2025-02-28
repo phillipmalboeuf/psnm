@@ -66,7 +66,7 @@ export interface TypeGallerieFields {
     titre?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
     corps?: EntryFieldTypes.RichText;
-    type?: EntryFieldTypes.Symbol<"Descriptions" | "Slider">;
+    type?: EntryFieldTypes.Symbol<"Descriptions" | "Slider" | "Icons">;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
 }

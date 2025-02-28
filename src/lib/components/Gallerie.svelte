@@ -36,36 +36,51 @@
     <hr />
     <div class="flex flex--gapped">
       <h4 class="col col--6of12">{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
-      {#if item.fields.liens && item.fields.liens.length > 0}
-        <nav class="col col--6of12 flex flex--gapped flex--end">
+      
+      <nav class="col col--6of12 flex flex--gapped flex--end">
+        {#if item.fields.liens && item.fields.liens.length > 0}
           {#each item.fields.liens as link}
             <Link className="button button--grey" link={link} />
           {/each}
-        </nav>
-      {/if}
+        {/if}
+
+        {#if item.fields.type === 'Icons'}
+        <button class="embla__prev button--none" onclick={() => embla?.scrollPrev()} aria-label="Précédent"><svg width="32" height="33" viewBox="0 0 32 33"><circle cx="16" cy="16.7502" r="16" fill="#1C4526"/><path d="M17.9453 11.0988L12.4813 16.836L17.9453 22.5733" stroke="white" stroke-width="1.41198"/></svg></button>
+        <button class="embla__next button--none" onclick={() => embla?.scrollNext()} aria-label="Suivant"><svg width="32" height="33" viewBox="0 0 32 33"><circle cx="16" cy="16.7502" r="16" transform="rotate(-180 16 16.7502)" fill="#1C4526"/><path d="M14.0547 22.4016L19.5187 16.6643L14.0547 10.9271" stroke="white" stroke-width="1.41198"/></svg></button>
+        {/if}
+      </nav>
     </div>
   {/if}
 
   {#if item.fields.media && item.fields.media.length > 0}
-    {#if item.fields.type === 'Slider'}
-    <div class="embla" use:emblaCarouselSvelte={{ options: { ...options }, plugins, }} onemblaInit={e => embla = e.detail}>
+    {#if item.fields.type === 'Slider' || item.fields.type === 'Icons'}
+    <div class="embla" class:icons={item.fields.type === 'Icons'} use:emblaCarouselSvelte={{ options: { ...options }, plugins, }} onemblaInit={e => embla = e.detail}>
       <ul class="list--nostyle embla__container">
-        {#each [...item.fields.media, ...item.fields.media] as media}
+        {#each item.fields.media as media}
         <li class="embla__slide" class:description={media.fields.description}>
           <figure style:--ar={`${media.fields.file.details.image.width} / ${media.fields.file.details.image.height}`}>
-            <Media {media} dialog />
-            {#if media.fields.description}
-              <figcaption class="small">{@html media.fields.description.replaceAll('\\n', '<br />')}</figcaption>
+            {#if item.fields.type === 'Icons'}
+              <a href={media.fields.description} class="icon" target="_blank" rel="noopener noreferrer external">
+                <Media {media} />
+              </a>
+            {:else}
+              <Media {media} dialog />
+              {#if media.fields.description}
+                <figcaption class="small">{@html media.fields.description.replaceAll('\\n', '<br />')}</figcaption>
+              {/if}
             {/if}
+            
           </figure>
         </li>
         {/each}
       </ul>
 
+      {#if item.fields.type === 'Slider'}
       <button class="embla__prev button--none" onclick={() => embla?.scrollPrev()} aria-label="Précédent"><svg width="32" height="33" viewBox="0 0 32 33"><circle cx="16" cy="16.7502" r="16" fill="white" opacity="0.5"/><path d="M17.9453 11.0988L12.4813 16.836L17.9453 22.5733" stroke="currentColor" stroke-width="1.41198"/></svg></button>
       <button class="embla__next button--none" onclick={() => embla?.scrollNext()} aria-label="Suivant"><svg width="32" height="33" viewBox="0 0 32 33"><circle cx="16" cy="16.7502" r="16" transform="rotate(-180 16 16.7502)" fill="white" opacity="0.5"/><path d="M14.0547 22.4016L19.5187 16.6643L14.0547 10.9271" stroke="currentColor" stroke-width="1.41198"/></svg></button>
+      {/if}
 
-      {#if embla}
+      {#if embla && item.fields.media.length < 8}
         <Dots dots={item.fields.media.length * 2} slider={embla} />
       {/if}
     </div>
@@ -165,6 +180,31 @@
 
         &.embla__next {
           right: calc(1 * $s1);
+        }
+      }
+
+      &.icons {
+        margin: 0;
+
+        .embla__slide {
+          margin: 0 calc($s1);
+          --slide-width: 12%;
+
+          @media (max-width: $mobile) {
+            margin: 0 calc($s-1);
+            --slide-width: 30%;
+          }
+
+          figure {
+            aspect-ratio: 1;
+            height: 20lvh;
+
+            :global(img) {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
         }
       }
     }
