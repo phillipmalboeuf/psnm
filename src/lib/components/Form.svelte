@@ -3,6 +3,8 @@
   import type { Entry } from 'contentful'
   
   import Rich from './Rich.svelte'
+  import { enhance } from '$app/forms';
+  import { page } from '$app/stores';
 
   let { item, first }: {
     item: Entry<TypeFormulaireSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -24,7 +26,7 @@
     </div>
     {/if}
 
-    <form class="form flex flex--gapped" action={item.fields.action} method="POST">
+    <form class="form flex flex--gapped" action={item.fields.action} method="POST" use:enhance>
       {#if item.fields.champs}
         {#each item.fields.champs as champ}
           <div class="form-field col col--6of12" class:col--12of12={!champ.fields.half}>
@@ -47,7 +49,11 @@
           </div>
         {/each}
       {/if}
-      <button type="submit" class="button button--full {item.fields.couleur ? 'button--muted' : 'button--accent'}">{item.fields.bouton || 'Submit'}</button>
+      {#if $page.form?.Message}
+        <strong>Merci pour votre message, nous vous reviendrons dès que possible!</strong>
+      {:else}
+        <button type="submit" class="button button--full {item.fields.couleur ? 'button--muted' : 'button--accent'}">{item.fields.bouton || 'Submit'}</button>
+      {/if}
     </form>
   </div>
 </section>
