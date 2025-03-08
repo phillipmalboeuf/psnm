@@ -12,8 +12,9 @@
   import Media from './Media.svelte'
   // import NoScroll from './NoScroll.svelte'
 
-  let { navigation }: {
+  let { navigation, buttons }: {
     navigation: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
+    buttons: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
     // work: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   } = $props()
 
@@ -123,12 +124,9 @@
         {/if}
       </aside>
 
-      <a class="button button--accent">
-        Visite virtuelle
-      </a>
-      <a class="button button--accent" href={$page.data.calendrier?.fields.file.url} target="_blank" rel="external">
-        Calendrier
-      </a>
+      {#each buttons.fields.liens as button}
+        <Link link={button} {hide} className="button button--accent" />
+      {/each}
     </nav>
   {/if}
 </header>
@@ -435,7 +433,7 @@
       }
     }
 
-    > a {
+    :global(> a) {
       align-self: flex-end;
     }
 

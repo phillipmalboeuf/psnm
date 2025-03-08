@@ -26,7 +26,7 @@
 	<!-- <Dialog /> -->
 
 	<!-- <Intro /> -->
-	<Header navigation={data.navigations['menu']} />
+	<Header navigation={data.navigations['menu']} buttons={data.navigations['boutons-menu']} />
 
 	<main>
 		{@render children()}
