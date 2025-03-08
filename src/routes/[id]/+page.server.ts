@@ -52,4 +52,23 @@ export const actions = {
       }
     })
 	},
+  location: async (event) => {
+    const data = Object.fromEntries(await event.request.formData())
+
+    return await email.sendEmailWithTemplate({
+      From: 'phil@phils.computer',
+      To: 'location@psnm.qc.ca',
+      MessageStream: 'broadcast',
+      ReplyTo: data.email as string,
+      TemplateAlias: 'base',
+      TemplateModel: {
+        subject: `[psnm.qc.ca] Demande de location`,
+        body: `${JSON.stringify(data, null, 2)}<br><br>${data.prenom} ${data.nom} – ${data.email} – ${data.phone}`,
+        product_url: "https://psnm.qc.ca",
+        product_name: "https://psnm.qc.ca",
+        company_name: "PSNM",
+        company_address: "PSNM"
+      }
+    })
+	},
 }

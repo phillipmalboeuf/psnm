@@ -48,6 +48,7 @@ export function isTypeChamp<Modifiers extends ChainModifiers, Locales extends Lo
 
 export interface TypeFormulaireFields {
     titre?: EntryFieldTypes.Symbol;
+    id?: EntryFieldTypes.Symbol;
     corps?: EntryFieldTypes.RichText;
     action?: EntryFieldTypes.Symbol;
     bouton?: EntryFieldTypes.Symbol;

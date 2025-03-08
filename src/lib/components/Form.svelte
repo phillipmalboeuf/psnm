@@ -12,7 +12,7 @@
   } = $props()
 </script>
 
-<section class="flex flex--gapped {item.fields.couleur || ''}" class:padded={!!item.fields.couleur}>
+<section class="flex flex--gapped {item.fields.couleur || ''}" class:padded={!!item.fields.couleur} id={item.fields.id}>
   <div class="col col--12of12 corps flex flex--column flex--gapped">
     {#if item.fields.titre}
     <div class="titre">
