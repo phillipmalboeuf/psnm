@@ -24,7 +24,7 @@
 
   <aside class="col col--6of12 col--mobile--12of12 flex flex--gapped flex--end">
     {#if data.item.fields.categorie}
-      <a href="/articles?categorie={data.item.fields.categorie.fields.id}">
+      <a href="/actualités?categorie={data.item.fields.categorie.fields.id}">
         {data.item.fields.categorie.fields.titre}
       </a>
     {/if}
