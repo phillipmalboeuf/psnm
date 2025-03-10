@@ -10,6 +10,7 @@ export async function load({ url }) {
         content_type: 'article',
         include: 2,
         locale: 'fr-CA',
+        order: ['-fields.date'],
         ...filter
         ? { "fields.categorie.fields.id": filter, "fields.categorie.sys.contentType.sys.id": "categorie" }
         : {}
