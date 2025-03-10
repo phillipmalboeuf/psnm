@@ -398,6 +398,7 @@
 
         :global(section) {
           height: 100%;
+          justify-content: flex-start;
         }
 
         :global(section .corps) {
