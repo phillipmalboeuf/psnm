@@ -14,7 +14,7 @@
   } = $props()
 </script>
 
-<a class={className} onclick={hide} class:caserne={link.fields.destination?.includes('caserne.com')} class:anchor={link.fields.destination?.startsWith('#') && 'anchor'} href={((link.fields.destination?.startsWith('http') || link.fields.destination?.startsWith('/')) ? link.fields.destination : `/${link.fields.destination}`)} {...link.fields.externe && { target: '_blank', rel: 'external' }}>{#if children}{@render children()}{:else}{@html link.fields.titre.replace('\\n', '<br>')}{#if more}{@render more()}{/if}{/if}</a>
+<a class={className} onclick={hide} class:caserne={link.fields.destination?.includes('caserne.com')} class:anchor={link.fields.destination?.startsWith('#') && 'anchor'} href={((link.fields.destination?.startsWith('http') || link.fields.destination?.startsWith('mailto:') || link.fields.destination?.startsWith('/')) ? link.fields.destination : `/${link.fields.destination}`)} {...link.fields.externe && { target: '_blank', rel: 'external' }}>{#if children}{@render children()}{:else}{@html link.fields.titre.replace('\\n', '<br>')}{#if more}{@render more()}{/if}{/if}</a>
 
 
 <style lang="scss">
