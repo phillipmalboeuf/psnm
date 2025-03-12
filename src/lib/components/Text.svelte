@@ -44,6 +44,7 @@
   // })
 </script>
 
+{#key item.sys.id}
 <section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && item.fields.id === 'une-question'} class:vertical={item.fields.vertical} class:alt={item.fields.alt} class:inverse={item.fields.inverse} id={item.fields.id}>
   {#if !item.fields.couleur}
   <hr />
@@ -127,7 +128,7 @@
   </div>
   {/if}
 </section>
-
+{/key}
 <style lang="scss">
   section {
     position: relative;
@@ -238,6 +239,7 @@
     &.padded {
       border-radius: $s0;
       max-width: calc($max - $s5);
+      margin: 0 auto;
       align-items: stretch;
 
       .media.col--6of12 {

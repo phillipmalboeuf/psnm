@@ -14,7 +14,7 @@
   let { data }: { data: PageData } = $props()
 </script>
 
-
+{#key data.item.sys.id}
 <section class="flex flex--gapped" id={data.item.fields.id}>
   <hr>
   
@@ -51,7 +51,7 @@
   </figure>
   {/if}
 </section>
-
+{/key}
 {#if data.item.fields.contenu?.length}
 {#each data.item.fields.contenu as item, i}
 <section>
