@@ -101,6 +101,7 @@ export interface TypeImageWithFocalPointFields {
     id: EntryFieldTypes.Symbol;
     image: EntryFieldTypes.AssetLink;
     focalPoint?: EntryFieldTypes.Object;
+    coin?: EntryFieldTypes.Boolean;
 }
 
 export type TypeImageWithFocalPointSkeleton = EntrySkeletonType<TypeImageWithFocalPointFields, "imageWithFocalPoint">;

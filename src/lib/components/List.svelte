@@ -113,7 +113,7 @@
                 {:else if isTypeQuestion(listItem)}
                   <Question item={listItem} id={item.sys.id} />
                 {:else if isTypeImageWithFocalPoint(listItem)}
-                  <Media media={listItem.fields.image} dialog/>
+                  <Media media={listItem.fields.image} dialog ar={listItem.fields.coin ? 1 : undefined} focalPoint={listItem.fields.focalPoint?.focalPoint}/>
                 {/if}
               </article>
 
@@ -132,8 +132,8 @@
           {:else if isTypePoste(listItem)}
             <Poste poste={listItem} {index} />
           {:else if isTypeImageWithFocalPoint(listItem)}
-          <li class="col col--4of12 col--mobile--12of12 image" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3)) || item.fields.type === 'Timeline'}>
-            <Media media={listItem.fields.image} dialog />
+          <li class="col col--4of12 col--mobile--12of12 image" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3)) || item.fields.type === 'Timeline'} class:coin={listItem.fields.coin}>
+            <Media media={listItem.fields.image} dialog focalPoint={listItem.fields.focalPoint?.focalPoint}/>
           </li>
           {:else if isTypeQuestion(listItem)}
           <li class="col col--3of12 col--mobile--12of12 question">
@@ -615,6 +615,15 @@
             padding-left: 0;
             margin-top: $s1;
           }
+        }
+      }
+    }
+
+    .image {
+      &.coin {
+        :global(img) {
+          border-top-right-radius: 20vw;
+          aspect-ratio: 1 / 1;
         }
       }
     }
