@@ -104,7 +104,7 @@
       <ul class="list--nostyle embla__container">
         {#each item.fields.media as media}
         <li class="embla__slide" style:--slide-width="100%">
-          <Media {media} dialog />
+          <Media {media} />
         </li>
         {/each}
       </ul>
@@ -115,7 +115,13 @@
     </div>
     {:else}
     <figure>
-      <Media {media} dialog />
+      <Media {media} dialog={!item.fields.bulleCaption} />
+      {#if item.fields.bulleCaption}
+      <figcaption class="flex flex--column flex--gapped padded bleu-pale">
+        {#if media.fields.title}<h4>{media.fields.title}</h4>{/if}
+        {#if media.fields.description}{@html media.fields.description}{/if}
+      </figcaption>
+      {/if}
     </figure>
     {/if}
   </div>
@@ -136,6 +142,32 @@
     hr {
       width: 100%;
       margin-bottom: 0;
+    }
+
+    figure:has(> figcaption) {
+      position: relative;
+    }
+
+    figcaption {
+      position: absolute;
+      bottom: $s1;
+      right: $s1;
+      width: 100%;
+      max-width: 466px;
+      border-radius: $s-1;
+
+      :global(h4) {
+        margin-bottom: $s3;
+      }
+
+      :global(hr) {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: $mobile) {
+        bottom: $s-1;
+        right: $s-1;
+      }
     }
 
     :global(.dots) {

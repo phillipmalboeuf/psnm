@@ -213,6 +213,7 @@ export interface TypeTextFields {
     alt?: EntryFieldTypes.Boolean;
     vertical?: EntryFieldTypes.Boolean;
     inverse?: EntryFieldTypes.Boolean;
+    bulleCaption?: EntryFieldTypes.Boolean;
     plus?: EntryFieldTypes.Boolean;
     corps?: EntryFieldTypes.RichText;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
