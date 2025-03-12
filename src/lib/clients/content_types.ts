@@ -6,6 +6,7 @@ export interface TypeArticleFields {
     date: EntryFieldTypes.Date;
     categorie?: EntryFieldTypes.EntryLink<TypeCategorieSkeleton>;
     image?: EntryFieldTypes.AssetLink;
+    media?: EntryFieldTypes.AssetLink;
     focalPoint?: EntryFieldTypes.Object;
     vedette?: EntryFieldTypes.Boolean;
     contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeGallerieSkeleton | TypeListSkeleton | TypeTextSkeleton>>;

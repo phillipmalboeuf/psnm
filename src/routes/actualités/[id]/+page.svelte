@@ -44,7 +44,7 @@
 
   {#if data.item.fields.image}
   <figure class="col col--12of12">
-    <Media media={data.item.fields.image} focalPoint={data.item.fields.focalPoint?.focalPoint} />
+    <Media media={data.item.fields.media || data.item.fields.image} focalPoint={data.item.fields.focalPoint?.focalPoint} />
     {#if data.item.fields.image.fields.description}
     <figcaption>{data.item.fields.image.fields.description}</figcaption>
     {/if}
