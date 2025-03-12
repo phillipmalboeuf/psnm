@@ -74,7 +74,7 @@
         content: item.fields.corps.content.slice(0, 1)
       }} />
       <details>
-        <summary class="button button--accent"></summary>
+        <summary class="button {item.fields.couleur ? 'button--muted' : 'button--accent'}"></summary>
         <div class="flex flex--column flex--gapped">
           <Rich body={{
             ...item.fields.corps,
