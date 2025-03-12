@@ -121,6 +121,10 @@
 
     li {
       margin: $s-2 0;
+
+      &::marker {
+        font-size: 0.75em;
+      }
     }
   }
 </style>
