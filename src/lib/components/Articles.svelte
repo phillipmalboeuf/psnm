@@ -12,7 +12,7 @@
 
 
 {#if articles.length > 0}
-  <ul class="articles list--nostyle flex flex--gapped">
+  <ul class="articles list--nostyle flex flex--thick_gapped">
     {#each articles as article}
       <Article {article} />
     {/each}
@@ -24,5 +24,9 @@
 <style lang="scss">
   ul.articles {
     margin-bottom: $s5;
+
+    :global(li) {
+      margin-bottom: $s5;
+    }
   }
 </style>

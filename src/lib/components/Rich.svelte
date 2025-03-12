@@ -114,5 +114,9 @@
       column-count: 2;
       column-gap: $s1;
     }
+
+    li {
+      margin-bottom: $s-1;
+    }
   }
 </style>

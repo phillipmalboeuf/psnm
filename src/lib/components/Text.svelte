@@ -232,8 +232,16 @@
         .inside {
           padding-left: $s1;
           border-left: 1px dotted;
+
+          
         }
       }
+    }
+
+    .inside {
+      :global(p) {
+            // margin-left: auto;
+          }
     }
 
     &.padded {
@@ -266,6 +274,10 @@
     }
 
     .titre {
+      h3 {
+        // margin-bottom: $s3;
+      }
+
       @media (max-width: $mobile) {
         margin-bottom: $s1;
 

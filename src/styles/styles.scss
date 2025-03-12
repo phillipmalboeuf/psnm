@@ -606,7 +606,8 @@ video {
 
 strong,
 .strong {
-	font-weight: 700;
+	font-weight: 600;
+	// text-shadow: 0 0px currentColor;
 }
 
 dialog {
@@ -681,7 +682,7 @@ dialog {
 	background-color: $beige-pale;
 	color: $noir;
 }
-.blanc { background-color: $blanc; }
+.blanc { background-color: $blanc; color: $noir; }
 .bleu {
 	background-color: $bleu;
 	color: $bleu-fonce;
@@ -725,7 +726,7 @@ dialog {
 }
 .rose {
 	background-color: $rose;
-	color: $blanc;
+	color: $noir;
 }
 .rose-pale {
 	background-color: $rose-pale;
