@@ -239,9 +239,9 @@
     }
 
     .inside {
-      :global(p) {
-            // margin-left: auto;
-          }
+      :global(hr:first-child) {
+        margin-top: $s2;
+      }
     }
 
     &.padded {

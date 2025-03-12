@@ -9,13 +9,13 @@
   const { article, wide=true } : { article: Entry<TypeArticleSkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>, wide?: boolean } = $props()
 </script>
 
-
-<li class="col col--3of12 col--mobile--12of12 {article.fields.categorie.fields.couleur}" class:col--6of12={wide && article.fields.vedette}>
+{#if article?.fields}
+<li class="col col--3of12 col--mobile--12of12 {article.fields.categorie?.fields.couleur}" class:col--6of12={wide && article.fields.vedette}>
   <a href="/actualités/{article.fields.id}" class="flex">
     <article class="flex flex--spaced padded col col--mobile--12of12" class:col--6of12={wide && article.fields.vedette}>
       <h5>{article.fields.titre}</h5>
 
-      <em>{article.fields.categorie.fields.titre}</em>
+      <em>{article.fields.categorie?.fields.titre}</em>
       <date>{date(article.fields.date)}</date>
     </article>
 
@@ -24,6 +24,7 @@
     </figure>
   </a>
 </li>
+{/if}
 
 
 <style lang="scss">

@@ -113,10 +113,14 @@
     &.long {
       column-count: 2;
       column-gap: $s1;
+
+      :global(*) {
+        break-inside: avoid-column;
+      }
     }
 
     li {
-      margin-bottom: $s-1;
+      margin: $s-2 0;
     }
   }
 </style>

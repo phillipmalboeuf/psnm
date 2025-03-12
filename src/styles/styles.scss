@@ -531,6 +531,11 @@ table {
 		width: calc(100% / var(--length));
 		vertical-align: top;
 
+		.mauve-fonce &,
+		.rose-fonce &, 
+		.bleu-fonce &,
+		.vert-fonce & { border-color: rgba($blanc, 0.25); }
+
 		strong:last-child:first-child {
 			font-weight: normal;
 			font-size: $s2;
