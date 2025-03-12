@@ -368,7 +368,7 @@
         :global(svg) {
           position: absolute;
           bottom: -1px;
-          right: -1px;
+          right: -2px;
           height: calc(100% + 2px);
           width: auto;
           color: $blanc;
