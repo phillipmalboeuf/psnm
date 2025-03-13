@@ -5,6 +5,7 @@
   import Rich from './Rich.svelte'
   import Media from './Media.svelte'
   import Link from './Link.svelte'
+  import Ecole from './Ecole.svelte';
 
   let { item, first = false }: {
     item: Entry<TypeHeroSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -12,10 +13,10 @@
   } = $props()
 </script>
 
-<section class="hero flex flex--bottom" id={item.fields.id} class:full={item.fields.full} class:first={first}>
+<section class="hero flex flex--bottom" id={item.fields.id} class:full={item.fields.full} class:gros={item.fields.grosText} class:first={first}>
   <div class="hero__content flex flex--column flex--gapped">
     {#if item.fields.titre}
-      <h1>{@html item.fields.titre}</h1>
+      <h1 style:--length={item.fields.titre.length}>{@html item.fields.titre}</h1>
     {/if}
 
     <!-- {#if item.fields.sousTitre}
@@ -26,11 +27,15 @@
       <Rich body={item.fields.corps} />
     {/if}
 
-    <!-- {#if item.fields.cta}
-      <Link href={item.fields.cta.fields.url}>
-        {item.fields.cta.fields.texte}
-      </Link>
-    {/if} -->
+    {#if item.fields.liens?.length}
+      {#each item.fields.liens as link}
+        <Link className="button button--grey" {link} />
+      {/each}
+    {/if}
+
+    {#if item.fields.grosText}
+      <Ecole />
+    {/if}
   </div>
 
   {#if item.fields.media}
@@ -97,6 +102,31 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+    }
+
+    &.gros {
+
+      .hero__content {
+        padding: 0;
+        color: currentColor;
+        min-height: 100lvh;
+        border-top: 1px solid;
+
+        h1 {
+          font-size: calc(1vw * var(--length));
+          margin-bottom: 0;
+        }
+
+        :global(svg) {
+          margin-top: auto;
+          margin-bottom: $s5;
+        }
+      }
+
+      .hero__media {
+        position: static;
+        background-color: transparent;
       }
     }
   }

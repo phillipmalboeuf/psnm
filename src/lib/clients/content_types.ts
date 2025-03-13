@@ -6,8 +6,8 @@ export interface TypeArticleFields {
     date: EntryFieldTypes.Date;
     categorie?: EntryFieldTypes.EntryLink<TypeCategorieSkeleton>;
     image?: EntryFieldTypes.AssetLink;
-    media?: EntryFieldTypes.AssetLink;
     focalPoint?: EntryFieldTypes.Object;
+    media?: EntryFieldTypes.AssetLink;
     vedette?: EntryFieldTypes.Boolean;
     contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeGallerieSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
@@ -68,7 +68,7 @@ export interface TypeGallerieFields {
     titre?: EntryFieldTypes.Symbol;
     id: EntryFieldTypes.Symbol;
     corps?: EntryFieldTypes.RichText;
-    type?: EntryFieldTypes.Symbol<"Descriptions" | "Slider" | "Icons">;
+    type?: EntryFieldTypes.Symbol<"Descriptions" | "Icons" | "Slider">;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
 }
@@ -88,6 +88,7 @@ export interface TypeHeroFields {
     mobileMedia?: EntryFieldTypes.AssetLink;
     liens?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeLienDeNavigationSkeleton>>;
     full?: EntryFieldTypes.Boolean;
+    grosText?: EntryFieldTypes.Boolean;
 }
 
 export type TypeHeroSkeleton = EntrySkeletonType<TypeHeroFields, "hero">;

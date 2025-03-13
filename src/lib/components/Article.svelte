@@ -20,7 +20,7 @@
     </article>
 
     <figure class="col col--mobile--12of12" class:col--6of12={wide && article.fields.vedette}>
-      <Media media={article.fields.image} ar={0.66} />
+      <Media media={article.fields.image} />
     </figure>
   </a>
 </li>
