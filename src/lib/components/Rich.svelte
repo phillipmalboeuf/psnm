@@ -1,8 +1,12 @@
 <script lang="ts">
   import type { Document } from '@contentful/rich-text-types'
   import Media from './Media.svelte'
+  import type { Asset } from 'contentful'
 
   let { body, collapsable, open }: { body: Document, collapsable?: boolean, open?: boolean } = $props()
+
+  let hover = $state<Asset<"WITHOUT_UNRESOLVABLE_LINKS">>()
+  let mouse = $state<{x: number, y: number}>()
 </script>
 
 {#snippet m(mark)}
@@ -29,9 +33,9 @@
   {#each mark.content as _mark}{@render m(_mark)}{/each}
 </a>
 {:else if mark.nodeType === 'asset-hyperlink'}
-<a href="{mark.data.target.fields.file.url}" target="_blank">
+<a href="{mark.data.target.fields.file.url}" target="_blank" onmouseenter={() => hover = mark.data.target} onmouseleave={() => hover = undefined} onmousemove={e => mouse = {x: e.clientX, y: e.clientY}}>
   {#each mark.content as _mark}{@render m(_mark)}{/each}
-</a>
+</a>{#if hover}<div class="hover" style="left: {mouse.x}px; top: {mouse.y}px;"><Media media={hover} width={300} /></div>{/if}
 {/if}
 {/snippet}
 
@@ -126,5 +130,11 @@
         font-size: 0.75em;
       }
     }
+  }
+
+  .hover {
+    position: fixed;
+    z-index: 1000;
+    transform: translate(-50%, calc(-100% - 10px));
   }
 </style>
