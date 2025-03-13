@@ -109,7 +109,7 @@
 
       <aside>
         {#if navigation.fields.lienDannonce}
-          <a href={navigation.fields.lienDannonce} class="annonce padded vert-pale flex flex--gapped">
+          <a href={navigation.fields.lienDannonce} class="annonce padded vert-pale flex flex--gapped" onclick={hide}>
             {#if navigation.fields.textDannonce}
             <div class="flex flex--column">
               <Rich body={navigation.fields.textDannonce} />

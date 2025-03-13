@@ -45,7 +45,7 @@
 </script>
 
 {#key item.sys.id}
-<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && item.fields.id === 'une-question'} class:vertical={item.fields.vertical} class:alt={item.fields.alt} class:inverse={item.fields.inverse} id={item.fields.id}>
+<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && item.fields.id === 'une-question'} class:vertical={item.fields.vertical} class:alt={item.fields.alt} class:inverse={item.fields.inverse} class:center={item.fields.center} id={item.fields.id}>
   {#if !item.fields.couleur}
   <hr />
   {/if}
@@ -55,7 +55,8 @@
       {#if item.fields.sousTitre}
         <small>{@html item.fields.sousTitre.replaceAll('\\n', '<br />')}</small>
       {/if}
-      <h3 class="col" class:col--mobile--6of12={petitMedia} class:h2={media && item.fields.full} class:h4={item.fields.alt}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
+      {#if item.fields.center}<hr>{/if}
+      <h3 class="col" class:col--mobile--6of12={petitMedia} class:h2={media && item.fields.full} class:h4={item.fields.alt || item.fields.center} class:h--alt={item.fields.center}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
 
       {#if petitMedia}
       <figure class="col col--mobile--6of12">
@@ -316,7 +317,8 @@
     }
 
     &.inverse {
-      flex-direction: column-reverse;
+      flex-direction: row-reverse;
+      align-items: stretch;
 
       .corps {
         flex-direction: column-reverse;
@@ -325,6 +327,31 @@
       .titre {
         flex-direction: column-reverse;
         gap: $s-2;
+        margin-top: auto;
+      }
+    }
+
+    &.center {
+      text-align: center;
+      width: 100%;
+      max-width: 100%;
+      min-height: calc(100lvh - ($s1 * 2));
+
+      .corps {
+
+      }
+      
+      .inside {
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+
+        :global(h3),
+        :global(h4),
+        :global(h5),
+        :global(h6) {
+          line-height: 1.1666;
+        }
       }
     }
 

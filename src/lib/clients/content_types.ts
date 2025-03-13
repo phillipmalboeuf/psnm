@@ -215,6 +215,7 @@ export interface TypeTextFields {
     alt?: EntryFieldTypes.Boolean;
     vertical?: EntryFieldTypes.Boolean;
     inverse?: EntryFieldTypes.Boolean;
+    center?: EntryFieldTypes.Boolean;
     bulleCaption?: EntryFieldTypes.Boolean;
     plus?: EntryFieldTypes.Boolean;
     corps?: EntryFieldTypes.RichText;
