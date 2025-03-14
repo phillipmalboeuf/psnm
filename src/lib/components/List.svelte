@@ -253,6 +253,28 @@
           }
         }
       }
+
+      &#quatre-profils-detude {
+        li {
+          // overflow: hidden;
+
+          :global(.media) {
+            width: calc(50% - var(--gap) + calc(var(--gap) / 2));
+            order: 1;
+            margin: calc($s-1 * -1) calc($s-1 * -1) calc($s-1 * -1) calc($s-1 * 1);
+
+            :global(img) {
+              border-radius: 0;
+              border-bottom-right-radius: $s-1;
+              border-top-right-radius: $s-1;
+            }
+          }
+
+          :global(.corps) {
+            width: calc(50% - var(--gap) + calc(var(--gap) / 2));
+          }
+        }
+      }
     }
 
     details {
