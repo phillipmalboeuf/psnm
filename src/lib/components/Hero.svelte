@@ -16,7 +16,7 @@
 <section class="hero flex flex--bottom" id={item.fields.id} class:full={item.fields.full} class:gros={item.fields.grosText} class:first={first}>
   <div class="hero__content flex flex--column flex--gapped">
     {#if item.fields.titre}
-      <h1 style:--length={item.fields.titre.length}>{@html item.fields.titre}</h1>
+      <h1 style:--length={item.fields.titre.length} class="col">{@html item.fields.titre}</h1>
     {/if}
 
     <!-- {#if item.fields.sousTitre}
@@ -80,7 +80,7 @@
 
       h1 {
         @media (min-width: $mobile) {
-          margin-bottom: $s0;
+          // margin-bottom: $s0;
         }
       }
 

@@ -54,6 +54,7 @@
   }
 
   onDestroy(() => {
+    if (!browser) return
     document.querySelector('#container').className = undefined
   })
 </script>
