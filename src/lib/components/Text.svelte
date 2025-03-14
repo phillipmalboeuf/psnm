@@ -47,7 +47,11 @@
 {#key item.sys.id}
 <section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && item.fields.id === 'une-question'} class:vertical={item.fields.vertical} class:alt={item.fields.alt} class:inverse={item.fields.inverse} class:center={item.fields.center} id={item.fields.id}>
   {#if !item.fields.couleur}
+  {#if item.fields.titre}
   <hr />
+  {:else}
+  <div />
+  {/if}
   {/if}
   <div class:col--6of12={!!media} class:col--8of12={item.fields.vertical} class:col--12of12={item.fields.full || !media} class:flex--column={!item.fields.full} class:flex--spaced={item.fields.full} class="corps col col--mobile--12of12 flex flex--gapped">
     {#if item.fields.titre}
@@ -335,7 +339,7 @@
       text-align: center;
       width: 100%;
       max-width: 100%;
-      min-height: calc(100lvh - ($s1 * 2));
+      min-height: calc(90lvh - ($s1 * 2));
 
       .corps {
 
@@ -378,6 +382,16 @@
           &:after {
             content: 'En lire moins';
           }
+        }
+      }
+    }
+
+    &#quatre-mots {
+      :global(h1) {
+        font-size: $s6;
+
+        @media (max-width: $mobile) {
+          font-size: $s4;
         }
       }
     }
