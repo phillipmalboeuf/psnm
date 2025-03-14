@@ -358,7 +358,7 @@
       }
       
       .inside {
-        margin: auto;
+        margin: auto !important;
         justify-content: center;
         align-items: center;
 
