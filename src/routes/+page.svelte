@@ -10,6 +10,7 @@
   import Popup from '$lib/components/Popup.svelte'
   
   import type { PageData } from './$types'
+  import { onDestroy } from 'svelte';
   let { data }: { data: PageData } = $props()
 
   let visibleSections = $state(new Set<number>())
@@ -51,6 +52,10 @@
       }
     }
   }
+
+  onDestroy(() => {
+    document.querySelector('#container').className = undefined
+  })
 </script>
 
 {#if data.page.fields.popup}
