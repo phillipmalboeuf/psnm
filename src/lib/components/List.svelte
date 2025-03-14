@@ -414,6 +414,11 @@
 
           :global(> div) {
             flex: 1;
+            margin-top: 0;
+          }
+
+          :global(.list--nostyle) {
+            margin-top: 0;
           }
 
           :global(hr) {
