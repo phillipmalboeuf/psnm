@@ -35,7 +35,7 @@
   {#if item.fields.titre}
     <hr />
     <div class="flex flex--gapped">
-      <h4 class="col col--6of12">{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
+      <h4 class="col col--6of12 h--alt">{@html item.fields.titre.replaceAll('\\n', '<br />')}</h4>
       
       <nav class="col col--6of12 flex flex--gapped flex--end">
         {#if item.fields.liens && item.fields.liens.length > 0}
