@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { browser } from '$app/environment'
   import { isTypeHero, isTypeList, isTypeText, isTypeFormulaire, isTypeGallerie } from '$lib/clients/content_types'
 
   import Hero from '$lib/components/Hero.svelte'
@@ -10,6 +11,46 @@
   
   import type { PageData } from './$types'
   let { data }: { data: PageData } = $props()
+
+  let visibleSections = $state(new Set<number>())
+
+  function onIntersection(index: number, entry: IntersectionObserverEntry) {
+    if (entry.isIntersecting) {
+      visibleSections.add(index)
+    } else {
+      visibleSections.delete(index)
+    }
+
+    const currentSection = Math.max(...new Set([...visibleSections].sort((a, b) => b - a)), -1)
+    
+    if (data.page.fields.multiCouleurs && data.page.fields.multiCouleurs[currentSection]) {
+      document.querySelector('#container').className = data.page.fields.multiCouleurs[currentSection]
+    } else {
+      document.querySelector('#container').className = data.page.fields.couleur
+    }
+  }
+
+  function observeSection(element: HTMLElement, index: number) {
+    if (!browser) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          onIntersection(index, entry)
+        })
+      },
+      {
+        threshold: 0.2 // Section is considered "visible" when 20% is in view
+      }
+    )
+
+    observer.observe(element)
+    return {
+      destroy() {
+        observer.unobserve(element)
+      }
+    }
+  }
 </script>
 
 {#if data.page.fields.popup}
@@ -18,7 +59,7 @@
 
 {#if data.page.fields.contenu?.length}
 {#each data.page.fields.contenu as item, i}
-<section>
+<section use:observeSection={i}>
   {#if isTypeText(item)}
   <Text {item} />
   {:else if isTypeList(item)}
@@ -52,5 +93,10 @@
 <style lang="scss">
   section {
     margin: $s5 0;
+    transition: opacity 0.3s ease;
+
+    &.visible {
+      opacity: 1;
+    }
   }
 </style>

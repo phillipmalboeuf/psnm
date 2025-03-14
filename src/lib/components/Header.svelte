@@ -51,7 +51,7 @@
     {#if navigation.fields.liensBonus?.length}
       {#each navigation.fields.liensBonus as link, index}
         {#if link.fields.destination.startsWith('/recherche')}
-        <Link className={'button button--none'} {link} {hide}>
+        <Link className={'button button--none search-button'} {link} {hide}>
           <Icon icon="search" label="Rechercher" />
         </Link>
         {:else if link.fields.destination.startsWith('https://portail.psnm.qc.ca')}
@@ -150,6 +150,57 @@
     &.backed {
       background: $blanc;
       // box-shadow: 0 0 10px rgba($sarcelle, 0.1);
+    }
+
+    :global(.mauve-fonce) & {
+      &.backed,
+      &.visible,
+      nav,
+      .menu-button,
+      :global(.search-button svg),
+      .button--grey {
+        color: $mauve-fonce;
+      }
+    }
+		:global(.rose-fonce) & {
+      &.backed,
+      &.visible,
+      nav,
+      .menu-button,
+      :global(.search-button svg),
+      .button--grey {
+        color: $bourgogne;
+      }
+    }
+		:global(.bleu-fonce) & {
+      &.backed,
+      &.visible,
+      nav,
+      .menu-button,
+      :global(.search-button svg),
+      .button--grey {
+        color: $bleu-fonce;
+      }
+    }
+		:global(.vert-fonce) & {
+      &.backed,
+      &.visible,
+      nav,
+      .menu-button,
+      :global(.search-button svg),
+      .button--grey {
+        color: $vert-fonce;
+      }
+    }
+		:global(.sarcelle) & {
+      &.backed,
+      &.visible,
+      nav,
+      .menu-button,
+      :global(.search-button svg),
+      .button--grey {
+        color: $sarcelle;
+      }
     }
 
     .logo,

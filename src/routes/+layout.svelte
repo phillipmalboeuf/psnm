@@ -22,31 +22,34 @@
 	{/if}
 </svelte:head>
 
-<div class="{$page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')} {$page.data.page?.fields.couleur}">
-	<!-- <Dialog /> -->
+<div id="container" class="{$page.data.page?.fields.couleur}">
+	<div class="{$page.route.id?.replaceAll('/', '-').replaceAll('[', '').replaceAll(']', '')} {$page.url.pathname.replaceAll('/', '-')}">
+		<!-- <Dialog /> -->
 
-	<!-- <Intro /> -->
-	<Header navigation={data.navigations['menu']} buttons={data.navigations['boutons-menu']} />
+		<!-- <Intro /> -->
+		<Header navigation={data.navigations['menu']} buttons={data.navigations['boutons-menu']} />
 
-	<main>
-		{@render children()}
-	</main>
+		<main>
+			{@render children()}
+		</main>
 
-	<Footer 
-		navigation={data.navigations['footer']}
-		politiques={data.navigations['politiques']}
-		sociaux={data.navigations['sociaux']}
-	/>
-<!-- 
-	<Footer navigation={data.navigations['navigation']}
-		footer={data.navigations['footer']}
-		social={data.navigations['social']}
-		work={data.navigations['work']}
-		disclaimers={data.navigations['disclaimers']} /> -->
+		<Footer 
+			navigation={data.navigations['footer']}
+			politiques={data.navigations['politiques']}
+			sociaux={data.navigations['sociaux']}
+		/>
+	<!-- 
+		<Footer navigation={data.navigations['navigation']}
+			footer={data.navigations['footer']}
+			social={data.navigations['social']}
+			work={data.navigations['work']}
+			disclaimers={data.navigations['disclaimers']} /> -->
+	</div>
 </div>
 
 <style lang="scss">
-	div {
+	:global(#container) {
+		transition: background-color 0.666s, color 0.666s;
 	}
 
 	main {

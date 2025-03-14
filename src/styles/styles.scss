@@ -539,7 +539,8 @@ table {
 		.mauve-fonce &,
 		.rose-fonce &, 
 		.bleu-fonce &,
-		.vert-fonce & { border-color: rgba($blanc, 0.25); }
+		.vert-fonce &,
+		.sarcelle & { border-color: rgba($blanc, 0.25); }
 
 		strong:last-child:first-child {
 			font-weight: normal;
@@ -720,7 +721,7 @@ dialog {
 }
 .mauve {
 	background-color: $mauve;
-	color: $blanc;
+	color: $mauve-fonce;
 }
 .mauve-fonce { 
   background-color: $mauve-fonce; 
