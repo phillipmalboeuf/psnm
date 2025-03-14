@@ -255,7 +255,7 @@
       }
     }
 
-    &:not(.full) {
+    &:not(.full):not(.inverse) {
       .titre + .inside {
         margin-top: $s1;
       }
