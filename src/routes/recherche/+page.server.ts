@@ -8,8 +8,8 @@ export const load = (async ({ locals, url, params }) => {
   if (!url.searchParams.has('q')) return
   
   const [pages, articles] = await Promise.all([
-    content.getEntries<TypePageSkeleton>({ content_type: "page", include: 2, "query": url.searchParams.get('q') }),
-    content.getEntries<TypeArticleSkeleton>({ content_type: "article", include: 2, "query": url.searchParams.get('q') }),
+    content.getEntries<TypePageSkeleton>({ content_type: "page", include: 2, "query": url.searchParams.get('q'), select: ["sys.id", "sys.contentType", "fields.id", "fields.titre"] }),
+    content.getEntries<TypeArticleSkeleton>({ content_type: "article", include: 2, "query": url.searchParams.get('q'), select: ["sys.id", "sys.contentType", "fields.id", "fields.titre"] }),
   ])
 
   return {

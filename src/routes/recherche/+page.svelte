@@ -10,9 +10,10 @@
 </script>
 
 <nav class="padded flex flex--gapped flex--spaced">
-  <!-- <div class="col">
-    <a href="/products" class="button button--green"><svg width="9" height="17" viewBox="0 0 9 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 1L1 8.5L8 16" stroke="currentColor"/></svg> {languageTag() === 'fr' ? 'Produits' : 'Products'}</a>
-  </div> -->
+  <div class="col col--12of12">
+    <hr>
+    <h2>Recherche</h2>
+  </div>
   <div class="col col--4of12 col--mobile--12of12">
     <Search />
   </div>
@@ -20,21 +21,29 @@
 
 {#if $page.url.searchParams.get("q")}
 <main class="padded">
+  <hr>
+  <h4>Résultats pour "{ $page.url.searchParams.get("q") }"</h4>
+  
   {#if data.pages?.items?.length || data.articles?.items?.length}
-    <ul class="list--nostyle">
+    <table>
+      <tbody>
       {#each [...(data.pages?.items || []), ...(data.articles?.items || [])]
         .sort((a, b) => new Date(b.sys.updatedAt).getTime() - new Date(a.sys.updatedAt).getTime()) as item}
-        <li>
-          <article>
-            <h5><a href="/{isTypeArticle(item) ? 'articles/' : ''}{item.fields.id}">{item.fields.titre}</a></h5>
+        <tr>
+          <td>
+            <h5 class="flex flex--gapped flex--spaced">
+              <a href="/{isTypeArticle(item) ? 'actualités/' : ''}{item.fields.id}">{item.fields.titre}</a>
+              <a class="button button--grey" href="/{isTypeArticle(item) ? 'actualités/' : ''}{item.fields.id}">Voir plus</a>
+            </h5>
             <!-- {#if item.fields.description}
               <p>{@html item.fields.description.replaceAll('\\n', '<br />')}</p>
             {/if} -->
             <!-- <small>{new Date(item.sys.createdAt).toLocaleDateString()}</small> -->
-          </article>
-        </li>
+          </td>
+        </tr>
       {/each}
-    </ul>
+      </tbody>
+    </table>
   {:else}
     <p>Aucun résultat trouvé</p>
   {/if}
@@ -42,9 +51,17 @@
 {/if}
 
 <style lang="scss">
-  nav,
+  nav {
+    h2 {
+      margin-bottom: $s3;
+    }
+  }
+
   main {
-    // margin: ($base * 2) 0;
-    // padding: 0 $base;
+    
+    table,
+    p {
+      margin: $s2 0;
+    }
   }
 </style>
