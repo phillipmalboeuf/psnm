@@ -60,7 +60,7 @@
 
 <style lang="scss">
   section {
-    max-width: 66ch;
+    max-width: 70ch;
     margin: 0 auto;
 
     &.padded {

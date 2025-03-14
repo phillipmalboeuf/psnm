@@ -329,7 +329,11 @@ button,
 		.bleu-pale &, 
 		.jaune &,
 		.beige-pale &,
-		.vert-pale & { background: rgba($noir, 0.1); }
+		.vert-pale &,
+		.vert &,
+		.bleu &,
+		.rose &,
+		.aqua & { background: rgba($noir, 0.1); }
 
 		&:hover,
 		&:focus {
@@ -530,7 +534,7 @@ table {
 	td,
 	th {
 		font-weight: normal;
-		border-top: 1px solid rgba($accent, 0.25);
+		border-top: 1px solid rgba($noir, 0.25);
 		padding: ($s-2) ($s2) ($s-2) 0;
 		white-space: pre-line;
 		width: calc(100% / var(--length));
@@ -540,7 +544,8 @@ table {
 		.rose-fonce &, 
 		.bleu-fonce &,
 		.vert-fonce &,
-		.sarcelle & { border-color: rgba($blanc, 0.25); }
+		.sarcelle &,
+		.bourgogne & { border-color: rgba($blanc, 0.25); }
 
 		strong:last-child:first-child {
 			font-weight: normal;
@@ -812,7 +817,7 @@ dialog {
   }
 
   &.flex--tight_gapped {
-    --gap: #{$s-1};
+    --gap: #{$s-2};
 
     @media (max-width: $mobile) {
       --gap: #{$s-2};

@@ -56,11 +56,13 @@
   <div class:col--6of12={!!media} class:col--8of12={item.fields.vertical} class:col--12of12={item.fields.full || !media} class:flex--column={!item.fields.full} class:flex--spaced={item.fields.full} class="corps col col--mobile--12of12 flex flex--gapped">
     {#if item.fields.titre}
     <div class="titre flex flex--column flex--gapped col col--mobile--12of12" class:col--5of12={item.fields.full}>
-      {#if item.fields.sousTitre}
-        <small>{@html item.fields.sousTitre.replaceAll('\\n', '<br />')}</small>
-      {/if}
-      {#if item.fields.center}<hr>{/if}
-      <h3 class="col" class:col--mobile--6of12={petitMedia} class:h2={media && item.fields.full} class:h4={item.fields.alt || item.fields.center} class:h--alt={item.fields.center}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
+      <div class="flex flex--column flex--tight_gapped">
+        {#if item.fields.sousTitre}
+          <small>{@html item.fields.sousTitre.replaceAll('\\n', '<br />')}</small>
+        {/if}
+        {#if item.fields.center}<hr>{/if}
+        <h3 class="col" class:col--mobile--6of12={petitMedia} class:h2={(media && item.fields.full) || !/^[A-Za-z]/.test(item.fields.titre)} class:h4={item.fields.alt || item.fields.center} class:h--alt={item.fields.center}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
+      </div>
 
       {#if petitMedia}
       <figure class="col col--mobile--6of12">
@@ -246,6 +248,16 @@
     .inside {
       :global(hr:first-child) {
         margin-top: $s2;
+      }
+
+      ul {
+        margin-top: $s2;
+      }
+    }
+
+    &:not(.full) {
+      .titre + .inside {
+        margin-top: $s1;
       }
     }
 
