@@ -519,6 +519,10 @@
           display: none;
         }
 
+        :global(.inside) {
+          width: 100%;
+        }
+
         summary {
           display: flex;
           justify-content: space-between;
