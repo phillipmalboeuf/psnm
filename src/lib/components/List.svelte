@@ -495,6 +495,7 @@
           width: 100%;
           padding: $s-2 0;
           margin-bottom: 0;
+          transition: background-color 0.333s;
 
           :global(svg) {
             transition: transform 0.333s;
@@ -502,6 +503,10 @@
 
           :global(svg line) {
             transition: opacity 0.333s;
+          }
+
+          &:hover {
+            background-color: $beige-pale;
           }
 
           @media (max-width: $mobile) {

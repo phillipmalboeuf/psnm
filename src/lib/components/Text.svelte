@@ -45,7 +45,7 @@
 </script>
 
 {#key item.sys.id}
-<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && item.fields.id === 'une-question'} class:vertical={item.fields.vertical} class:alt={item.fields.alt} class:inverse={item.fields.inverse} class:center={item.fields.center} id={item.fields.id}>
+<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && (item.fields.id?.includes('une-question') || item.fields.id?.includes('ce-profil-vous-interesse'))} class:vertical={item.fields.vertical} class:alt={item.fields.alt} class:inverse={item.fields.inverse} class:center={item.fields.center} id={item.fields.id}>
   {#if !item.fields.couleur}
   {#if item.fields.titre}
   <hr />
@@ -55,13 +55,13 @@
   {/if}
   <div class:col--6of12={!!media} class:col--8of12={item.fields.vertical} class:col--12of12={item.fields.full || !media} class:flex--column={!item.fields.full} class:flex--spaced={item.fields.full} class="corps col col--mobile--12of12 flex flex--gapped">
     {#if item.fields.titre}
-    <div class="titre flex flex--column flex--gapped col col--mobile--12of12" class:col--5of12={item.fields.full}>
+    <div class="titre flex flex--column flex--gapped col col--mobile--12of12" class:col--6of12={item.fields.full}>
       <div class="flex flex--column flex--tight_gapped">
         {#if item.fields.sousTitre}
           <small>{@html item.fields.sousTitre.replaceAll('\\n', '<br />')}</small>
         {/if}
         {#if item.fields.center}<hr>{/if}
-        <h3 class="col" class:col--mobile--6of12={petitMedia} class:h2={(media && item.fields.full) || !/^[A-Za-z]/.test(item.fields.titre)} class:h4={item.fields.alt || item.fields.center} class:h--alt={item.fields.center}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
+        <h3 class="col" class:col--mobile--6of12={petitMedia} class:h2={(media && item.fields.full) || !/[A-Za-z]/.test(item.fields.titre)} class:h4={item.fields.alt || item.fields.center} class:h--alt={item.fields.center}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
       </div>
 
       {#if petitMedia}
@@ -73,7 +73,7 @@
     {/if}
 
     {#if item.fields.corps || item.fields.liens?.length}
-    <div class="inside flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--7of12={item.fields.full && (!media || !!item.fields.couleur)}>
+    <div class="inside flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--6of12={item.fields.full && (!media || !!item.fields.couleur)}>
       {#if item.fields.corps}
       {#if item.fields.plus && item.fields.corps.content.length > 1}
       <Rich body={{
