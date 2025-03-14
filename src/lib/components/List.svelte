@@ -488,6 +488,10 @@
 
         :global(section) {
           height: 100%;
+
+          :global(.corps > div) {
+            margin-top: 0;
+          }
         }
 
         :global(figure) {
