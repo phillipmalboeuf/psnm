@@ -490,7 +490,7 @@
           height: 100%;
 
           :global(.corps > div) {
-            margin-top: 0;
+            margin-top: 0 !important;
           }
         }
 
