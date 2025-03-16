@@ -263,7 +263,7 @@
 
     &.padded {
       border-radius: $s0;
-      max-width: calc($max - $s5);
+      max-width: calc(1220px - $s5);
       margin: 0 auto;
       align-items: stretch;
 
@@ -351,7 +351,10 @@
       text-align: center;
       width: 100%;
       max-width: 100%;
-      min-height: calc(90lvh - ($s1 * 2));
+
+      &.padded {
+        min-height: calc(90lvh - ($s1 * 2));
+      }
 
       .corps {
 
