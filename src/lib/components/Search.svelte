@@ -17,7 +17,7 @@
     <!-- <label for="q">Recherche</label> -->
     <input type="text" name="q" id="q" value={$page.url.searchParams.get("q")} autofocus={!!$page.url.searchParams.get("q")} placeholder="Recherche">
   </fieldset>
-  <button class="button--none" type="submit"><Icon icon="search" label="Rechercher" /></button>
+  <button class="button--accent button--circle" type="submit"><Icon icon="search" label="Rechercher" /></button>
 </form>
 
 <style lang="scss">

@@ -51,7 +51,7 @@
     {#if navigation.fields.liensBonus?.length}
       {#each navigation.fields.liensBonus as link, index}
         {#if link.fields.destination.startsWith('/recherche')}
-        <Link className={'button button--none search-button'} {link} {hide}>
+        <Link className={'button button--grey button--circle search-button'} {link} {hide}>
           <Icon icon="search" label="Rechercher" />
         </Link>
         {:else if link.fields.destination.startsWith('https://portail.psnm.qc.ca')}
@@ -63,7 +63,7 @@
         {/if}
       {/each}
     {/if}
-    <button class="button menu-button" onclick={toggleMenu}>
+    <button class="button button--accent menu-button" onclick={toggleMenu}>
       <Icon icon={visible ? 'close' : 'menu'} label={visible ? 'Fermer' : 'Menu'} />
       <span>{visible ? 'Fermer' : 'Menu'}</span>
     </button>
@@ -206,7 +206,7 @@
     .logo,
     :global(.button svg),
     :global(.button) {
-      transition: color 0.333s;
+      transition: background-color 0.333s, color 0.333s;
     }
 
     &:not(.backed):not(.visible):global(:has(+ main .hero.first.full)) {
@@ -258,12 +258,12 @@
 
   .menu-button {
     @media (min-width: $mobile) {
-      background-color: currentColor;
-      border-color: transparent;
+      // background-color: currentColor;
+      // border-color: transparent;
 
-      span {
-        color: $blanc;
-      }
+      // span {
+      //   color: $blanc;
+      // }
 
       :global(svg) {
         display: none;

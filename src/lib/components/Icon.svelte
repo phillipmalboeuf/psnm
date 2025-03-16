@@ -4,7 +4,7 @@
 
 {#if icon === 'search'}
 <svg aria-label={label} width="32" height="32" viewBox="0 0 32 32">
-<circle cx="16" cy="16" r="16" fill="#F7F7F0"/>
+<!-- <circle cx="16" cy="16" r="16" fill="#F7F7F0"/> -->
 <path d="M15.0525 20.0689C17.8429 20.0689 20.105 17.8149 20.105 15.0344C20.105 12.254 17.8429 10 15.0525 10C12.2621 10 10 12.254 10 15.0344C10 17.8149 12.2621 20.0689 15.0525 20.0689Z" stroke="currentColor" stroke-width="1.79171" stroke-miterlimit="10"/>
 <path d="M18.9531 18.2236L23.5893 22.4842" stroke="currentColor" stroke-width="1.79171" stroke-miterlimit="10" stroke-linecap="round"/>
 </svg>
