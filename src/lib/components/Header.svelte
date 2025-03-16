@@ -140,7 +140,7 @@
     transition: color 0.333s, background-color 0.333s, box-shadow 0.333s, transform 0.666s;
 
     @media (max-width: $mobile) {
-      padding: $s0;
+      // padding: $s0;
     }
 
     &.scrolled {
@@ -210,14 +210,16 @@
     }
 
     &:not(.backed):not(.visible):global(:has(+ main .hero.first.full)) {
-      .logo,
-      :global(.button--none) {
-        color: $blanc;
-      }
-      // color: $blanc;
+      @media (min-width: $mobile) {
+        .logo,
+        :global(.button--none) {
+          color: $blanc;
+        }
+        // color: $blanc;
 
-      :global(.button:not(.portail) svg) {
-        color: $accent;
+        :global(.button:not(.portail) svg) {
+          color: $accent;
+        }
       }
 
       // .menu-button {
@@ -238,8 +240,9 @@
 
     @media (max-width: $mobile) {
       position: absolute;
-      right: 0;
-      width: calc(100% - $s1);
+      top: $s-1;
+      right: $s-1;
+      width: calc(100% - calc($s1 * 2));
 
       :global(.button:not(.menu-button)) {
         transform: translateY(calc($s5 * -1));
@@ -247,6 +250,10 @@
 
         &:first-child {
           margin-right: auto;
+        }
+
+        &:nth-of-type(n + 4) {
+          display: none;
         }
 
         .visible & {
@@ -271,6 +278,8 @@
     }
 
     @media (max-width: $mobile) {
+      background-color: transparent !important;
+      color: $noir;
       border: none;
       padding: 0;
       font-size: 0;
