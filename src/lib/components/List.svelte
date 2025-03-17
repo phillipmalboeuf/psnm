@@ -95,7 +95,9 @@
                 } : undefined}
                 class:h2={item.fields.type === 'Italics'}
                 class:h3={item.fields.type !== 'Italics'}>
-                {listItem.fields.titre}
+                {#if 'titre' in listItem.fields}
+                  {listItem.fields.titre}
+                {/if}
                 {#if item.fields.type === 'Accordeon'}
                   <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <line x1="13.25" y1="0.525635" x2="13.25" y2="25.5256" stroke="currentColor" stroke-width="1.5"/>

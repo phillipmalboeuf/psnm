@@ -101,7 +101,7 @@ export function isTypeHero<Modifiers extends ChainModifiers, Locales extends Loc
 export interface TypeImageWithFocalPointFields {
     id: EntryFieldTypes.Symbol;
     image: EntryFieldTypes.AssetLink;
-    focalPoint?: EntryFieldTypes.Object;
+    focalPoint?: EntryFieldTypes.Object<{ focalPoint: { x: number; y: number } }>;
     coin?: EntryFieldTypes.Boolean;
 }
 

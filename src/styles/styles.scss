@@ -163,7 +163,7 @@ h6,
 .h6 {
 	font-size: $s0;
 	font-family: $body_font;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 	line-height: 1.33333333;
 
 	&:not(.col) {
@@ -516,6 +516,12 @@ input[type=checkbox] {
 
 	&.input--none {
 		display: none;
+	}
+}
+
+#philscookies {
+	input[type=checkbox] {
+		padding: 0;
 	}
 }
 
