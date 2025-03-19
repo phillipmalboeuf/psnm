@@ -679,6 +679,16 @@ strong,
 	// text-shadow: 0 0px currentColor;
 }
 
+em,
+.em {
+	font-style: italic;
+
+	table & {
+		font-style: normal;
+		opacity: 0.5;
+	}
+}
+
 dialog {
 	padding: 0;
 	border: none;
