@@ -93,8 +93,8 @@
                     details.open = true
                   }
                 } : undefined}
-                class:h2={item.fields.type === 'Italics'}
-                class:h3={item.fields.type !== 'Italics'}>
+                class:h2={item.fields.type === 'Italics' || (item.fields.type === 'Accordeon' && item.fields.items.length < 6)}
+                class:h3={item.fields.type === 'Pilules' || (item.fields.type === 'Accordeon' && item.fields.items.length >= 6)}>
                 {#if 'titre' in listItem.fields}
                   {listItem.fields.titre}
                 {/if}
