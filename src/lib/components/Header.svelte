@@ -69,7 +69,7 @@
     </button>
   </span>
   {#if visible}
-    <nav class="flex flex--gapped" transition:fly={{ y: '-100%', duration: 666 }}>
+    <nav class="flex flex--gapped" transition:fly={{ y: '-100%', duration: 666, opacity: 1 }}>
       {#if navigation.fields.liens?.length}
         {#each navigation.fields.liens as link, index}
           <div class="col col--mobile--12of12">
