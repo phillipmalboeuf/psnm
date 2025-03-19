@@ -115,11 +115,14 @@
 
   ul {
     &.long {
-      column-count: 2;
-      column-gap: $s1;
 
-      :global(*) {
-        break-inside: avoid-column;
+      @media (min-width: $mobile) {
+        column-count: 2;
+        column-gap: $s1;
+
+        :global(*) {
+          break-inside: avoid-column;
+        }
       }
     }
 

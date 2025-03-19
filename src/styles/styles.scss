@@ -266,6 +266,7 @@ button,
 	color: inherit;
 	font-family: inherit;
 	font-size: $s0;
+	font-weight: normal;
 	text-transform: inherit;
 	// line-height: 1;
 	border: 1px solid;
@@ -317,7 +318,7 @@ button,
 
 		&:hover,
 		&:focus {
-			background: $brun;
+			background: $noir;
 		}
 
 		.mauve-pale & {

@@ -173,8 +173,8 @@
       }
 
       @media (max-width: $mobile) {
-        bottom: $s-1;
-        right: $s-1;
+        position: static;
+        margin-top: $s1;
       }
     }
 

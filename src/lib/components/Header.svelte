@@ -156,7 +156,6 @@
       &.backed,
       &.visible,
       nav,
-      .menu-button,
       :global(.search-button svg),
       .button--grey {
         color: $mauve-fonce;
@@ -166,7 +165,6 @@
       &.backed,
       &.visible,
       nav,
-      .menu-button,
       :global(.search-button svg),
       .button--grey {
         color: $bourgogne;
@@ -176,7 +174,6 @@
       &.backed,
       &.visible,
       nav,
-      .menu-button,
       :global(.search-button svg),
       .button--grey {
         color: $bleu-fonce;
@@ -186,7 +183,6 @@
       &.backed,
       &.visible,
       nav,
-      .menu-button,
       :global(.search-button svg),
       .button--grey {
         color: $vert-fonce;
@@ -196,7 +192,6 @@
       &.backed,
       &.visible,
       nav,
-      .menu-button,
       :global(.search-button svg),
       .button--grey {
         color: $sarcelle;
