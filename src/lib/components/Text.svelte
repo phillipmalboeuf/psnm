@@ -455,6 +455,15 @@
         max-height: 66lvh;
       }
     }
+
+    section:first-child:not(.padded) & {
+      @media (max-width: $mobile) {
+        :global(img),
+        :global(video) {
+          aspect-ratio: 1 / 1;
+        }
+      }
+    }
   }
   
 
