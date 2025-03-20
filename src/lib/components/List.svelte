@@ -237,13 +237,14 @@
             margin-top: 20vw;
           }
         }
+
         li {
 
           :global(section) {
             padding: $s-1;
 
             @media (max-width: $mobile) {
-              &:global(:not(.padded)) {
+              &:not(:global(.padded)) {
                 padding: 0;
               }
             }
