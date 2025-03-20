@@ -502,6 +502,7 @@
           :global(img) {
             border-radius: 0;
             border-top-right-radius: $s5;
+            aspect-ratio: 1 / 1;
           }
         }
 
@@ -603,6 +604,10 @@
         @media (max-width: $mobile) {
           --slide-width: 90% !important;
         }
+
+        :global(.no-media.padded) {
+          max-width: 100%;
+        }
       }
     }
 
@@ -662,6 +667,10 @@
     }
 
     .image {
+      :global(img) {
+        max-height: 80lvh;
+      }
+
       &.coin {
         :global(img) {
           border-top-right-radius: 20vw;

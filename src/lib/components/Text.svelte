@@ -220,7 +220,7 @@
 
     &.no-media {
       display: inline-flex;
-      width: auto;
+      width: 100%;
       margin: 0 auto;
       justify-content: center;
       text-align: left;
@@ -416,6 +416,20 @@
     text-align: center;
   }
 
+  .media {
+    :global(img),
+    :global(video) {
+      max-height: 80lvh;
+      width: 100%;
+    }
+
+    .padded & {
+      :global(img),
+      :global(video) {
+        max-height: 66lvh;
+      }
+    }
+  }
   
 
   .embla {
