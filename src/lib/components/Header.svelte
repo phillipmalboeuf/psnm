@@ -47,7 +47,7 @@
     <!-- <Ecole /> -->
     <Logo />
   </a>
-  <span class="flex flex--gapped flex--middle">
+  <span class="flex flex--gapped flex--middle bonus">
     {#if navigation.fields.liensBonus?.length}
       {#each navigation.fields.liensBonus as link, index}
         {#if link.fields.destination.startsWith('/recherche')}
@@ -223,21 +223,23 @@
     }
   }
 
-  span,
+  .bonus,
   .menu-button,
   .logo {
     position: relative;
     z-index: 10;
   }
 
-  span {
+  .bonus {
     width: auto;
 
     @media (max-width: $mobile) {
       position: absolute;
-      top: $s-1;
-      right: $s-1;
-      width: calc(100% - calc($s1 * 2));
+      top: 0;
+      right: 0;
+      width: calc(100% - calc($s-1 * 1));
+      padding: $s-1 0;
+      gap: $s-1;
 
       :global(.button:not(.menu-button)) {
         transform: translateY(calc($s5 * -1));
@@ -255,6 +257,10 @@
           transform: translateY(0);
         }
       }
+
+      .visible & {
+        background-color: $blanc;
+      }
     }
   }
 
@@ -262,10 +268,6 @@
     @media (min-width: $mobile) {
       // background-color: currentColor;
       // border-color: transparent;
-
-      // span {
-      //   color: $blanc;
-      // }
 
       :global(svg) {
         display: none;
