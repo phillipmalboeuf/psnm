@@ -48,6 +48,10 @@
       opacity: 0.25;
       transition: opacity 0.333s;
 
+      @media (max-width: $mobile) {
+        padding: calc($s-2 / 4);
+      }
+
       &.active {
         opacity: 1;
       }

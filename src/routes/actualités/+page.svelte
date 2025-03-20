@@ -36,7 +36,7 @@
 
 {#if data.categories && data.categories.length > 0}
   <nav class="categories-nav">
-    <ul class="list--nostyle flex flex--gapped">
+    <ul class="list--nostyle flex flex--tight_gapped">
       <li>
         <a href="/actualités" class="button category-link" class:button--accent={!data.filter}>Toutes les actualités</a>
       </li>

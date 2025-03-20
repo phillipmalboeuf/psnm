@@ -49,8 +49,6 @@
   {#if !item.fields.couleur}
   {#if item.fields.titre || !item.fields.center}
   <hr />
-  {:else}
-  <div />
   {/if}
   {/if}
   <div class:col--6of12={!!media} class:col--8of12={item.fields.vertical} class:col--12of12={item.fields.full || !media} class:flex--column={!item.fields.full} class:flex--spaced={item.fields.full} class="corps col col--mobile--12of12 flex flex--gapped">
@@ -240,14 +238,19 @@
           padding-left: $s1;
           border-left: 1px dotted;
 
-          
+          @media (max-width: $mobile) {
+            padding-left: 0;
+            border-left: none;
+          }
         }
       }
     }
 
     .inside {
       :global(hr:first-child) {
-        margin-top: $s2;
+        @media (min-width: $mobile) {
+          margin-top: $s2;
+        }
       }
 
       ul {
@@ -258,6 +261,10 @@
     &:not(.full):not(.inverse) {
       .titre + .inside {
         margin-top: $s1;
+
+        @media (max-width: $mobile) {
+          margin-top: $s-1;
+        }
       }
     }
 
@@ -269,6 +276,21 @@
 
       .media.col--6of12 {
         order: -1;
+
+        :global(img),
+        :global(video) {
+          border-top-left-radius: $s-1;
+          border-bottom-left-radius: $s-1;
+        }
+
+        @media (max-width: $mobile) {
+          :global(img),
+          :global(video) {
+            border-top-left-radius: $s-1;
+            border-top-right-radius: $s-1;
+            border-bottom-left-radius: 0;
+          }
+        }
       }
 
       .corps.col--6of12 {
@@ -283,6 +305,10 @@
     &.full:not(.padded) {
       .media {
         margin-top: $s3;
+
+        @media (max-width: $mobile) {
+          margin-top: 0;
+        }
       }
     }
 
@@ -296,7 +322,7 @@
       }
 
       @media (max-width: $mobile) {
-        margin-bottom: $s1;
+        // margin-bottom: $s1;
 
         &:has(> .col--mobile--6of12) {
           flex-direction: row;

@@ -153,6 +153,10 @@
   .list {
     padding: $s1 0;
 
+    @media (max-width: $mobile) {
+      padding: 0;
+    }
+
     nav {
       margin-bottom: $s3;
 
@@ -238,6 +242,12 @@
           :global(section) {
             padding: $s-1;
 
+            @media (max-width: $mobile) {
+              &:global(:not(.padded)) {
+                padding: 0;
+              }
+            }
+
             :global(.corps) {
               width: 100%;
             }
@@ -269,6 +279,16 @@
               border-radius: 0;
               border-bottom-right-radius: $s-1;
               border-top-right-radius: $s-1;
+            }
+
+            @media (max-width: $mobile) {
+              :global(img) {
+                border-bottom-left-radius: $s-1;
+                border-top-right-radius: 0;
+              }
+
+              width: calc(100% + calc($s-1 * 2)) !important;
+              margin: calc($s-1 * 1) calc($s-1 * -1) calc($s-1 * -1) calc($s-1 * -1);
             }
           }
 
@@ -442,6 +462,10 @@
 
           :global(> div) {
             flex: 1;
+            margin-top: 0;
+          }
+
+          :global(.inside) {
             margin-top: 0;
           }
 

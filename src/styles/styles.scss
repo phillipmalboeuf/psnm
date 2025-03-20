@@ -127,7 +127,7 @@ h2,
 h3,
 .h3 {
 	font-size: $s3;
-	line-height: 1;
+	line-height: 1.1;
 
 	@media (max-width: $mobile) {
     font-size: $s2;
@@ -189,6 +189,10 @@ p {
 			// font-size: calc($s1 - 2px);
 			// line-height: 1.2;
 		}
+	}
+
+	&:empty {
+		display: none;
 	}
 
 	a:not(.button) {
@@ -478,6 +482,7 @@ textarea {
 
 	&::placeholder {
 		color: currentColor;
+		opacity: 0.5;
 	}
 	// &:not(:placeholder-shown) {
 	// 	padding: ($base * 0.75) $base ($base * 0.25);
@@ -592,6 +597,7 @@ table {
 		white-space: pre-line;
 		width: calc(100% / var(--length));
 		vertical-align: top;
+		overflow: hidden;
 
 		.mauve-fonce &,
 		.rose-fonce &, 
@@ -603,6 +609,12 @@ table {
 		strong:last-child:first-child {
 			// font-weight: normal;
 			// font-size: $s2;
+		}
+
+		@media (max-width: $mobile) {
+			&:has(p:first-child:empty) {
+				display: none;
+			}
 		}
 	}
 

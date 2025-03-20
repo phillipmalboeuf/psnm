@@ -101,8 +101,12 @@
     margin: $s5 0;
     transition: opacity 0.3s ease;
 
-    &.visible {
-      opacity: 1;
+    // &.visible {
+    //   opacity: 1;
+    // }
+
+    @media (max-width: $mobile) {
+      margin: $s2 0;
     }
   }
 </style>

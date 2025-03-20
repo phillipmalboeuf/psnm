@@ -111,6 +111,10 @@
   figure {
     margin: $s3 0;
     max-width: 66ch;
+
+    @media (max-width: $mobile) {
+      margin: $s2 0;
+    }
   }
 
   ul {

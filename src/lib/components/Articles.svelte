@@ -28,5 +28,13 @@
     :global(li) {
       margin-bottom: $s5;
     }
+
+    @media (max-width: $mobile) {
+      margin-bottom: $s3;
+
+      :global(li) {
+        margin-bottom: 0;
+      }
+    }
   }
 </style>
