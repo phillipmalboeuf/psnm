@@ -505,6 +505,8 @@
 
             @media (max-width: $mobile) {
               margin: $s1 0;
+              padding-left: 0;
+              border-left: none;
             }
           }
         }

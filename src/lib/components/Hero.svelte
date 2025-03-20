@@ -67,6 +67,7 @@
 
         @media (max-width: $mobile) {
           margin-top: calc(($s5 * -1) - ($s0 * 1) - 64px);
+          margin-bottom: calc(($s1 * 1));
         }
       }
     }

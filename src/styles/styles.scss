@@ -212,8 +212,8 @@ blockquote {
 	}
 
 	@media (max-width: $mobile) {
-    padding-top: $s0;
-		border-top: 1px solid;
+    // padding-top: $s0;
+		// border-top: 1px solid;
   }
 
 	@media (min-width: $mobile) {
