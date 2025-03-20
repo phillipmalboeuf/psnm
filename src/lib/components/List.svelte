@@ -120,7 +120,7 @@
               </article>
 
               {#if item.fields.type === 'Pilules'}
-                <Ecole type={{ 0: "two", 1: "three", 2: "four" }[index] as "two" | "three" | "four" || "two"} />
+                <Ecole type={{ 0: "two", 1: "three", 2: "four", 3: "five" }[index] as "two" | "three" | "four" | "five" || "two"} />
               {/if}
             </details>
           </li>
@@ -409,6 +409,10 @@
         }
 
         :global(svg.four) {
+          height: calc(66%);
+        }
+
+        :global(svg.five) {
           height: calc(50%);
         }
 
