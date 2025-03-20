@@ -101,6 +101,10 @@ h1,
 	// 	letter-spacing: -0.01em;
 	// }
 
+	@media (max-width: $tablet_landscape) {
+		font-size: $s4;
+	}
+
 	@media (max-width: $mobile) {
     font-size: $s3;
   }
@@ -108,6 +112,10 @@ h1,
 
 .h0 {
 	font-size: $s6;
+
+	@media (max-width: $tablet_landscape) {
+		font-size: $s5;
+	}
 
 	@media (max-width: $mobile) {
 		font-size: $s4;
