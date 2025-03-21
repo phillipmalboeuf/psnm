@@ -546,7 +546,7 @@
 
       &.Accordeon {
         width: 100%;
-        border-top: 1px solid rgba($accent, 0.25);
+        border-top: 1px solid color-mix(in srgb, currentColor 25%, transparent);
         // border-bottom: 1px solid;
 
         :global(.titre) {
@@ -568,6 +568,10 @@
 
           :global(svg) {
             transition: transform 0.333s;
+
+            @media (max-width: $tablet_portrait) {
+              padding: 3px;
+            }
           }
 
           :global(svg line) {
@@ -575,7 +579,9 @@
           }
 
           &:hover {
-            background-color: $beige-pale;
+            @media (hover: hover) {
+              background-color: color-mix(in srgb, currentColor 5%, transparent);
+            }
           }
 
           @media (max-width: $mobile) {
