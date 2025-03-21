@@ -565,6 +565,7 @@
 
         summary {
           display: flex;
+          gap: $s-1;
           justify-content: space-between;
           align-items: center;
           width: 100%;
