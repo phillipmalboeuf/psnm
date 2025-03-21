@@ -80,7 +80,7 @@
                   <li>
                     {#if sousLink.fields.sousLiens?.length}
                       <details>
-                        <summary class="flex flex--gapped flex--middle">
+                        <summary class="flex flex--tight_gapped flex--middle">
                           <Link {hide} link={sousLink} className={className(sousLink)} />
                           <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="#1C4526"/></svg>
                         </summary>
@@ -455,6 +455,14 @@
           &:after {
             
           }
+
+          svg {
+            background-color: $beige-pale;
+            width: $s0;
+            height: $s0;
+            padding: 3px;
+            border-radius: 50%;
+          }
         }
       }
     }
@@ -495,7 +503,7 @@
     }
 
     :global(.disabled) {
-      color: $noir;
+      // color: $noir;
       pointer-events: none;
     }
   }
