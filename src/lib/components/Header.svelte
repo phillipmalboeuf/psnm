@@ -82,7 +82,7 @@
                       <details>
                         <summary class="flex flex--tight_gapped flex--middle">
                           <Link {hide} link={sousLink} className={className(sousLink)} />
-                          <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="#1C4526"/></svg>
+                          <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor"/></svg>
                         </summary>
                         <ul class="list--nostyle">
                           {#each sousLink.fields.sousLiens as sousSousLink}
@@ -276,7 +276,7 @@
 
     @media (max-width: $mobile) {
       background-color: transparent !important;
-      color: $noir;
+      color: currentColor;
       border: none;
       padding: 0;
       font-size: 0;

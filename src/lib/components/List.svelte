@@ -240,6 +240,12 @@
 
         li {
 
+          &.image {
+            @media (max-width: $mobile) {
+              order: -1;
+            }
+          }
+
           :global(section) {
             padding: $s-1;
 
@@ -653,7 +659,9 @@
     }
 
     .question {
-      margin: $s-2;
+      @media (min-width: $mobile) {
+        margin: $s-2;
+      }
     }
 
     &.Timeline {
