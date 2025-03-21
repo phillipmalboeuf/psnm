@@ -54,7 +54,12 @@
 
   {#if item.fields.media && item.fields.media.length > 0}
     {#if item.fields.type === 'Slider' || item.fields.type === 'Icons'}
-    <div class="embla" class:icons={item.fields.type === 'Icons'} use:emblaCarouselSvelte={{ options: { ...options }, plugins, }} onemblaInit={e => embla = e.detail}>
+    <div class="embla" class:icons={item.fields.type === 'Icons'} use:emblaCarouselSvelte={{ options: {
+      ...options,
+      ...item.fields.type === 'Icons' ? {
+        slidesToScroll: 3
+      } : {}
+    }, plugins, }} onemblaInit={e => embla = e.detail}>
       <ul class="list--nostyle embla__container">
         {#each item.fields.media as media}
         <li class="embla__slide" class:description={media.fields.description}>
