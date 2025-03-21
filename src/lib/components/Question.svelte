@@ -21,8 +21,8 @@
         <h5>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h5>
       {/if}
 
-      <svg width="32" height="31" viewBox="0 0 32 31">
-        <rect x="0.5" y="0.000244141" width="31" height="31" rx="15.5" fill="#1B3244"/>
+      <svg width="32" height="31" class="button button--accent button--circle" viewBox="0 0 32 31">
+        <!-- <rect x="0.5" y="0.000244141" width="31" height="31" rx="15.5" fill="#1B3244"/> -->
         <line x1="16.0921" y1="8.00024" x2="16.0921" y2="23.0002" stroke="white" stroke-width="1.18421"/>
         <line x1="23.5" y1="15.5923" x2="8.5" y2="15.5923" stroke="white" stroke-width="1.18421"/>
       </svg>

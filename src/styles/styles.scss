@@ -328,38 +328,22 @@ button,
 		background: $accent;
 		border-color: transparent;
 
-		&:hover,
-		&:focus {
-			background: $noir;
-		}
-
 		.mauve-pale & {
 			background: $mauve-fonce;
-			&:hover,
-			&:focus {
-				background: $mauve;
-			}
 		}
 		.rose-pale & {
 			background: $bourgogne;
-			&:hover,
-			&:focus {
-				background: $rose;
-			}
 		}
 		.bleu-pale & {
 			background: $bleu-fonce;
-			&:hover,
-			&:focus {
-				background: $bleu;
-			}
 		}
 		.vert-pale & {
 			background: $vert-fonce;
-			&:hover,
-			&:focus {
-				background: $vert;
-			}
+		}
+
+		&:hover,
+		&:focus {
+			background: $noir;
 		}
 	}
 
