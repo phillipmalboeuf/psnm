@@ -382,6 +382,10 @@
         min-height: calc(90lvh - ($s1 * 2));
       }
 
+      &:not(.padded) {
+        padding: $s1 0;
+      }
+
       .corps {
 
       }

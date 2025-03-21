@@ -280,6 +280,29 @@
       border: none;
       padding: 0;
       font-size: 0;
+
+      :global(.mauve-fonce) &,
+      :global(.rose-fonce) &,
+      :global(.bleu-fonce) &,
+      :global(.vert-fonce) &,
+      :global(.sarcelle) & {
+        color: $noir;
+
+        :global(circle) {
+          fill: $blanc;
+        }
+      }
+
+      :global(.mauve-pale) &,
+      :global(.rose-pale) &,
+      :global(.bleu-pale) &,
+      :global(.jaune) &,
+      :global(.beige-pale) &,
+      :global(.vert-pale) & {
+        :global(circle) {
+          fill: $blanc;
+        }
+      }
     }
   }
 
