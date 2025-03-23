@@ -111,13 +111,17 @@
       .hero__content {
         padding: 0;
         color: currentColor;
-        min-height: 100lvh;
+        min-height: calc(100svh - ($s1 * 2));
         border-top: 1px solid;
 
         h1 {
           font-size: calc(1vw * var(--length));
           margin-bottom: 0;
           white-space: nowrap;
+
+          @media (max-width: $mobile) {
+            font-size: calc(0.9vw * var(--length));
+          }
         }
 
         :global(svg) {

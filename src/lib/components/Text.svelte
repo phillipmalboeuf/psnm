@@ -45,7 +45,7 @@
 </script>
 
 {#key item.sys.id}
-<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && (item.fields.id?.includes('une-question') || item.fields.id?.includes('ce-profil-vous-interesse') || item.fields.id?.includes('suivez-nous'))} class:vertical={item.fields.vertical} class:alt={item.fields.alt} class:inverse={item.fields.inverse} class:center={item.fields.center} id={item.fields.id}>
+<section class="flex flex--gapped {item.fields.couleur || ''}" class:no-media={!media} class:padded={!!item.fields.couleur} class:full={item.fields.full} class:half={item.fields.full && (item.fields.id?.includes('une-question') || item.fields.id?.includes('ce-profil-vous-interesse') || item.fields.id?.includes('suivez-nous') || item.fields.id?.includes('processus-dadmission'))} class:vertical={item.fields.vertical} class:alt={item.fields.alt} class:inverse={item.fields.inverse} class:center={item.fields.center} id={item.fields.id}>
   {#if !item.fields.couleur}
   {#if item.fields.titre || !item.fields.center}
   <hr />
@@ -110,7 +110,7 @@
       <ul class="list--nostyle embla__container">
         {#each item.fields.media as media}
         <li class="embla__slide" style:--slide-width="100%">
-          <Media {media} />
+          <Media {media} dialog />
         </li>
         {/each}
       </ul>
@@ -121,7 +121,7 @@
     </div>
     {:else}
     <figure>
-      <Media {media} dialog={!item.fields.bulleCaption} />
+      <Media {media} />
       {#if item.fields.bulleCaption}
       <figcaption class="flex flex--column flex--gapped padded bleu-pale">
         {#if media.fields.title}<h4>{media.fields.title}</h4>{/if}
@@ -446,9 +446,9 @@
     }
   }
 
-  :global(section:has(> .no-media)) {
-    text-align: center;
-  }
+  // section:global(:has(> .no-media)) {
+  //   text-align: center;
+  // }
 
   .media {
     :global(img),
