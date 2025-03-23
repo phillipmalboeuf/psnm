@@ -117,6 +117,7 @@
         h1 {
           font-size: calc(1vw * var(--length));
           margin-bottom: 0;
+          white-space: nowrap;
         }
 
         :global(svg) {

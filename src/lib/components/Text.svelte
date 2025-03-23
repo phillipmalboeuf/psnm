@@ -401,6 +401,10 @@
         :global(h6) {
           line-height: 1.1666;
         }
+
+        ul {
+          justify-content: center;
+        }
       }
     }
 
