@@ -446,9 +446,9 @@
     }
   }
 
-  // section:global(:has(> .no-media)) {
-  //   text-align: center;
-  // }
+  :global(section:has(> .no-media)) {
+    text-align: center;
+  }
 
   .media {
     :global(img),
