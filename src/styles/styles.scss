@@ -304,7 +304,9 @@ button,
 	transition: background-color 333ms, color 333ms;
 
 	&.button--large {
-		padding: ($s0) ($s1);
+		padding: ($s0) ($s2);
+		font-size: calc($s0 + 2px);
+		border-radius: calc($radius * 2);
 	}
 
 	&.button--full {

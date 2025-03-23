@@ -29,7 +29,7 @@
 
     {#if item.fields.liens?.length}
       {#each item.fields.liens as link}
-        <Link className="button button--grey" {link} />
+        <Link className="button button--grey button--large" {link} />
       {/each}
     {/if}
 
