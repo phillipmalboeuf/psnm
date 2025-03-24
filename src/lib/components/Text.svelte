@@ -11,11 +11,11 @@
   import Link from './Link.svelte'
   import Dots from './Dots.svelte';
 
-  let { item, full, small, first }: {
+  let { item, full, filet, first }: {
     item: Entry<TypeTextSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
     first?: boolean
     full?: boolean
-    small?: boolean
+    filet?: boolean
   } = $props()
 
   let petitMedia = $derived((item.fields.petitMedia && item.fields.media?.length) ? item.fields.media[0] : undefined)
@@ -73,7 +73,7 @@
     {#if item.fields.corps || item.fields.liens?.length}
     <div class="inside flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--6of12={item.fields.full && (!media || !!item.fields.couleur)}>
       {#if item.fields.corps}
-      {#if item.fields.couleur && !item.fields.inverse && !item.fields.center && item.fields.corps?.content?.length > 0}
+      {#if filet || (item.fields.couleur && !item.fields.inverse && !item.fields.center && item.fields.corps?.content?.length > 0)}
       <hr>
       {/if}
       {#if item.fields.plus && item.fields.corps.content.length > 1}

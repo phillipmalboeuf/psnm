@@ -107,7 +107,7 @@
               </summary>
               <article>
                 {#if isTypeText(listItem)}
-                  <Text item={listItem} first={index === 0} />
+                  <Text item={listItem} first={index === 0} filet={item.fields.type === 'Accordeon'} />
                 {:else if isTypeArticle(listItem)}
                   <Article article={listItem} />
                 {:else if isTypePoste(listItem)}
@@ -566,6 +566,10 @@
 
         :global(.inside) {
           width: 100%;
+
+          :global(hr:first-child) {
+            margin-top: 0;
+          }
         }
 
         summary {
