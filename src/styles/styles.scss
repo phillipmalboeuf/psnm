@@ -326,31 +326,29 @@ button,
 	}
 
 	&.button--accent {
-		color: $blanc;
-		background: $accent;
+		color: var(--background-color, $blanc);
+		background: var(--foreground-color, $accent);
 		border-color: transparent;
-
-		.mauve-pale & {
-			background: $mauve-fonce;
-		}
-		.rose-pale & {
-			background: $bourgogne;
-		}
-		.bleu-pale & {
-			background: $bleu-fonce;
-		}
-		.vert-pale & {
-			background: $vert-fonce;
-		}
 
 		&:hover,
 		&:focus {
 			background: $noir;
 		}
+
+		.sarcelle &,
+		.mauve-fonce &,
+		.rose-fonce &,
+		.bleu-fonce &,
+		.vert-fonce & {
+			&:hover,
+			&:focus {
+				background: $beige;
+			}
+		}
 	}
 
 	&.button--grey {
-		color: $sarcelle;
+		color: var(--foreground-color, $sarcelle);
 		background: $grey;
 		border-color: transparent;
 
@@ -359,10 +357,16 @@ button,
 			background: $beige;
 		}
 
-		.mauve-pale & { color: $mauve-fonce; background: $blanc; }
-		.rose-pale & { color: $bourgogne; background: $blanc; }
-		.bleu-pale & { color: $bleu-fonce; background: $blanc; }
-		.vert-pale & { color: $vert-fonce; background: $blanc; }
+		.mauve-pale &,
+		.rose-pale &,
+		.bleu-pale &,
+		.vert-pale & { background: $blanc; }
+
+		.sarcelle &,
+		.mauve-fonce &,
+		.rose-fonce &,
+		.bleu-fonce &,
+		.vert-fonce & { color: var(--background-color); }
 	}
 
 	&.button--muted {
@@ -758,80 +762,131 @@ dialog {
 // aqua aqua-pale beige beige-pale blanc bleu bleu-fonce bleu-pale bourgogne brun jaune mauve mauve-fonce mauve-pale noir rose rose-pale sarcelle vert vert-fonce vert-pale
 
 .aqua {
-	background-color: $aqua;
-	color: $sarcelle;
+	--background-color: #{$aqua};
+	--foreground-color: #{$noir};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
-.aqua-pale { background-color: $aqua-pale; }
+.aqua-pale {
+	--background-color: #{$aqua-pale};
+	--foreground-color: #{$sarcelle};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
 .beige { 
-	background-color: $beige;
-	color: $noir;
+	--background-color: #{$beige};
+	--foreground-color: #{$noir};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .beige-pale { 
-	background-color: $beige-pale;
-	color: $noir;
+	--background-color: #{$beige-pale};
+	--foreground-color: #{$noir};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
-.blanc { background-color: $blanc; color: $noir; }
+.blanc {
+	--background-color: #{$blanc};
+	--foreground-color: #{$noir};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
 .bleu {
-	background-color: $bleu;
-	color: $bleu-fonce;
+	--background-color: #{$bleu};
+	--foreground-color: #{$noir};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .bleu-fonce { 
-  background-color: $bleu-fonce; 
-  color: $blanc;
+	--background-color: #{$bleu-fonce};
+	--foreground-color: #{$blanc};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .bleu-pale { 
-	background-color: $bleu-pale;
-	color: $bleu-fonce;
+	--background-color: #{$bleu-pale};
+	--foreground-color: #{$bleu-fonce};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .bourgogne,
 .rose-fonce {
-	background-color: $bourgogne;
-	color: $blanc;
+	--background-color: #{$bourgogne};
+	--foreground-color: #{$blanc};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .brun { 
-	background-color: $brun;
-	color: $blanc;
+	--background-color: #{$brun};
+	--foreground-color: #{$blanc};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .jaune {
-	background-color: $jaune;
-	color: $noir;
+	--background-color: #{$jaune};
+	--foreground-color: #{$noir};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .mauve {
-	background-color: $mauve;
-	color: $mauve-fonce;
+	--background-color: #{$mauve};
+	--foreground-color: #{$noir};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .mauve-fonce { 
-  background-color: $mauve-fonce; 
-  color: $blanc;
+	--background-color: #{$mauve-fonce};
+	--foreground-color: #{$blanc};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .mauve-pale {
-	background-color: $mauve-pale;
-	color: $mauve-fonce;
+	--background-color: #{$mauve-pale};
+	--foreground-color: #{$mauve-fonce};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .noir { 
-	background-color: $noir;
-	color: $blanc;
+	--background-color: #{$noir};
+	--foreground-color: #{$blanc};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .rose {
-	background-color: $rose;
-	color: $noir;
+	--background-color: #{$rose};
+	--foreground-color: #{$noir};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .rose-pale {
-	background-color: $rose-pale;
-	color: $bourgogne;
+	--background-color: #{$rose-pale};
+	--foreground-color: #{$bourgogne};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .sarcelle {
-	background-color: $sarcelle;
-	color: $blanc;
+	--background-color: #{$sarcelle};
+	--foreground-color: #{$blanc};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
-.vert { background-color: $vert; }
+.vert {
+	--background-color: #{$vert};
+	--foreground-color: #{$noir};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
+}
 .vert-fonce { 
-  background-color: $vert-fonce; 
-  color: $blanc;
+	--background-color: #{$vert-fonce};
+	--foreground-color: #{$blanc};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 .vert-pale {
-	background-color: $vert-pale;
-	color: $vert-fonce;
+	--background-color: #{$vert-pale};
+	--foreground-color: #{$vert-fonce};
+	background-color: var(--background-color);
+	color: var(--foreground-color);
 }
 
 // #GRID

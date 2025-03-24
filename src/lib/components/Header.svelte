@@ -150,58 +150,23 @@
     &.backed {
       background: $blanc;
       // box-shadow: 0 0 10px rgba($sarcelle, 0.1);
-    }
 
-    :global(.mauve-fonce) & {
-      &.backed,
-      &.visible,
-      nav,
-      :global(.search-button svg),
-      .button--grey {
-        color: $mauve-fonce;
-      }
-    }
-		:global(.rose-fonce) & {
-      &.backed,
-      &.visible,
-      nav,
-      :global(.search-button svg),
-      .button--grey {
-        color: $bourgogne;
-      }
-    }
-		:global(.bleu-fonce) & {
-      &.backed,
-      &.visible,
-      nav,
-      :global(.search-button svg),
-      .button--grey {
-        color: $bleu-fonce;
-      }
-    }
-		:global(.vert-fonce) & {
-      &.backed,
-      &.visible,
-      nav,
-      :global(.search-button svg),
-      .button--grey {
-        color: $vert-fonce;
-      }
-    }
-		:global(.sarcelle) & {
-      &.backed,
-      &.visible,
-      nav,
-      :global(.search-button svg),
-      .button--grey {
-        color: $sarcelle;
+      :global(.button--grey) {
+        background-color: $grey;
       }
     }
 
-    .logo,
-    :global(.button svg),
-    :global(.button) {
-      transition: background-color 0.333s, color 0.333s;
+    :global(.mauve-fonce) &,
+    :global(.rose-fonce) &,
+    :global(.bleu-fonce) &,
+    :global(.vert-fonce) &,
+    :global(.sarcelle) & {
+      &.backed,
+      &.visible,
+      nav,
+      :global(.search-button svg) {
+        color: var(--background-color, $noir);
+      }
     }
 
     &:not(.backed):not(.visible):global(:has(+ main .hero.first.full)) {
@@ -212,9 +177,9 @@
         }
         // color: $blanc;
 
-        :global(.button:not(.portail) svg) {
-          color: $accent;
-        }
+        // :global(.button:not(.portail) svg) {
+        //   color: $accent;
+        // }
       }
 
       // .menu-button {
@@ -258,9 +223,9 @@
         }
       }
 
-      .visible & {
-        background-color: $blanc;
-      }
+      // .visible:not(.backed) & {
+      //   background-color: $blanc;
+      // }
     }
   }
 
@@ -286,7 +251,7 @@
       :global(.bleu-fonce) &,
       :global(.vert-fonce) &,
       :global(.sarcelle) & {
-        color: $noir;
+        color: var(--background-color, $noir);
 
         :global(circle) {
           fill: $blanc;

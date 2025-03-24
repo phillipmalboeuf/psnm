@@ -422,7 +422,8 @@
           right: -2px;
           height: calc(100% + 2px);
           width: auto;
-          color: $blanc;
+          color: var(--background-color, $blanc);
+          transition: color 0.666s;
 
           @media (max-width: $mobile) {
             right: -10%;
