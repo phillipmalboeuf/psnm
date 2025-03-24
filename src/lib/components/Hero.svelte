@@ -40,7 +40,7 @@
 
   {#if item.fields.media}
     <figure class="hero__media">
-      <Media media={item.fields.media} mobileMedia={item.fields.mobileMedia} rounded={!item.fields.full} />
+      <Media media={item.fields.media} mobileMedia={item.fields.mobileMedia} />
     </figure>
   {/if}
 </section>
