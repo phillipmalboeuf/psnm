@@ -364,6 +364,7 @@
 
       .corps {
         flex-direction: column-reverse;
+        gap: $s3;
       }
 
       .titre {
