@@ -73,6 +73,9 @@
     {#if item.fields.corps || item.fields.liens?.length}
     <div class="inside flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--6of12={item.fields.full && (!media || !!item.fields.couleur)}>
       {#if item.fields.corps}
+      {#if item.fields.couleur && !item.fields.inverse && !item.fields.center && item.fields.corps?.content?.length > 0}
+      <hr>
+      {/if}
       {#if item.fields.plus && item.fields.corps.content.length > 1}
       <Rich body={{
         ...item.fields.corps,
@@ -225,6 +228,18 @@
 
       &.full {
         width: 100%;
+
+        @media (min-width: $mobile) {
+          .inside hr {
+            display: none;
+          }
+        }
+
+        @media (max-width: $mobile) {
+          .inside hr {
+            margin-top: $s3;
+          }
+        }
       }
 
       &.half {
@@ -238,6 +253,12 @@
           padding-left: $s1;
           border-left: 1px dotted;
 
+          @media (min-width: $mobile) {
+            hr {
+              display: none;
+            }
+          }
+
           @media (max-width: $mobile) {
             padding-left: 0;
             border-left: none;
@@ -248,9 +269,19 @@
 
     .inside {
       :global(hr:first-child) {
+        margin-top: $s1;
+
         @media (min-width: $mobile) {
           margin-top: $s2;
         }
+      }
+
+      :global(hr + hr) {
+        display: none;
+      }
+
+      :global(hr:has(+ table)) {
+        display: none;
       }
 
       ul {
@@ -384,7 +415,7 @@
       }
 
       &:not(.padded) {
-        padding: $s1 0;
+        padding: $s3 0;
       }
 
       .corps {
@@ -413,6 +444,7 @@
       summary {
         cursor: pointer;
         width: auto;
+        margin-top: $s2;
 
         &:after {
           content: 'En lire plus';

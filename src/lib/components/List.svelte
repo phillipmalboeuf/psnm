@@ -460,7 +460,7 @@
           display: flex;
           flex-direction: column;
           height: 100%;
-          width: 50%;
+          width: 60%;
 
           @media (max-width: $mobile) {
             width: 100%;
@@ -478,6 +478,10 @@
 
           :global(.list--nostyle) {
             margin-top: 0;
+          }
+
+          :global(hr:first-child) {
+            display: none;
           }
 
           :global(hr) {
