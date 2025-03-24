@@ -280,7 +280,8 @@
         display: none;
       }
 
-      :global(hr:has(+ table)) {
+      :global(hr:has(+ table)),
+      :global(hr:has(+ p:empty + table)) {
         display: none;
       }
 
