@@ -31,6 +31,7 @@
     <article class="flex flex--column flex--gapped">
       {#if item.fields.corps}
       <div class="flex flex--column flex--gapped">
+        <hr>
         <Rich body={item.fields.corps} />
       </div>
       {/if}
@@ -80,6 +81,12 @@
 
       article {
         margin-top: $s2;
+
+        > div {
+          :global(ul.long) {
+            column-count: unset;
+          }
+        }
       }
 
       :global(hr) {
