@@ -551,6 +551,26 @@ input[type=checkbox] {
 	input[type=checkbox] {
 		padding: 0;
 	}
+
+	button,
+	.adjust {
+		border-radius: calc($radius * 1.5);
+	}
+
+	aside {
+		flex-wrap: wrap;
+		left: $s-1;
+		bottom: $s-1;
+		max-width: calc(100vw - calc($s-1 * 2));
+
+		> div {
+			padding: $s1;
+
+			> nav {
+				gap: $s-1;
+			}
+		}
+	}
 }
 
 svg {
