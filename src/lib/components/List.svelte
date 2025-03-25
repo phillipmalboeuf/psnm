@@ -14,6 +14,7 @@
   import Dots from './Dots.svelte'
   import Media from './Media.svelte'
   import Poste from './Poste.svelte'
+  import { onMount } from 'svelte';
 
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -32,6 +33,15 @@
     //   stopOnInteraction: false,
     // })
   ]
+
+  onMount(() => {
+    if (window.innerWidth < 888) {
+      const open = document.querySelectorAll('details[open]')
+      open.forEach(detail => {
+        detail.removeAttribute('open')
+      })
+    }
+  })
 </script>
 
 <section class="list {item.fields.type}" id={item.fields.id}>
