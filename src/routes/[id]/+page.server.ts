@@ -23,6 +23,7 @@ export const load = async ({ params }) => {
 }
 const contacts = {
   "Absence": "absence@psnm.qc.ca",
+  "Admission": "admission@psnm.qc.ca",
   "Administration": "administration@psnm.qc.ca",
   "Communications": "communications@psnm.qc.ca",
   "Finances": "finances@psnm.qc.ca",
