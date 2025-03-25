@@ -155,6 +155,10 @@
 
     @media (max-width: $mobile) {
       padding: 0;
+      
+      hr {
+        margin-bottom: $s-2;
+      }
     }
 
     nav {

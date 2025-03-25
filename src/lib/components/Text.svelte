@@ -187,6 +187,12 @@
       width: 100%;
     }
 
+    &:not(.padded) {
+      @media (max-width: $mobile) {
+        gap: $s-2;
+      }
+    }
+
     &.vertical {
       align-items: stretch;
 

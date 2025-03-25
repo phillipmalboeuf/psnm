@@ -115,6 +115,13 @@
       margin-bottom: $s2;
     }
 
+    @media (max-width: $mobile) {
+      
+      hr {
+        margin-bottom: $s-2;
+      }
+    }
+
     .embla {
       overflow: hidden;
       margin: 0 calc(-1 * $s1);
