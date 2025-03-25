@@ -733,5 +733,14 @@
         }
       }
     }
+
+    &#biographies-campagne {
+      li {
+        :global(h5 + p) {
+          margin-top: calc($s-1 * -1);
+          font-size: $s-1;
+        }
+      }
+    }
   }
 </style>

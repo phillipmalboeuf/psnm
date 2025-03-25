@@ -478,6 +478,13 @@
         }
       }
     }
+
+    &#mot-de-la-directrice-portes-ouvertes {
+      :global(h3 + p) {
+        margin-top: calc($s-1 * -1);
+        font-size: $s-1;
+      }
+    }
   }
 
   :global(section:has(> .no-media)) {
