@@ -106,7 +106,13 @@
     {/if}
   </div>
 
-  {#if media}
+  {#if item.fields.imageAvecFocalPoint}
+  <div class="col media" class:col--6of12={!item.fields.vertical} class:col--mobile--12of12={!item.fields.vertical} class:col--4of12={item.fields.vertical} class:col--mobile--8of12={item.fields.vertical} class:col--12of12={item.fields.full}>
+    <figure>
+      <Media {media} focalPoint={item.fields.imageAvecFocalPoint.fields.focalPoint?.focalPoint} />
+    </figure>
+  </div>
+  {:else if media}
   <div class="col media" class:col--6of12={!item.fields.vertical} class:col--mobile--12of12={!item.fields.vertical} class:col--4of12={item.fields.vertical} class:col--mobile--8of12={item.fields.vertical} class:col--12of12={item.fields.full}>
     {#if item.fields.media.length > 1}
      <div class="embla" use:emblaCarouselSvelte={{ options: { ...options }, plugins, }} onemblaInit={e => embla = e.detail}>

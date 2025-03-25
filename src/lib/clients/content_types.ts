@@ -211,6 +211,7 @@ export interface TypeTextFields {
     id?: EntryFieldTypes.Symbol;
     sousTitre?: EntryFieldTypes.Symbol;
     media?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+    imageAvecFocalPoint?: EntryFieldTypes.EntryLink<TypeImageWithFocalPointSkeleton>;
     full?: EntryFieldTypes.Boolean;
     petitMedia?: EntryFieldTypes.Boolean;
     alt?: EntryFieldTypes.Boolean;
