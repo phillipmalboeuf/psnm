@@ -33,7 +33,7 @@
           <td>
             <h5 class="flex flex--gapped flex--spaced">
               <a href="/{isTypeArticle(item) ? 'actualités/' : ''}{item.fields.id}">{item.fields.titre}</a>
-              <a class="button button--grey" href="/{isTypeArticle(item) ? 'actualités/' : ''}{item.fields.id}">Voir plus</a>
+              <a class="button button--grey" href="/{isTypeArticle(item) ? 'actualités/' : ''}{item.fields.id}">Voir&nbsp;plus</a>
             </h5>
             <!-- {#if item.fields.description}
               <p>{@html item.fields.description.replaceAll('\\n', '<br />')}</p>
@@ -55,13 +55,25 @@
     h2 {
       margin-bottom: $s3;
     }
+
+    @media (max-width: $mobile) {
+      padding: $s1 0;
+    }
   }
 
   main {
+
+    @media (max-width: $mobile) {
+      padding: $s1 0;
+    }
     
     table,
     p {
       margin: $s2 0;
+    }
+
+    h5 {
+      flex-wrap: nowrap;
     }
   }
 </style>
