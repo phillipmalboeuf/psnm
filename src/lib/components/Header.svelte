@@ -18,7 +18,7 @@
     // work: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   } = $props()
 
-  let visible = $state(true)
+  let visible = $state(false)
   let scrollY = $state(0)
   let lastScrollY = 0
   let scrolled = $derived(scrollY > lastScrollY)
@@ -456,7 +456,7 @@
             align-items: center;
             justify-content: center;
             transition: transform 0.333s;
-            
+
             svg {
               width: $s0;
               height: $s0;
