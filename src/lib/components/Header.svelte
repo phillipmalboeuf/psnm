@@ -18,7 +18,7 @@
     // work: Entry<TypeNavigationSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   } = $props()
 
-  let visible = $state(false)
+  let visible = $state(true)
   let scrollY = $state(0)
   let lastScrollY = 0
   let scrolled = $derived(scrollY > lastScrollY)
@@ -82,7 +82,11 @@
                       <details>
                         <summary class="flex flex--tight_gapped flex--middle">
                           <Link {hide} link={sousLink} className={className(sousLink)} />
-                          <svg width="10" height="6" viewBox="0 0 10 6"><path d="M1 1L5 5L9 1" stroke="currentColor"/></svg>
+                          <span class="button button--grey button--circle">
+                            <svg width="11" height="6" viewBox="0 0 11 6">
+                              <path d="M1 1L5.5 5L10 1" stroke="currentColor"/>
+                            </svg>
+                          </span>
                         </summary>
                         <ul class="list--nostyle">
                           {#each sousLink.fields.sousLiens as sousSousLink}
@@ -446,12 +450,26 @@
             
           }
 
-          svg {
-            background-color: $beige-pale;
-            width: $s0;
-            height: $s0;
-            padding: 3px;
-            border-radius: 50%;
+          .button {
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.333s;
+            
+            svg {
+              width: $s0;
+              height: $s0;
+              padding: 3px;
+              transform: translate(0px, 0px);
+            }
+          }
+        }
+        &[open] {
+          summary {
+            .button {
+              transform: rotate(-180deg);
+            }
           }
         }
       }
