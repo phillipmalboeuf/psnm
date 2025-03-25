@@ -339,7 +339,8 @@ button,
 		.mauve-fonce &,
 		.rose-fonce &,
 		.bleu-fonce &,
-		.vert-fonce & {
+		.vert-fonce &,
+		.bourgogne & {
 			&:hover,
 			&:focus {
 				background: $beige;
@@ -365,6 +366,7 @@ button,
 		.sarcelle &,
 		.mauve-fonce &,
 		.rose-fonce &,
+		.bourgogne &,
 		.bleu-fonce &,
 		.vert-fonce & { color: var(--background-color); }
 	}
@@ -384,6 +386,13 @@ button,
 		.bleu &,
 		.rose &,
 		.aqua & { background: rgba($noir, 0.1); }
+
+		.mauve-fonce &,
+		.rose-fonce &, 
+		.bleu-fonce &,
+		.beige-pale &,
+		.vert-fonce &,
+		.bourgogne & { background: rgba($blanc, 0.1); }
 
 		&:hover,
 		&:focus {

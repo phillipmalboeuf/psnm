@@ -160,6 +160,7 @@
     :global(.rose-fonce) &,
     :global(.bleu-fonce) &,
     :global(.vert-fonce) &,
+    :global(.bourgogne) &,
     :global(.sarcelle) & {
       &.backed,
       &.visible,
@@ -250,6 +251,7 @@
       :global(.rose-fonce) &,
       :global(.bleu-fonce) &,
       :global(.vert-fonce) &,
+      :global(.bourgogne) &,
       :global(.sarcelle) & {
         color: var(--background-color, $noir);
 
