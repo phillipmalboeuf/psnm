@@ -692,6 +692,10 @@ table {
 	&.table--fixed {
 		table-layout: fixed;
 
+		p + & {
+			margin: $s0 0;
+		}
+
 		td,
 		th {
 			padding-right: 10%;
