@@ -742,9 +742,9 @@
     }
 
     .image {
-      :global(img) {
-        max-height: 80lvh;
-      }
+      // :global(img) {
+      //   max-height: 80lvh;
+      // }
 
       &.coin {
         :global(img) {
