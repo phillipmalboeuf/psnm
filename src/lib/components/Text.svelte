@@ -540,6 +540,7 @@
       min-width: 0;
       max-width: none;
       width: var(--slide-width);
+      margin: 0 $s0;
       // padding-left: $s0;
 
       // @media (max-width: $mobile) {
