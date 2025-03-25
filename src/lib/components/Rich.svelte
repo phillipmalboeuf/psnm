@@ -29,7 +29,7 @@
 {mark.value}
 {/if}
 {:else if mark.nodeType === 'hyperlink'}
-<a href="{mark.data.uri}" target="{mark.data.uri.indexOf('http') === 0 ? '_blank' : '_self'}">
+<a href="{((mark.data.uri?.startsWith('http') || mark.data.uri?.startsWith('mailto:') || mark.data.uri?.startsWith('/') || mark.data.uri?.startsWith('#')) ? mark.data.uri : `/${mark.data.uri}`)}" target="{mark.data.uri.indexOf('http') === 0 ? '_blank' : '_self'}">
   {#each mark.content as _mark}{@render m(_mark)}{/each}
 </a>
 {:else if mark.nodeType === 'asset-hyperlink'}
