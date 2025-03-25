@@ -387,6 +387,7 @@ button,
 		.jaune &,
 		.beige-pale &,
 		.vert-pale &,
+		.aqua-pale &,
 		.vert &,
 		.bleu &,
 		.rose &,
@@ -404,7 +405,8 @@ button,
 		.mauve-fonce .mauve-pale &,
 		.rose-fonce .rose-pale &, 
 		.bleu-fonce .bleu-pale &, 
-		.vert-fonce .vert-pale & { background: rgba($noir, 0.1); }
+		.vert-fonce .vert-pale &,
+		.sarcelle .aqua-pale & { background: rgba($noir, 0.1); }
 
 		&:hover,
 		&:focus {
