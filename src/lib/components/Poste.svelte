@@ -46,6 +46,10 @@
       // h2 {
       //   margin: 0;
       // }
+
+      .button {
+        margin-top: $s2;
+      }
     }
   }
 </style>
