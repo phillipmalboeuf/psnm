@@ -59,7 +59,7 @@
           <small>{@html item.fields.sousTitre.replaceAll('\\n', '<br />')}</small>
         {/if}
         {#if item.fields.center}<hr>{/if}
-        <h3 class="col" class:col--mobile--6of12={petitMedia} class:h2={(media && !item.fields.couleur) || !/[A-Za-z]/.test(item.fields.titre)} class:h4={item.fields.alt || item.fields.center} class:h--alt={item.fields.center}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
+        <h3 class:h2={(media && !item.fields.couleur) || !/[A-Za-z]/.test(item.fields.titre)} class:h4={item.fields.alt || item.fields.center} class:h--alt={item.fields.center}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
       </div>
 
       {#if petitMedia}
