@@ -25,6 +25,7 @@
   const options: EmblaOptionsType = {
     loop: true,
     dragFree: false,
+    skipSnaps: true,
     align: 'start'
   }
   const plugins: EmblaPluginType[] = [
