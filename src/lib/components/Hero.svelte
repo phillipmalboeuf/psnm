@@ -41,6 +41,11 @@
   {#if item.fields.media}
     <figure class="hero__media">
       <Media media={item.fields.media} mobileMedia={item.fields.mobileMedia} />
+      {#if item.fields.grosText && item.fields.media.fields.description}
+        <figcaption>
+          {@html item.fields.media.fields.description.replaceAll('\\n', '<br />')}
+        </figcaption>
+      {/if}
     </figure>
   {/if}
 </section>
@@ -110,8 +115,9 @@
 
       .hero__content {
         padding: 0;
+        padding-top: $s-1;
         color: currentColor;
-        min-height: calc(100svh - ($s1 * 2));
+        min-height: calc(90svh - ($s1 * 2));
         border-top: 1px solid;
 
         h1 {
@@ -131,8 +137,20 @@
       }
 
       .hero__media {
-        position: static;
+        position: relative;
         background-color: transparent;
+
+        figcaption {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          padding: $s-1;
+          color: $blanc;
+        }
+        
+        :global(img), :global(video), :global(picture) {
+          max-height: 90svh;
+        }
       }
     }
   }
