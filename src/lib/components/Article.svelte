@@ -16,8 +16,8 @@
     <article class="flex flex--spaced padded col col--mobile--12of12" class:col--6of12={wide && article.fields.vedette}>
       <h5>{article.fields.titre}</h5>
 
-      <em>{article.fields.categorie?.fields.titre}</em>
-      <date>{date(article.fields.date)}</date>
+      <em class="col col--6of12">{article.fields.categorie?.fields.titre}</em>
+      <date class="col col--6of12">{date(article.fields.date)}</date>
     </article>
 
     <figure class="col col--mobile--12of12" class:col--6of12={wide && article.fields.vedette}>
@@ -51,6 +51,7 @@
 
       date {
         margin-top: auto;
+        text-align: right;
       }
     }
   }

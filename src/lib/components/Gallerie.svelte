@@ -87,7 +87,7 @@
       {/if}
 
       {#if embla && item.fields.media.length < 8}
-        <Dots dots={item.fields.media.length * 2} slider={embla} />
+        <Dots dots={item.fields.media.length} slider={embla} />
       {/if}
     </div>
     {:else}
