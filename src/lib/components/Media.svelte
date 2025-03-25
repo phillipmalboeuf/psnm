@@ -92,7 +92,7 @@
     <figure class="padded flex flex--gapped flex--column vert-fonce">
       {@render render()}
       <figcaption class="flex flex--gapped flex--spaced">
-        {#if media.fields.title}<p>{@html media.fields.title.replaceAll('\\n', '<br />')}</p>{/if}
+        <!-- {#if media.fields.title}<p>{@html media.fields.title.replaceAll('\\n', '<br />')}</p>{/if} -->
         {#if media.fields.description}<p>{@html media.fields.description.replaceAll('\\n', '<br />')}</p>{/if}
       </figcaption>
     </figure>
