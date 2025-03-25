@@ -424,7 +424,8 @@
       }
       
       .inside {
-        margin: auto !important;
+        margin-top: 0;
+        flex: 1;
         justify-content: center;
         align-items: center;
 
@@ -435,7 +436,12 @@
           line-height: 1.1666;
         }
 
+        :global(> *:first-child) {
+          margin-top: auto;
+        }
+
         ul {
+          margin-top: auto;
           justify-content: center;
         }
       }

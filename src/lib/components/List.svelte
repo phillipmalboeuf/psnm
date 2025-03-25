@@ -295,7 +295,7 @@
               }
 
               width: calc(100% + calc($s-1 * 2)) !important;
-              margin: calc($s-1 * 1) calc($s-1 * -1) calc($s-1 * -1) calc($s-1 * -1);
+              margin: calc($s-1 * 0) calc($s-1 * -1) calc($s-1 * -1) calc($s-1 * -1);
             }
           }
 

@@ -393,7 +393,14 @@ button,
 		.bleu-fonce &,
 		.beige-pale &,
 		.vert-fonce &,
-		.bourgogne & { background: rgba($blanc, 0.1); }
+		.bourgogne & {
+			background: rgba($blanc, 0.1);
+		}
+
+		.mauve-fonce .mauve-pale &,
+		.rose-fonce .rose-pale &, 
+		.bleu-fonce .bleu-pale &, 
+		.vert-fonce .vert-pale & { background: rgba($noir, 0.1); }
 
 		&:hover,
 		&:focus {
