@@ -285,7 +285,7 @@ button,
 	border: 1px solid;
 	color: currentColor;
 	background: transparent;
-	border-radius: $radius;
+	border-radius: calc($radius * 1.5);
 	padding: ($s-3) ($s0);
 
 	&:disabled,
@@ -487,12 +487,13 @@ textarea {
 	color: $noir;
 	background-color: $blanc;
 	border: 1px solid $muted;
-	border-radius: calc($radius / 2);
+	border-radius: calc($radius);
 	padding: ($s-2) ($s-1);
 
 	&:focus {
-		outline: 1px solid $accent;
-		outline-offset: 0px;
+		// outline: 2px solid rgba($noir, 0.1);
+		// outline-offset: 0px;
+		outline: none;
 	}
 
 	&::placeholder {
@@ -613,6 +614,10 @@ table {
 		width: calc(100% / var(--length));
 		vertical-align: top;
 		overflow: hidden;
+
+		&:last-child:first-child {
+			padding-right: 0;
+		}
 
 		.mauve-fonce &,
 		.rose-fonce &, 
