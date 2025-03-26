@@ -77,6 +77,12 @@
 
 <style lang="scss">
   section {
+    margin: $s5 0;
+
+    @media (max-width: $mobile) {
+      margin: $s2 0;
+    }
+
     hr {
       width: 100%;
       margin: 0;
