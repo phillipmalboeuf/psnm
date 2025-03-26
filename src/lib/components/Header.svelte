@@ -44,7 +44,7 @@
 
 <header class="flex flex--spaced padded" class:backed={scrollY > 0} class:scrolled={!visible && scrolled} class:visible>
   <a href="/" class="logo" onclick={hide}>
-    <!-- <Ecole /> -->
+    <Ecole />
     <Logo />
   </a>
   <span class="flex flex--gapped flex--middle bonus">
@@ -138,7 +138,7 @@
 <style lang="scss">
   header {
     padding: $s1;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 8;
     transition: color 0.333s, background-color 0.333s, box-shadow 0.333s, transform 0.666s;
@@ -174,7 +174,33 @@
       }
     }
 
+    .logo {
+      transition: color 0.666s;
+
+      :global(svg:first-child) {
+        width: 126px;
+        height: 66px;
+        position: relative;
+        margin-top: calc(-66px - $s-2);
+        opacity: 0;
+        transition: margin-top 0.666s, opacity 0.666s;
+
+        @media (max-width: $mobile) {
+          display: none;
+        }
+      }
+    }
+
     &:not(.backed):not(.visible):global(:has(+ main .hero.first.full)) {
+      .logo {
+        color: $blanc;
+
+        :global(svg:first-child) {
+          margin-top: 0px;
+          opacity: 1;
+        }
+      }
+
       @media (min-width: $mobile) {
         .logo,
         :global(.button--none) {
