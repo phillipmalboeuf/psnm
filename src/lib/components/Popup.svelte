@@ -58,7 +58,8 @@
     cursor: default;
 
     section {
-      position: relative
+      position: relative;
+      max-width: calc(100% - $s0 * 2);
     }
   }
 
