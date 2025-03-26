@@ -34,7 +34,7 @@ const redirects = [
   ['/fr/ma-premiere-annee-au-psnm/*', '/premiere-annee-au-psnm'],
   ['/fr/admission/*', '/admission'],
   ['/fr/enrichissement-et-projets-particuliers/*', '/enrichissements'],
-  ['/fr/actualites/*', '/actualités']
+  ['/fr/actualites/*', '/actualites']
 ]
 
 export const load = async ({ request, cookies, url }) => {

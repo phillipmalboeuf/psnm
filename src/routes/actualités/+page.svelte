@@ -38,11 +38,11 @@
   <nav class="categories-nav">
     <ul class="list--nostyle flex flex--tight_gapped">
       <li>
-        <a href="/actualités" class="button category-link" class:button--accent={!data.filter}>Toutes les actualités</a>
+        <a href="/actualites" class="button category-link" class:button--accent={!data.filter}>Toutes les actualités</a>
       </li>
       {#each data.categories as category}
         <li>
-          <a href="/actualités?categorie={category.fields.id}" class:active={data.filter === category.fields.id} class="button {category.fields.couleur}">
+          <a href="/actualites?categorie={category.fields.id}" class:active={data.filter === category.fields.id} class="button {category.fields.couleur}">
             {category.fields.titre}
           </a>
         </li>
