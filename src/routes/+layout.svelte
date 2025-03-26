@@ -27,7 +27,9 @@
 <svelte:head>
 	{#if $page.data.page?.fields}
 	<title>{$page.data.page.fields.titre}</title>
-	<!-- <meta name="description" content={$page.data.page.fields.description} /> -->
+	{#if $page.data.page.fields.description}
+	<meta name="description" content={$page.data.page.fields.description} />
+	{/if}
 	{/if}
 </svelte:head>
 

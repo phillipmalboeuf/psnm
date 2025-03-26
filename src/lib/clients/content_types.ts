@@ -161,6 +161,7 @@ export function isTypeNavigation<Modifiers extends ChainModifiers, Locales exten
 export interface TypePageFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
+    description?: EntryFieldTypes.Text;
     media?: EntryFieldTypes.AssetLink;
     couleur?: EntryFieldTypes.Symbol<"aqua-pale" | "beige-pale" | "blanc" | "bleu-pale" | "mauve-pale" | "rose-pale" | "sarcelle" | "vert-pale">;
     multiCouleurs?: EntryFieldTypes.Array<EntryFieldTypes.Symbol<"aqua" | "aqua-pale" | "beige" | "beige-pale" | "blanc" | "bleu" | "bleu-fonce" | "bleu-pale" | "bourgogne" | "brun" | "jaune" | "mauve" | "mauve-fonce" | "mauve-pale" | "noir" | "rose" | "rose-pale" | "sarcelle" | "vert" | "vert-fonce" | "vert-pale">>;
