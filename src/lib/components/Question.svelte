@@ -67,6 +67,7 @@
         cursor: pointer;
 
         svg {
+          display: block;
           margin-top: $s3;
         }
       }
@@ -91,6 +92,10 @@
 
       :global(hr) {
         margin: 0;
+      }
+
+      :global(hr + hr) {
+        display: none;
       }
     }
 
