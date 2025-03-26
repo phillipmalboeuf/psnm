@@ -674,6 +674,10 @@
           max-width: 1024px;
         }
 
+        &:global(:has(.padded:not(.no-media))) {
+          max-width: calc(1220px - $s5);
+        }
+
         @media (max-width: $mobile) {
           --slide-width: 90% !important;
         }

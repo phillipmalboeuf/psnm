@@ -417,6 +417,10 @@
         gap: $s-2;
         margin-top: auto;
       }
+
+      .media.col--6of12 {
+        order: 1;
+      }
     }
 
     &.center {
@@ -520,7 +524,7 @@
     .padded & {
       :global(img),
       :global(video) {
-        max-height: 66lvh;
+        // max-height: 66lvh;
       }
     }
 
