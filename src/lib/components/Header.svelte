@@ -44,7 +44,7 @@
 
 <header class="flex flex--spaced padded" class:backed={scrollY > 0} class:scrolled={!visible && scrolled} class:visible>
   <a href="/" class="logo" onclick={hide}>
-    <Ecole />
+    <!-- <Ecole /> -->
     <Logo />
   </a>
   <span class="flex flex--gapped flex--middle bonus">
@@ -177,28 +177,28 @@
     .logo {
       transition: color 0.666s;
 
-      :global(svg:first-child) {
-        width: 126px;
-        height: 66px;
-        position: relative;
-        margin-top: calc(-66px - $s-2);
-        opacity: 0;
-        transition: margin-top 0.666s, opacity 0.666s;
+      // :global(svg:first-child) {
+      //   width: 126px;
+      //   height: 66px;
+      //   position: relative;
+      //   margin-top: calc(-66px - $s-2);
+      //   opacity: 0;
+      //   transition: margin-top 0.666s, opacity 0.666s;
 
-        @media (max-width: $mobile) {
-          display: none;
-        }
-      }
+      //   @media (max-width: $mobile) {
+      //     display: none;
+      //   }
+      // }
     }
 
     &:not(.backed):not(.visible):global(:has(+ main .hero.first.full)) {
       .logo {
         color: $blanc;
 
-        :global(svg:first-child) {
-          margin-top: 0px;
-          opacity: 1;
-        }
+        // :global(svg:first-child) {
+        //   margin-top: 0px;
+        //   opacity: 1;
+        // }
       }
 
       @media (min-width: $mobile) {
@@ -308,11 +308,6 @@
     flex-direction: column;
     align-items: flex-end;
     gap: $s-1;
-
-    // :global(svg:first-child) {
-    //   width: 33.3%;
-    //   height: auto;
-    // }
 
     @media (max-width: $mobile) {
       z-index: 11;
