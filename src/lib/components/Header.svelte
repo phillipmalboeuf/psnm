@@ -254,9 +254,9 @@
         }
       }
 
-      // .visible:not(.backed) & {
-      //   background-color: $blanc;
-      // }
+      .visible:not(.backed) & {
+        background-color: $blanc;
+      }
     }
   }
 
