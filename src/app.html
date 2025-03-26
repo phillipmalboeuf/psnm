@@ -35,7 +35,17 @@
 			@font-face {
 				font-family: "Tobias";
 				font-weight: normal;
-				src: url("%sveltekit.assets%/fonts/Tobias-Light.otf") format("opentype");
+				src: url("%sveltekit.assets%/fonts/Tobias-Light.woff2") format("woff2"),
+					url("%sveltekit.assets%/fonts/Tobias-Light.woff") format("woff");
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: "Tobias";
+				font-weight: normal;
+				font-style: italic;
+				src: url("%sveltekit.assets%/fonts/Tobias-LightItalic.woff2") format("woff2"),
+					url("%sveltekit.assets%/fonts/Tobias-LightItalic.woff") format("woff");
 				font-display: swap;
 			}
 		</style>
