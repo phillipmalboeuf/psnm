@@ -66,7 +66,7 @@
 		padding: $s5 $s1 $s1;
 
 		@media (max-width: $mobile) {
-			padding: $s0;
+			padding: $s5 $s0 $s0;
 		}
 
 		.-gammes-id & {
