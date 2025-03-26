@@ -7,12 +7,21 @@
 
 	import { page } from '$app/stores'
 	import type { Snippet } from 'svelte'
+	import { afterNavigate } from '$app/navigation'
 
 	import type { LayoutData } from './$types'
   let { data, children }: {
 		data: LayoutData,
 		children: Snippet
 	} = $props()
+
+	afterNavigate(() => {
+		// @ts-ignore
+		window.fbq && window.fbq('track', 'PageView');
+
+		// @ts-ignore
+		window.gtag && window.gtag('config', 'G-W348XLSVXW', { 'send_page_view': true, page_path: $page.url.pathname });
+	})
 </script>
 
 <svelte:head>
