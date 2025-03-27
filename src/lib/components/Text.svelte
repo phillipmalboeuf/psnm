@@ -391,6 +391,16 @@
         font-weight: normal;
         letter-spacing: -0.01em;
       }
+
+      &#mot-de-la-directrice-portes-ouvertes {
+        .inside {
+          :global(h1),
+          :global(h2),
+          :global(h3) {
+            font-family: $heading_font;
+          }
+        }
+      }
     }
 
     ul:not(.embla__container) {
