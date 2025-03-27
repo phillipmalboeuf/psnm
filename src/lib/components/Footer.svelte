@@ -92,6 +92,13 @@
           <Link {link} />
         {/each}
       </div>
+      <div class="col col--3of12 col--mobile--12of12">
+        <a href="https://maps.app.goo.gl/AWsZC3DNoPLsdDsWA" target="_blank" rel="noopener noreferrer">
+          Pensionnat du Saint-Nom-de-Marie<br>
+          628, chemin de la Côte-Sainte-Catherine<br>
+          Outremont (Québec) H2V 2C5
+        </a>
+      </div>
     </div>
     {/if}
 
@@ -210,6 +217,12 @@
           display: grid;
           grid-template-columns: 1fr 1fr;
         }
+
+        @media (max-width: $tablet_landscape) {
+          &.col--9of12 {
+            width: 100%;
+          }
+        }
       }
 
       .logo {
@@ -218,6 +231,11 @@
         flex-direction: column;
         align-items: flex-end;
         gap: $s0;
+
+        @media (max-width: $tablet_landscape) {
+          width: 100%;
+          margin-top: $s1;
+        }
 
         @media (max-width: $mobile) {
           gap: $s-2;
