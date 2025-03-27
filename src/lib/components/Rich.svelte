@@ -35,7 +35,7 @@
 {:else if mark.nodeType === 'asset-hyperlink'}
 <a href="{mark.data.target.fields.file.url}" target="_blank" onmouseenter={() => hover = mark.data.target} onmouseleave={() => hover = undefined} onmousemove={e => mouse = {x: e.clientX, y: e.clientY}}>
   {#each mark.content as _mark}{@render m(_mark)}{/each}
-</a>{#if hover && hover.fields.file.contentType.startsWith('image/')}<div class="hover" style="left: {mouse.x}px; top: {mouse.y}px;"><Media media={hover} width={300} /></div>{/if}
+</a>{#if hover && hover.fields.file.contentType.startsWith('image/') && mouse}<div class="hover" style="left: {mouse.x}px; top: {mouse.y}px;"><Media media={hover} width={300} /></div>{/if}
 {/if}
 {/snippet}
 
