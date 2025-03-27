@@ -841,7 +841,7 @@ dialog {
 }
 .blanc {
 	--background-color: #{$blanc};
-	--foreground-color: #{$noir};
+	--foreground-color: #{$vert-fonce};
 	background-color: var(--background-color);
 	color: var(--foreground-color);
 }
