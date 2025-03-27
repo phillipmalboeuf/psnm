@@ -38,11 +38,11 @@
   <nav class="categories-nav">
     <ul class="list--nostyle flex flex--tight_gapped">
       <li>
-        <a href="/actualites" class="button category-link" class:button--accent={!data.filter}>Toutes les actualités</a>
+        <a href="/actualites" class="button category-link" class:active={!data.filter} class:vert-fonce={!data.filter}>Toutes les actualités</a>
       </li>
       {#each data.categories as category}
         <li>
-          <a href="/actualites?categorie={category.fields.id}" class:active={data.filter === category.fields.id} class="button {category.fields.couleur}">
+          <a href="/actualites?categorie={category.fields.id}" class:active={data.filter === category.fields.id} class="button {data.filter === category.fields.id ? ` ${category.fields.couleur}` : ''}">
             {category.fields.titre}
           </a>
         </li>
@@ -62,11 +62,19 @@
 
     ul {
       li {
-        a.button:not(.button--accent) {
+        color: unset;
+        background: unset;
+
+        a.button {
           border-color: transparent;
+          // color: $sarcelle !important;
+
+          &:hover,
+          &:focus {
+            background: var(--background-color, $beige);
+          }
 
           &:not(.active):not(:hover, :focus) {
-            color: $sarcelle;
             background: $grey;
           }
         }

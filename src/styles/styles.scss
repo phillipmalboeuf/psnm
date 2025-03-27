@@ -382,6 +382,7 @@ button,
 		border-color: transparent;
 
 		.mauve-pale &,
+		.mauve &,
 		.rose-pale &, 
 		.bleu-pale &, 
 		.jaune &,
@@ -403,6 +404,7 @@ button,
 		}
 
 		.mauve-fonce .mauve-pale &,
+		.mauve-fonce .mauve &,
 		.rose-fonce .rose-pale &, 
 		.bleu-fonce .bleu-pale &, 
 		.vert-fonce .vert-pale &,
