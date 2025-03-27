@@ -419,7 +419,9 @@
       }
 
       .media.col--6of12 {
-        order: 1;
+        @media (min-width: $mobile) {
+          order: 1;
+        }
       }
     }
 
