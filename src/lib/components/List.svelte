@@ -705,9 +705,9 @@
         }
 
         :global(.titre) {
-          @media (min-width: $mobile) {
-            margin-bottom: auto;
-          }
+          // @media (min-width: $mobile) {
+          //   margin-bottom: auto;
+          // }
         }
 
         :global(hr) {
