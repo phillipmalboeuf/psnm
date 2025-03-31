@@ -11,7 +11,7 @@
 </script>
 
 {#if article?.fields}
-<li class="col col--3of12 col--mobile--12of12 {$page.data.page.fields.couleur === article.fields.categorie?.fields.couleur ? 'blanc' : article.fields.categorie?.fields.couleur}" class:col--6of12={wide && article.fields.vedette}>
+<li class="col col--3of12 col--landscape--4of12 col--portrait--6of12 col--mobile--12of12 {$page.data.page.fields.couleur === article.fields.categorie?.fields.couleur ? 'blanc' : article.fields.categorie?.fields.couleur}" class:col--6of12={wide && article.fields.vedette}>
   <a href="/actualites/{article.fields.id}" class="flex">
     <article class="flex flex--spaced padded col col--mobile--12of12" class:col--6of12={wide && article.fields.vedette}>
       <h5>{article.fields.titre}</h5>

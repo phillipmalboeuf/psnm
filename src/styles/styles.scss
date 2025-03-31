@@ -1029,14 +1029,14 @@ dialog {
 					$width:  math.div(100%, $number_of_columns) * $i;
 					$adjust: calc(var(--gap) / #{math.div($number_of_columns, $i)});
 					width: calc(#{$width} - var(--gap) + #{$adjust}) !important;
+				}
+			}
 
-					&:empty {
-						display: none;
-					}
-
-					// & + br {
-					// 	display: none;
-					// }
+			 @media (max-width: $tablet_portrait) {
+				&.col--portrait--#{$i}of#{$number_of_columns} {
+					$width:  math.div(100%, $number_of_columns) * $i;
+					$adjust: calc(var(--gap) / #{math.div($number_of_columns, $i)});
+					width: calc(#{$width} - var(--gap) + #{$adjust}) !important;
 				}
 			}
 
