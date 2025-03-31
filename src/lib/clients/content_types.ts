@@ -36,6 +36,7 @@ export interface TypeChampFields {
     titre?: EntryFieldTypes.Symbol;
     id?: EntryFieldTypes.Symbol;
     type?: EntryFieldTypes.Symbol<"Email" | "Options" | "Phone" | "Text" | "Textarea">;
+    optionnel?: EntryFieldTypes.Boolean;
     half?: EntryFieldTypes.Boolean;
     options?: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
 }

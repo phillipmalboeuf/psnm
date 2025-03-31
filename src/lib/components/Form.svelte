@@ -31,15 +31,15 @@
         {#each item.fields.champs as champ}
           <div class="form-field col col--6of12" class:col--12of12={!champ.fields.half}>
             {#if champ.fields.type === 'Text'}
-              <input type="text" name={champ.fields.id} placeholder={champ.fields.titre} required>
+              <input type="text" name={champ.fields.id} placeholder={champ.fields.titre} required={!champ.fields.optionnel}>
             {:else if champ.fields.type === 'Textarea'}
-              <textarea name={champ.fields.id} placeholder={champ.fields.titre} required></textarea>
+              <textarea name={champ.fields.id} placeholder={champ.fields.titre} required={!champ.fields.optionnel}></textarea>
             {:else if champ.fields.type === 'Email'}
-              <input type="email" name={champ.fields.id} placeholder={champ.fields.titre} required>
+              <input type="email" name={champ.fields.id} placeholder={champ.fields.titre} required={!champ.fields.optionnel}>
             {:else if champ.fields.type === 'Phone'}
-              <input type="tel" name={champ.fields.id} placeholder={champ.fields.titre} required>
+              <input type="tel" name={champ.fields.id} placeholder={champ.fields.titre} required={!champ.fields.optionnel}>
             {:else if champ.fields.type === 'Options' && champ.fields.options}
-              <select name={champ.fields.id} required>
+              <select name={champ.fields.id} required={!champ.fields.optionnel}>
                 <option value="">{champ.fields.titre}</option>
                 {#each champ.fields.options as option}
                   <option value={option}>{option}</option>
