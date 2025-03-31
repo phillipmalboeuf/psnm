@@ -120,7 +120,7 @@
   ul {
     &.long {
 
-      @media (min-width: $mobile) {
+      @media (min-width: $tablet_landscape) {
         column-count: 2;
         column-gap: $s1;
 

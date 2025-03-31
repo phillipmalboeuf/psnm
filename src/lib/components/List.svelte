@@ -137,7 +137,7 @@
           </li>
         {:else}
           {#if isTypeText(listItem)}
-          <li class="col col--mobile--12of12" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3 || listItem.fields.media)) || item.fields.type === 'Timeline'} class:col--4of12={item.fields.type === 'Colonnes' && item.fields.items.length === 3} class:col--3of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3} class:col--mobile--6of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3}>
+          <li class="col col--mobile--12of12" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3 || listItem.fields.media)) || item.fields.type === 'Timeline'} class:col--4of12={item.fields.type === 'Colonnes' && item.fields.items.length === 3} class:col--3of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3} class:col--landscape--6of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3}>
             <Text item={listItem} first={index === 0} />
           </li>
           {:else if isTypeArticle(listItem)}

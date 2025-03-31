@@ -54,7 +54,7 @@
   {/if}
   <div class:col--6of12={!!media} class:col--8of12={item.fields.vertical} class:col--12of12={item.fields.full || !media} class:flex--column={!item.fields.full} class:flex--spaced={item.fields.full} class="corps col col--mobile--12of12 flex flex--gapped">
     {#if item.fields.titre}
-    <div class="titre flex flex--column flex--gapped col col--mobile--12of12" class:col--6of12={item.fields.full}>
+    <div class="titre flex flex--column flex--gapped col col--landscape--12of12" class:col--6of12={item.fields.full}>
       <div class="flex flex--column flex--tight_gapped">
         {#if item.fields.sousTitre}
           <small>{@html item.fields.sousTitre.replaceAll('\\n', '<br />')}</small>
@@ -72,7 +72,7 @@
     {/if}
 
     {#if item.fields.corps || item.fields.liens?.length}
-    <div class="inside flex flex--column flex--gapped col col--mobile--12of12" class:col--4of12={item.fields.full} class:col--6of12={item.fields.full && (!media || !!item.fields.couleur)}>
+    <div class="inside flex flex--column flex--gapped col col--landscape--12of12" class:col--4of12={item.fields.full} class:col--6of12={item.fields.full && (!media || !!item.fields.couleur)}>
       {#if item.fields.corps}
       {#if filet || (item.fields.couleur && !item.fields.inverse && !item.fields.center && item.fields.corps?.content?.length > 0)}
       <hr>
