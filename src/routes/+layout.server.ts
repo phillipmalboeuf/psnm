@@ -6,7 +6,7 @@ import type { Entry, Tag } from 'contentful'
 const redirects = [
   ['/fr', '/'],
   ['/fr/admission/s-inscrire', '/admission'],
-  ['/fr/admission/conditions-financieres', '/soutien-financier'],
+  ['/fr/admission/conditions-financieres', '/droits-scolarite'],
   ['/fr/le-psnm/visite-virtuelle', '/pourquoi-choisir-le-psnm'],
   ['/fr/le-psnm/equipe', '/equipe'],
   ['/fr/etre-et-devenir', '/etre-et-devenir'],
@@ -14,7 +14,7 @@ const redirects = [
   ['/fr/carrieres', '/carriere'],
   ['/fr/nous-joindre', '/contact'],
   ['/fr/le-psnm/pourquoi-choisir-psnm/au-feminin', '/pourquoi-choisir-le-psnm'],
-  ['/fr/admission/portes-ouvertes', '/admission'],
+  ['/fr/admission/portes-ouvertes', '/portes-ouvertes'],
   ['/fr/danse-etudes', '/danse-etudes'],
   ['/fr/ma-premiere-annee-au-psnm/materiel-scolaire-et-uniforme', '/premiere-annee-au-psnm'],
   ['/fr/musique-etudes', '/musique-etudes'],
