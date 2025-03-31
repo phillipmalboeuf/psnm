@@ -288,7 +288,7 @@
         }
       }
 
-      &#quatre-profils-detude {
+      &#quatre-profils-detudes {
         li {
           // overflow: hidden;
 

@@ -77,7 +77,7 @@
         ...listItem,
         fields: {
           ...listItem.fields,
-          sousTitre: 'Profil d\'étude',
+          sousTitre: 'Profil d\'études',
           media: undefined,
           corps: []
         }
