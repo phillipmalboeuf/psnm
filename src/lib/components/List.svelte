@@ -14,7 +14,8 @@
   import Dots from './Dots.svelte'
   import Media from './Media.svelte'
   import Poste from './Poste.svelte'
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
 
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -35,11 +36,43 @@
     // })
   ]
 
+  const handleDetailsToggle = (e: Event) => {
+    const detail = e.target as HTMLDetailsElement
+    if (detail.open && detail.getAttribute('name')) {
+      const name = detail.getAttribute('name')
+      const siblings = document.querySelectorAll(`details[name="${name}"]`)
+      siblings.forEach(sibling => {
+        if (sibling !== detail && sibling.hasAttribute('open')) {
+          sibling.removeAttribute('open')
+        }
+      })
+    }
+  }
+
+  let detailsElements: HTMLDetailsElement[] = []
+
   onMount(() => {
-    if (window.innerWidth < 888) {
+    if (browser && window.innerWidth <= 1024) {
       const open = document.querySelectorAll('details[open]')
       open.forEach(detail => {
         detail.removeAttribute('open')
+      })
+    }
+
+    if (browser) {
+      // Add event listeners to all details elements
+      detailsElements = Array.from(document.querySelectorAll('details'))
+      detailsElements.forEach(detail => {
+        detail.addEventListener('toggle', handleDetailsToggle)
+      })
+    }
+  })
+
+  onDestroy(() => {
+    if (browser) {
+      // Remove event listeners from all details elements
+      detailsElements.forEach(detail => {
+        detail.removeEventListener('toggle', handleDetailsToggle)
       })
     }
   })
