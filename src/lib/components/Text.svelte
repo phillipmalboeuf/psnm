@@ -534,9 +534,12 @@
     }
 
     .padded & {
+      :global(figure),
+      :global(picture),
       :global(img),
       :global(video) {
-        // max-height: 66lvh;
+        max-height: none;
+        height: 100%;
       }
     }
 
