@@ -61,7 +61,6 @@ h1, h2, h3, h4, h5, h6,
 	line-height: 0.9;
 	line-break: loose;
 	white-space: pre-line;
-	word-break: keep-all;
 
 	&:not(.col) {
 		max-width: 30ch;
@@ -93,6 +92,7 @@ h1, h2, h3, h4, h5, h6,
 h1,
 .h1 {
 	font-size: $s5;
+	word-break: keep-all;
 
 	&:not(.col) {
 		max-width: 20ch;
@@ -113,6 +113,7 @@ h1,
 
 .h0 {
 	font-size: $s6;
+	word-break: keep-all;
 
 	@media (max-width: $tablet_landscape) {
 		font-size: $s5;
@@ -127,6 +128,7 @@ h2,
 .h2 {
 	font-size: $s4;
 	line-height: 1;
+	word-break: keep-all;
 
 	@media (max-width: $mobile) {
     font-size: $s3;
