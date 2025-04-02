@@ -14,8 +14,9 @@
   import Dots from './Dots.svelte'
   import Media from './Media.svelte'
   import Poste from './Poste.svelte'
-  import { onMount, onDestroy } from 'svelte';
-  import { browser } from '$app/environment';
+  
+  import { onMount, onDestroy } from 'svelte'
+  import { browser } from '$app/environment'
 
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
@@ -473,9 +474,15 @@
           color: var(--background-color, $blanc);
           transition: color 0.666s;
 
+          @media (max-width: $tablet_landscape) {
+            // right: -10%;
+            height: auto !important;
+            width: 10%;
+          }
+
           @media (max-width: $mobile) {
             right: -10%;
-            height: auto !important;
+            // height: auto !important;
             width: 33%;
           }
         }
@@ -511,8 +518,11 @@
           height: 100%;
           width: 60%;
 
-          @media (max-width: $mobile) {
+          @media (max-width: $tablet_landscape) {
             width: 100%;
+          }
+
+          @media (max-width: $mobile) {
             min-height: 66lvh;
           }
 
