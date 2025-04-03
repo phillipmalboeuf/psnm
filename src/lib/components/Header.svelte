@@ -27,10 +27,6 @@
     lastScrollY = scrollY < 0 ? 0 : scrollY
   }
 
-  function toggleMenu() {
-    visible = !visible
-  }
-
   function hide() {
     visible = false
   }
@@ -63,7 +59,10 @@
         {/if}
       {/each}
     {/if}
-    <button class="button button--accent menu-button" onclick={toggleMenu}>
+    <button class="button button--accent menu-button" onclick={e => {
+      e.currentTarget.blur()
+      visible = !visible
+    }}>
       <Icon icon={visible ? 'close' : 'menu'} label={visible ? 'Fermer' : 'Menu'} />
       <span>{visible ? 'Fermer' : 'Menu'}</span>
     </button>
