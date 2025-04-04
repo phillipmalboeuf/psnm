@@ -50,12 +50,18 @@
     </span> -->
 
     <div class="col col--3of12 col--mobile--12of12 flex flex--gapped">
-      <form class="flex flex--gapped">
+      <form action="https://psnm.us17.list-manage.com/subscribe/post" method="POST" target="_blank" class="flex flex--gapped">
+        <input type="hidden" name="u" value="08608c364a75a76fb4045c585">
+        <input type="hidden" name="id" value="43b1b07b61">
         <h5>Abonnez-vous à l’infolettre<br>pour ne rien manquer</h5>
         <!-- <input class="col col--6of12" name="nom" placeholder="Votre nom"> -->
-        <input class="col col--12of12 input--underline" name="email" type="email" placeholder="Votre courriel">
+        <input class="col col--12of12 input--underline" name="MERGE0" type="email" placeholder="Votre courriel">
+        <input class="col col--6of12 input--underline" name="MERGE1" type="text" placeholder="Votre prénom">
+        <input class="col col--6of12 input--underline" name="MERGE2" type="text" placeholder="Votre nom">
         <!-- <textarea name="message" id="message" placeholder="Votre message"></textarea> -->
         
+        <input type="hidden" name="ht" value="0b9970e5c8e3df3e0a228a48eb40aa9af8a348c7:MTc0Mzc4NjAyNS4yNTA2">
+        <input type="hidden" name="mc_signupsource" value="hosted">
         <button type="submit">Je m’abonne</button>
       </form>
 
