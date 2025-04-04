@@ -17,7 +17,7 @@
   
   import { onMount, onDestroy } from 'svelte'
   import { browser } from '$app/environment'
-
+  import { page } from '$app/stores'
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   } = $props()
@@ -79,7 +79,7 @@
   })
 </script>
 
-<section class="list {item.fields.type}" id={item.fields.id}>
+<section class="list {item.fields.type}" class:visite={$page.data.page.fields.id?.includes('visite-virtuelle')} id={item.fields.id}>
   {#if item.fields.titre}
     <hr />
     <nav class="flex flex--gapped">
@@ -806,6 +806,17 @@
         :global(h5 + p) {
           margin-top: calc($s-1 * -1);
           font-size: $s-1;
+        }
+      }
+    }
+
+    &.visite {
+      li.col--6of12 {
+        @media (min-width: $tablet_landscape) {
+          width: 100%;
+          $width: calc(100% / 3);
+          $adjust: calc(var(--gap) / 3);
+          width: calc(#{$width} - var(--gap) + #{$adjust});
         }
       }
     }
