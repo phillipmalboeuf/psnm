@@ -37,7 +37,7 @@ export const actions = {
     const data = Object.fromEntries(await event.request.formData())
 
     return await email.sendEmailWithTemplate({
-      From: 'phil@phils.computer',
+      From: 'communications@psnm.qc.ca',
       To: contacts[data.sujet as string] || 'phil@phils.computer',
       // To: 'phil@phils.computer',
       MessageStream: 'broadcast',
@@ -57,7 +57,7 @@ export const actions = {
     const data = Object.fromEntries(await event.request.formData())
 
     return await email.sendEmailWithTemplate({
-      From: 'phil@phils.computer',
+      From: 'communications@psnm.qc.ca',
       To: 'location@psnm.qc.ca',
       MessageStream: 'broadcast',
       ReplyTo: data.email as string,
