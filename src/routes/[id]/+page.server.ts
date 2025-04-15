@@ -72,4 +72,23 @@ export const actions = {
       }
     })
 	},
+  association: async (event) => {
+    const data = Object.fromEntries(await event.request.formData())
+
+    return await email.sendEmailWithTemplate({
+      From: 'communications@psnm.qc.ca',
+      To: 'associationparents@psnm.qc.ca',
+      MessageStream: 'broadcast',
+      ReplyTo: data.email as string,
+      TemplateAlias: 'base',
+      TemplateModel: {
+        subject: `[psnm.qc.ca] Demande devenir bénévole`,
+        body: `${JSON.stringify(data, null, 2)}<br><br>${data.prenom} ${data.nom} – ${data.email} – ${data.phone}`,
+        product_url: "https://psnm.qc.ca",
+        product_name: "https://psnm.qc.ca",
+        company_name: "PSNM",
+        company_address: "PSNM"
+      }
+    })
+  }
 }
