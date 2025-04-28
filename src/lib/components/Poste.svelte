@@ -7,7 +7,7 @@
   const { poste, index } : { poste: Entry<TypePosteSkeleton, "WITHOUT_UNRESOLVABLE_LINKS", string>, index: number } = $props()
 </script>
 
-<li class="col col--4of12 {['vert-pale', 'bleu-pale', 'jaune', 'mauve-pale'][index % 4]}">
+<li class="col col--4of12 {['vert-pale', 'bleu-pale', 'aqua-pale', 'mauve-pale'][index % 4]}">
   <a href="/postes/{poste.fields.id}" class="flex flex--column flex--gapped">
     <div class="flex flex--gapped flex--spaced">
       {#if poste.fields.type}
