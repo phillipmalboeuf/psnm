@@ -3,6 +3,8 @@
   import type { Entry } from 'contentful'
   import { page } from '$app/stores'
   import { fly } from 'svelte/transition'
+  import { onMount } from 'svelte'
+  import { browser } from '$app/environment'
 
   import Link from './Link.svelte'
   import Logo from './Logo.svelte'
@@ -34,6 +36,15 @@
   function className(link: Entry<TypeLienDeNavigationSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>) {
     return `nav__link ${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}${$page.data.pageIds.includes(link.fields.destination.replace('/', '')) ? '' : ' disabled'}`
   }
+
+  onMount(() => {
+    if (browser && window.innerWidth <= 1024) {
+      const open = document.querySelectorAll('details[open]')
+      open.forEach(detail => {
+        detail.removeAttribute('open')
+      })
+    }
+  })
 </script>
 
 <svelte:window bind:scrollY={scrollY} on:scroll={onScroll} />
@@ -71,37 +82,48 @@
     <nav class="flex flex--gapped" transition:fly={{ y: '-100%', duration: 666, opacity: 1 }}>
       {#if navigation.fields.liens?.length}
         {#each navigation.fields.liens as link, index}
+          {#if index === 0}<hr />{/if}
           <div class="col col--mobile--12of12">
-            <Link {link} {hide} className={`h5 ${className(link)}`} />
-            {#if link.fields.sousLiens?.length}
-              <ul class="list--nostyle">
-                {#each link.fields.sousLiens as sousLink}
-                  <li>
-                    {#if sousLink.fields.sousLiens?.length}
-                      <details>
-                        <summary class="flex flex--tight_gapped flex--middle">
-                          <Link {hide} link={sousLink} className={className(sousLink)} />
-                          <span class="button button--grey button--circle">
-                            <svg width="11" height="6" viewBox="0 0 11 6">
-                              <path d="M1 1L5.5 5L10 1" stroke="currentColor"/>
-                            </svg>
-                          </span>
-                        </summary>
-                        <ul class="list--nostyle">
-                          {#each sousLink.fields.sousLiens as sousSousLink}
-                            <li>
-                              <Link {hide} link={sousSousLink} className={className(sousSousLink)} />
-                            </li>
-                          {/each}
-                        </ul>
-                      </details>
-                    {:else}
-                      <Link {hide} link={sousLink} className={className(sousLink)} />
-                    {/if}
-                  </li>
-                {/each}
-              </ul>
-            {/if}
+            <details open>
+              <summary class="flex flex--tight_gapped flex--spaced">
+                <h5 class="nav__link">{link.fields.titre}</h5>
+                <span class="">
+                  <svg width="11" height="6" viewBox="0 0 11 6">
+                    <path d="M1 1L5.5 5L10 1" stroke="currentColor"/>
+                  </svg>
+                </span>
+              </summary>
+              <!-- <Link {link} {hide} className={`h5 ${className(link)}`} /> -->
+              {#if link.fields.sousLiens?.length}
+                <ul class="list--nostyle">
+                  {#each link.fields.sousLiens as sousLink}
+                    <li>
+                      {#if sousLink.fields.sousLiens?.length}
+                        <details>
+                          <summary class="flex flex--tight_gapped flex--middle">
+                            <Link {hide} link={sousLink} className={className(sousLink)} />
+                            <span class="button button--grey button--circle">
+                              <svg width="11" height="6" viewBox="0 0 11 6">
+                                <path d="M1 1L5.5 5L10 1" stroke="currentColor"/>
+                              </svg>
+                            </span>
+                          </summary>
+                          <ul class="list--nostyle">
+                            {#each sousLink.fields.sousLiens as sousSousLink}
+                              <li>
+                                <Link {hide} link={sousSousLink} className={className(sousSousLink)} />
+                              </li>
+                            {/each}
+                          </ul>
+                        </details>
+                      {:else}
+                        <Link {hide} link={sousLink} className={className(sousLink)} />
+                      {/if}
+                    </li>
+                  {/each}
+                </ul>
+              {/if}
+            </details>
           </div>
           {#if index < navigation.fields.liens.length - 1}
             <hr />
@@ -341,9 +363,10 @@
 
     @media (max-width: $mobile) {
       padding: $s6 $s-1;
+      row-gap: $s-1;
     }
 
-    :global(.h5) {
+    h5 {
       font-family: $heading_font;
 
       @media (max-width: $mobile) {
@@ -356,7 +379,9 @@
         padding: $s-3 $s-1;
         border-radius: $s0;
         transition: background-color 0.333s;
+      }
 
+      :global(.nav__link[href]) {
         &:hover,
         &:focus {
           background-color: $vert-pale;
@@ -364,7 +389,7 @@
       }
 
       &:nth-of-type(2) {
-        :global(.nav__link) {
+        :global(.nav__link[href]) {
           &:hover,
           &:focus {
             background-color: $rose-pale;
@@ -373,7 +398,7 @@
       }
 
       &:nth-of-type(3) {
-        :global(.nav__link) {
+        :global(.nav__link[href]) {
           &:hover,
           &:focus {
             background-color: $bleu-pale;
@@ -382,7 +407,7 @@
       }
 
       &:nth-of-type(4) {
-        :global(.nav__link) {
+        :global(.nav__link[href]) {
           &:hover,
           &:focus {
             background-color: $mauve-pale;
@@ -391,7 +416,7 @@
       }
 
       &:nth-of-type(5) {
-        :global(.nav__link) {
+        :global(.nav__link[href]) {
           &:hover,
           &:focus {
             background-color: $beige-pale;
@@ -400,7 +425,7 @@
       }
 
       &:nth-of-type(6) {
-        :global(.nav__link) {
+        :global(.nav__link[href]) {
           &:hover,
           &:focus {
             background-color: $aqua-pale;
@@ -416,9 +441,19 @@
       background-image: repeating-linear-gradient(0deg, currentColor, currentColor 2px, transparent 2px, transparent 5px);
       margin: 0;
 
+      @media (min-width: $mobile) {
+        &:first-child {
+          display: none;
+        }
+      }
+
       @media (max-width: $mobile) {
         width: 100%;
         height: 1px;
+
+        &:not(:first-child) {
+          background-image: repeating-linear-gradient(90deg, currentColor, currentColor 2px, transparent 2px, transparent 5px);
+        }
       }
     }
 
@@ -435,60 +470,94 @@
         }
       }
 
-      > ul {
+      > details {
+        > summary {
+
+          svg {
+            transition: transform 0.333s;
+          }
+
+          @media (min-width: $mobile) {
+            pointer-events: none;
+
+            svg {
+              display: none;
+            }
+          }
+
+          @media (max-width: $mobile) {
+            h5.nav__link {
+              padding-left: 0;
+              padding-top: 0;
+            }
+          }
+        }
+
+        @media (max-width: $mobile) {
+          &[open] {
+            summary {
+              svg {
+                transform: rotate(-180deg);
+              }
+            }
+          }
+        }
+      }
+
+      > details > ul {
         margin-top: $s3;
 
         @media (max-width: $mobile) {
           margin-top: 0;
         }
-      }
 
-      &:has(details[open]) {
-        :global(a:not(.h5)) {
-          opacity: 0.5;
+        &:has(details[open]) {
+          :global(a:not(.h5)) {
+            opacity: 0.5;
+          }
         }
-      }
 
-      details[open] {
-        :global(a) {
-          opacity: 1 !important;
-        }
-      }
-
-      details {
-        summary {
-          flex-wrap: nowrap;
-          cursor: pointer;
-          // padding: ($s-3) ($s-2);
-
+        details[open] {
           :global(a) {
-            display: inline-block;
-            padding: 0;
+            opacity: 1 !important;
           }
+        }
 
-          &:after {
-            
-          }
+        details {
+          summary {
+            flex-wrap: nowrap;
+            cursor: pointer;
+            // padding: ($s-3) ($s-2);
 
-          .button {
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.333s;
+            :global(a) {
+              display: inline-block;
+              padding: 0;
+            }
 
-            svg {
-              width: $s0;
-              height: $s0;
-              padding: 3px;
-              transform: translate(0px, 0px);
+            &:after {
+              
+            }
+
+            .button {
+              border: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: transform 0.333s;
+
+              svg {
+                width: $s0;
+                height: $s0;
+                padding: 3px;
+                transform: translate(0px, 0px);
+              }
             }
           }
-        }
-        &[open] {
-          summary {
-            .button {
-              transform: rotate(-180deg);
+          &[open] {
+            summary {
+              .button {
+                transform: rotate(-180deg);
+              }
             }
           }
         }
