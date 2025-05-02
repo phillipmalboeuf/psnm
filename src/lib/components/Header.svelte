@@ -75,7 +75,7 @@
         {#each navigation.fields.liens as link, index}
           {#if index === 0}<hr />{/if}
           <div class="col col--mobile--12of12">
-            <details open={browser && window.innerWidth > 888}>
+            <details>
               <summary class="flex flex--tight_gapped flex--spaced">
                 <h5 class="nav__link">{link.fields.titre}</h5>
                 <span class="">
