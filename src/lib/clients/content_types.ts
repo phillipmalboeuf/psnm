@@ -182,6 +182,7 @@ export interface TypePosteFields {
     id: EntryFieldTypes.Symbol;
     date: EntryFieldTypes.Date;
     type?: EntryFieldTypes.Symbol<"Stage" | "Temps partiel" | "Temps plein">;
+    couleur?: EntryFieldTypes.Symbol<"aqua-pale" | "beige-pale" | "bleu-pale" | "mauve-pale" | "rose-pale" | "vert-pale">;
     contenu?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TypeFormulaireSkeleton | TypeGallerieSkeleton | TypeListSkeleton | TypeTextSkeleton>>;
 }
 
