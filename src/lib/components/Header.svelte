@@ -36,15 +36,6 @@
   function className(link: Entry<TypeLienDeNavigationSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>) {
     return `nav__link ${$page.url.pathname.includes(link.fields.destination) ? ' active' : ''}${$page.data.pageIds.includes(link.fields.destination.replace('/', '')) ? '' : ' disabled'}`
   }
-
-  onMount(() => {
-    if (browser && window.innerWidth <= 1024) {
-      const open = document.querySelectorAll('details[open]')
-      open.forEach(detail => {
-        detail.removeAttribute('open')
-      })
-    }
-  })
 </script>
 
 <svelte:window bind:scrollY={scrollY} on:scroll={onScroll} />
@@ -84,7 +75,7 @@
         {#each navigation.fields.liens as link, index}
           {#if index === 0}<hr />{/if}
           <div class="col col--mobile--12of12">
-            <details open>
+            <details open={browser && window.innerWidth > 888}>
               <summary class="flex flex--tight_gapped flex--spaced">
                 <h5 class="nav__link">{link.fields.titre}</h5>
                 <span class="">

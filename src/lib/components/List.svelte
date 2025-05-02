@@ -54,7 +54,7 @@
 
   onMount(() => {
     if (browser && window.innerWidth <= 1024) {
-      const open = document.querySelectorAll('details[open]')
+      const open = document.querySelectorAll('.list details[open]')
       open.forEach(detail => {
         detail.removeAttribute('open')
       })
