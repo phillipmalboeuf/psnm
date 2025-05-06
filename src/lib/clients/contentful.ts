@@ -1,7 +1,8 @@
 // import { PREVIEW } from '$env/static/private'
+import { dev } from '$app/environment'
 import { createClient } from 'contentful'
 
-const preview = false
+const preview = !!dev
 export const content = createClient({
   space: 'cgv311bfeziq',
   host: preview ? 'preview.contentful.com' : 'cdn.contentful.com',

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type TypeListSkeleton, type TypeTextSkeleton, isTypeArticle, isTypeImageWithFocalPoint, isTypePoste, isTypeQuestion, isTypeText } from '$lib/clients/content_types'
+  import { type TypeListSkeleton, type TypeTextSkeleton, isTypeArticle, isTypeImageWithFocalPoint, isTypeList, isTypePoste, isTypeQuestion, isTypeText } from '$lib/clients/content_types'
   import type { Entry } from 'contentful'
 
   import emblaCarouselSvelte from 'embla-carousel-svelte'
@@ -14,6 +14,7 @@
   import Dots from './Dots.svelte'
   import Media from './Media.svelte'
   import Poste from './Poste.svelte'
+  import Self from './List.svelte'
   
   import { onMount, onDestroy } from 'svelte'
   import { browser } from '$app/environment'
@@ -150,7 +151,7 @@
                   </svg>
                 {/if}
               </summary>
-              <article>
+              <article class:full={isTypeList(listItem)}>
                 {#if isTypeText(listItem)}
                   <Text item={listItem} first={index === 0} filet={item.fields.type === 'Accordeon'} />
                 {:else if isTypeArticle(listItem)}
@@ -159,6 +160,8 @@
                   <Poste poste={listItem} {index} />
                 {:else if isTypeQuestion(listItem)}
                   <Question item={listItem} id={item.sys.id} />
+                {:else if isTypeList(listItem)}
+                  <Self item={listItem} />
                 {:else if isTypeImageWithFocalPoint(listItem)}
                   <Media media={listItem.fields.image} ar={listItem.fields.coin ? 1 : undefined} focalPoint={listItem.fields.focalPoint?.focalPoint}/>
                 {/if}
@@ -171,7 +174,7 @@
           </li>
         {:else}
           {#if isTypeText(listItem)}
-          <li class="col col--mobile--12of12" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3 || listItem.fields.media)) || item.fields.type === 'Timeline'} class:col--4of12={item.fields.type === 'Colonnes' && item.fields.items.length === 3} class:col--3of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3} class:col--landscape--6of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3}>
+          <li class="col col--mobile--12of12" class:col--6of12={(item.fields.type === 'Colonnes' && (item.fields.items.length < 3 || listItem.fields.media)) || item.fields.type === 'Timeline'} class:col--4of12={item.fields.type === 'Colonnes' && (item.fields.items.length === 3 || item.fields.items.length === 6)} class:col--3of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3} class:col--landscape--6of12={!listItem.fields.media && item.fields.type === 'Colonnes' && item.fields.items.length > 3}>
             <Text item={listItem} first={index === 0} />
           </li>
           {:else if isTypeArticle(listItem)}
@@ -255,8 +258,8 @@
       &:has(details.Accordeon) {
         flex-direction: column;
         gap: 0;
-
-        :global(li) {
+      
+        :global(> li) {
           width: 100%;
         }
       }
@@ -618,15 +621,25 @@
         border-top: 1px solid color-mix(in srgb, currentColor 25%, transparent);
         // border-bottom: 1px solid;
 
-        :global(.titre) {
-          display: none;
-        }
+        article {
+          &:not(.full) {
+            :global(.titre) {
+              display: none;
+            }
 
-        :global(.inside) {
-          width: 100%;
+            :global(.inside) {
+              width: 100%;
 
-          :global(hr:first-child) {
-            margin-top: 0;
+              :global(hr:first-child) {
+                margin-top: 0;
+              }
+            }
+          }
+
+          &.full {
+            :global(.list > nav) {
+              display: none;
+            } 
           }
         }
 
@@ -686,8 +699,11 @@
         }
 
         article {
-          @media (min-width: $mobile) {
-            padding-left: 50%;
+
+          &:not(.full) {
+            @media (min-width: $mobile) {
+              padding-left: 50%;
+            }
           }
         }
       }
