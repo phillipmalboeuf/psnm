@@ -639,7 +639,13 @@
           &.full {
             :global(.list > nav) {
               display: none;
-            } 
+            }
+
+            :global(li.image) {
+              @media (max-width: $mobile) {
+                order: unset;
+              }
+            }
           }
         }
 
