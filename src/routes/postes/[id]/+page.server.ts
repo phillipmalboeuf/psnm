@@ -17,7 +17,7 @@ export const load = async ({ params }) => {
     })
   ])
 
-  console.log(page.items[0])
+  // console.log(page.items[0])
 
   return {
     item: items.items[0],
