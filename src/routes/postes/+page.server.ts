@@ -1,11 +1,11 @@
 import type { TypePosteSkeleton, TypePageSkeleton } from '$lib/clients/content_types'
-import { content } from '$lib/clients/contentful'
+import { cachedEntries, content } from '$lib/clients/contentful'
 
 export async function load({ url }) {
   const filter = url.searchParams.get("type")
 
   const [postesResponse, pageResponse] = await Promise.all([
-    content.getEntries<TypePosteSkeleton>({
+    cachedEntries<TypePosteSkeleton>({
       content_type: 'poste',
       include: 2,
       locale: 'fr-CA',
@@ -13,7 +13,7 @@ export async function load({ url }) {
       ? { "fields.type": filter }
       : {}
     }),
-    content.getEntries<TypePageSkeleton>({
+    cachedEntries<TypePageSkeleton>({
       content_type: 'page',
       include: 2,
       'fields.id': 'postes',

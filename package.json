@@ -29,10 +29,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@vercel/functions": "^2.2.3",
 		"contentful": "^11.0.3",
 		"embla-carousel-autoplay": "^8.3.0",
 		"embla-carousel-svelte": "^8.3.0",
 		"luxon": "^3.5.0",
-		"postmark": "^4.0.5"
+		"postmark": "^4.0.5",
+		"redis": "^5.6.0"
 	}
 }

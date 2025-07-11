@@ -1,11 +1,11 @@
 import type { TypeArticleSkeleton, TypePageSkeleton, TypeCategorieSkeleton } from '$lib/clients/content_types'
-import { content } from '$lib/clients/contentful'
+import { cachedEntries, content } from '$lib/clients/contentful'
 
 export async function load({ url }) {
   const filter = url.searchParams.get("categorie")
 
   const [articlesResponse, pageResponse, categoriesResponse] = await Promise.all([
-    content.getEntries<TypeArticleSkeleton>({
+    cachedEntries<TypeArticleSkeleton>({
       content_type: 'article',
       include: 2,
       locale: 'fr-CA',
@@ -14,13 +14,13 @@ export async function load({ url }) {
       ? { "fields.categorie.fields.id": filter, "fields.categorie.sys.contentType.sys.id": "categorie" }
       : {}
     }),
-    content.getEntries<TypePageSkeleton>({
+    cachedEntries<TypePageSkeleton>({
       content_type: 'page',
       include: 2,
       'fields.id': 'actualites',
       locale: 'fr-CA',
     }),
-    content.getEntries<TypeCategorieSkeleton>({
+    cachedEntries<TypeCategorieSkeleton>({
       content_type: 'categorie',
       order: ['fields.titre'],
       locale: 'fr-CA',
