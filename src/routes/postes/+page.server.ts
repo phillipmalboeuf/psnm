@@ -1,8 +1,6 @@
 import type { TypePosteSkeleton, TypePageSkeleton } from '$lib/clients/content_types'
 import { content } from '$lib/clients/contentful'
 
-export const prerender = false
-
 export async function load({ url }) {
   const filter = url.searchParams.get("type")
 
