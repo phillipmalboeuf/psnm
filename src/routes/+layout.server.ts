@@ -3,7 +3,7 @@ import { content } from '$lib/clients/contentful'
 import { redirect } from '@sveltejs/kit'
 import type { Entry, Tag } from 'contentful'
 
-export const prerender = true
+export const prerender = 'auto'
 
 const redirects = [
   ['/fr', '/'],
