@@ -1,6 +1,8 @@
 import type { TypeArticleSkeleton, TypePageSkeleton, TypeCategorieSkeleton } from '$lib/clients/content_types'
 import { content } from '$lib/clients/contentful'
 
+export const prerender = false
+
 export async function load({ url }) {
   const filter = url.searchParams.get("categorie")
 

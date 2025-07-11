@@ -3,6 +3,8 @@ import { content } from '$lib/clients/contentful'
 // import { languageTag } from '$lib/paraglide/runtime.js'
 import type { Entry } from 'contentful'
 
+export const prerender = false
+
 export const load = (async ({ locals, url, params }) => {
 
   if (!url.searchParams.has('q')) return
