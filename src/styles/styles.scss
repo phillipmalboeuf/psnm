@@ -726,10 +726,24 @@ details {
 			content: "";
 		}
 
-		&::marker {
-			display: none;
-			content: "";
-		}
+    &::-moz-details-marker {
+      display: none;
+      content: "";
+    }
+
+    &::details-marker {
+      display: none;
+      content: "";
+    }
+
+    &::marker {
+      display: none;
+      content: "";
+    }
+
+    // iOS Safari specific fix
+    list-style: none;
+    list-style-type: none;
 	}
 }
 
