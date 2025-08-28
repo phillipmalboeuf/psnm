@@ -32,7 +32,7 @@
   }
 
   function cdn(url: string) {
-    return url.replace('//downloads.ctfassets.net', '//images.ctfassets.net').replace('//images.ctfassets.net', '//philsassets.imgix.net')
+    return url.replace('//downloads.ctfassets.net', '//images.ctfassets.net').replace('//images.ctfassets.net', '//philsassets.b-cdn.net')
   }
 
   function getNormalizedFocalPoint(fp: { x: number, y: number }, width: number, height: number) {
