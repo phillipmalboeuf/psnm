@@ -20,10 +20,10 @@
   <hr>
   
   {#if data.item.fields.titre}
-  <h1 class="col col--6of12 h2">{data.item.fields.titre}</h1>
+  <h1 class="col col--6of12 col--mobile--12of12 h2">{data.item.fields.titre}</h1>
   {/if}
 
-  <aside class="col col--6of12 flex flex--gapped flex--end">
+  <aside class="col col--6of12 col--mobile--12of12 flex flex--gapped">
     {#if data.item.fields.type}
       <a href="/postes?type={data.item.fields.type}">
         {data.item.fields.type}
@@ -69,6 +69,10 @@
     }
 
     aside {
+      @media (min-width: $mobile) {
+        justify-content: flex-end;
+      }
+
       > a {
         // margin: 0 auto;
       }
