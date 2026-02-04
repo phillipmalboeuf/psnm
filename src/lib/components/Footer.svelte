@@ -91,7 +91,11 @@
     {#if politiques.fields.liens?.length}
     <div class="col col--9of12 col--mobile--12of12 flex flex--gapped">
       <div class="col col--3of12 col--mobile--12of12">
-        <Link link={politiques.fields.liens[0]} />
+        {#if politiques.fields.liens[0]?.fields?.titre?.includes('sans but lucratif')}
+          <img src="/logo-osbl.png" alt="Cette école est un organisme sans but lucratif" class="logo-osbl" />
+        {:else}
+          <Link link={politiques.fields.liens[0]} />
+        {/if}
       </div>
       <div class="col col--6of12 col--mobile--12of12">
         {#each politiques.fields.liens.slice(1) as link, index}
@@ -266,5 +270,13 @@
     
       }
     }
+  }
+
+  .logo-osbl {
+    width: 100%;
+    height: 5rem;
+    object-fit: contain;
+    object-position: left;
+    // margin-bottom: $s2;
   }
 </style>
