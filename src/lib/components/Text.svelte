@@ -547,7 +547,7 @@
       @media (max-width: $mobile) {
         :global(img),
         :global(video) {
-          aspect-ratio: 1 / 1;
+          // aspect-ratio: 1 / 1;
         }
       }
     }
