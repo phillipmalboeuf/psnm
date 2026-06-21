@@ -5,12 +5,12 @@ import { redis } from '$lib/clients/redis'
 export const POST: RequestHandler = async () => {
   await redis.flushAll()
 
-  await fetch('https://api.vercel.com/v1/integrations/deploy/prj_C770TogCQomhk6bSLnYIDRR0Ll90/yJQiV6ZVar', {
-    method: 'POST',
-    headers: {
-      // 'Authorization': `Bearer ${process.env.VERCEL_TOKEN}`
-    }
-  })
+  // await fetch('https://api.vercel.com/v1/integrations/deploy/prj_C770TogCQomhk6bSLnYIDRR0Ll90/yJQiV6ZVar', {
+  //   method: 'POST',
+  //   headers: {
+  //     // 'Authorization': `Bearer ${process.env.VERCEL_TOKEN}`
+  //   }
+  // })
   
   return json({ success: true })
 }
