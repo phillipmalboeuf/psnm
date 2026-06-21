@@ -60,7 +60,7 @@
 {#each data.item.fields.contenu as item, i}
 <section>
   {#if isTypeText(item)}
-  <Text {item} />
+  <Text {item} first={i === 0} />
   {:else if isTypeList(item)}
   <List {item} />
   {:else if isTypeGallerie(item)}

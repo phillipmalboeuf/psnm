@@ -67,7 +67,7 @@
 {#each data.page.fields.contenu as item, i}
 <section use:observeSection={i}>
   {#if isTypeText(item)}
-  <Text {item} />
+  <Text {item} first={i === 0} />
   {:else if isTypeList(item)}
   <List item={(item.fields.id === 'plus-profils' && ['etre-et-devenir', 'musique-etudes', 'danse-etudes', 'formule-flex'].includes(data.page.fields.id)) ? {
     ...item,

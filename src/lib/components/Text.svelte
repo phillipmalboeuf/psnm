@@ -54,13 +54,24 @@
   {/if}
   <div class:col--6of12={!!media} class:col--8of12={item.fields.vertical} class:col--12of12={item.fields.full || !media} class:flex--column={!item.fields.full} class:flex--spaced={item.fields.full} class="corps col col--mobile--12of12 flex flex--gapped">
     {#if item.fields.titre}
+    {@const titleHtml = item.fields.titre.replaceAll('\\n', '<br />')}
     <div class="titre flex flex--column flex--gapped col col--portrait--12of12" class:col--6of12={item.fields.full}>
       <div class="flex flex--column flex--tight_gapped">
         {#if item.fields.sousTitre}
           <small>{@html item.fields.sousTitre.replaceAll('\\n', '<br />')}</small>
         {/if}
         {#if item.fields.center}<hr>{/if}
-        <h3 class:h2={(media && !item.fields.couleur) || !/[A-Za-z]/.test(item.fields.titre)} class:h4={item.fields.alt || item.fields.center} class:h--alt={item.fields.center}>{@html item.fields.titre.replaceAll('\\n', '<br />')}</h3>
+        {#if item.fields.alt || item.fields.center}
+          <h4 class:h--alt={item.fields.center}>{@html titleHtml}</h4>
+        {:else if (media && !item.fields.couleur) || !/[A-Za-z]/.test(item.fields.titre)}
+          {#if first}
+          <h1 class="h2">{@html titleHtml}</h1>
+          {:else}
+          <h2>{@html titleHtml}</h2>
+          {/if}
+        {:else}
+          <h3>{@html titleHtml}</h3>
+        {/if}
       </div>
 
       {#if petitMedia}
