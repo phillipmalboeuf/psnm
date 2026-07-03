@@ -19,6 +19,7 @@
   import { onMount, onDestroy } from 'svelte'
   import { browser } from '$app/environment'
   import { page } from '$app/stores'
+    import { json } from '@sveltejs/kit';
   let { item }: {
     item: Entry<TypeListSkeleton, "WITHOUT_UNRESOLVABLE_LINKS">
   } = $props()
@@ -143,6 +144,9 @@
                 class:h3={item.fields.type === 'Pilules' || item.fields.type === 'Accordeon'}>
                 {#if 'titre' in listItem.fields}
                   {listItem.fields.titre}
+                {/if}
+                {#if item.fields.type === 'Pilules' && 'sousTitre' in listItem.fields && listItem.fields.sousTitre}
+                  <small>{@html (listItem.fields.sousTitre as string).replaceAll('\\n', '<br />')}</small>
                 {/if}
                 {#if item.fields.type === 'Accordeon'}
                   <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -277,6 +281,15 @@
         max-width: 1333px;
         margin: 0 auto;
       }
+
+      :global(details summary small) {
+        display: block;
+        font-size: $s0;
+        font-family: $body_font;
+        letter-spacing: -0.01em;
+        font-weight: 300;
+        margin-top: $s-2;
+      }
     }
 
     &.Colonnes {
@@ -335,6 +348,41 @@
       &#quatre-profils-detudes {
         li {
           // overflow: hidden;
+          width: calc((100% / 3) - var(--gap) + calc(var(--gap) / 3));
+
+          :global(> section) {
+            max-width: 100%;
+          }
+
+          &:first-child {
+            width: 100%;
+
+            @media (min-width: $mobile) {
+              :global(.corps) {
+                padding: $s0;
+              }
+
+              :global(.titre small) {
+                font-size: $s0;
+              }
+
+              :global(.titre h3) {
+                font-size: $s4;
+              }
+
+              :global(.inside .button) {
+                font-size: $s1;
+              }
+            }
+          }
+
+          &:not(:first-child) {
+            @media (max-width: $mobile) {
+              :global(.media) {
+                display: none;
+              }
+            }
+          }
 
           :global(.media) {
             width: calc(50% - var(--gap) + calc(var(--gap) / 2));
@@ -406,7 +454,7 @@
       &.Pilules {
         summary {
           padding: $s3 $s2;
-          border-radius: $s4;
+          border-radius: $s5;
           width: 425px;
           text-align: center;
 
