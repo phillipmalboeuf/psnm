@@ -289,6 +289,10 @@
         letter-spacing: -0.01em;
         font-weight: 300;
         margin-top: $s-2;
+
+        @media (max-width: $mobile) {
+          font-size: $s-1;
+        }
       }
     }
 
@@ -460,6 +464,7 @@
 
           @media (max-width: $mobile) {
             width: 100%;
+            padding: $s3 $s1;
           }
         }
 
